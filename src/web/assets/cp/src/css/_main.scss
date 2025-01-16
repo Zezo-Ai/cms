@@ -5001,7 +5001,8 @@ $statusLabelBgShade: '500';
     --status-label-bg-color: var(--emerald-#{$statusLabelBgShade});
   }
 
-  &.teal {
+  &.teal,
+  &.turquoise {
     --status-label-text-color: var(--teal-#{$statusLabelColorShade});
     --status-label-bg-color: var(--enabled-color);
   }
@@ -5056,9 +5057,15 @@ $statusLabelBgShade: '500';
     --status-label-bg-color: var(--gray-#{$statusLabelBgShade});
   }
 
-  &.gray {
+  &.gray,
+  &.grey {
     --status-label-text-color: var(--gray-#{$statusLabelColorShade});
     --status-label-bg-color: var(--gray-#{$statusLabelBgShade});
+  }
+
+  &.black {
+    --status-label-text-color: var(--black);
+    --status-label-bg-color: var(--gray-1000);
   }
 }
 
