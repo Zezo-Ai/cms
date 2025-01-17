@@ -3051,8 +3051,7 @@ class ElementQuery extends Query implements ElementQueryInterface
             unset($direction);
         }
 
-        // No need to set orderBy on $this->query. And doing so breaks RAND(X).
-        // (see https://github.com/craftcms/cms/issues/16432)
+        $this->query->orderBy($orderBy);
         $this->subQuery->orderBy($orderBy);
     }
 
