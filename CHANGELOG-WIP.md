@@ -45,12 +45,12 @@
 - Added “Copy plugin handle” and “Copy package name” options to plugins’ action menus on the Plugins index page. ([#16281](https://github.com/craftcms/cms/discussions/16281))
 - The Updates utility now shows an action menu for each plugin, with “Copy plugin handle” and “Copy package name” options. ([#16281](https://github.com/craftcms/cms/discussions/16281))
 - The Queue Manager utility now shows jobs’ class names. ([#16228](https://github.com/craftcms/cms/pull/16228))
-- Improved the wording of field instance action labels. ([#16261](https://github.com/craftcms/cms/discussions/16261))
 - Field layout designers no longer show the element library in a persisting sidebar. Instead, tabs always show “Add” buttons, which open the element library within a heads-up display. ([#16374](https://github.com/craftcms/cms/pull/16374))
 - It’s now possible to add new field layout elements to tabs by clicking/tapping or pressing <kbd>Return</kbd>/<kbd>Spacebar</kbd> on them. ([#16374](https://github.com/craftcms/cms/pull/16374))
 - After creating a new field from a field layout designer, the field is now immediately added to the field layout tab. ([#16374](https://github.com/craftcms/cms/pull/16374))
 - Templates rendered for “Template” field layout UI elements can now call control panel template functions like `elementChip()` and `elementCard()`. ([#16267](https://github.com/craftcms/cms/issues/16267))
 - “Template” field layout UI elements now show suggestions for the Template input.
+- Removed the “Edit field” action from field instance action menus within field layout designers. ([#16451](https://github.com/craftcms/cms/pull/16451))
 - Added the `elements/delete-all-of-type` command. ([#16423](https://github.com/craftcms/cms/pull/16423))
 - Added the `utils/delete-empty-volume-folders` command. ([#16388](https://github.com/craftcms/cms/issues/16388))
 - Improved the error output for nested elements when they can’t be resaved via `resave` commands.
