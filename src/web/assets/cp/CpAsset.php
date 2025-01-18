@@ -195,7 +195,6 @@ JS;
             'Don’t use for element thumbnails',
             'Draft Name',
             'Edit draft settings',
-            'Edit global field settings',
             'Edit {type}',
             'Edit',
             'Edited',

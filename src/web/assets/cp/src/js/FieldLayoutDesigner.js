@@ -917,7 +917,7 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
 
     if (this.hasSettings && !this.tab.designer.settings.readOnly) {
       disclosureMenu.addItem({
-        label: Craft.t('app', 'Instance settings'),
+        label: Craft.t('app', 'Settings'),
         icon: 'gear',
         onActivate: () => {
           this.createSettings();
@@ -926,16 +926,6 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
 
       this.addListener(this.$container, 'dblclick', () => {
         this.createSettings();
-      });
-    }
-
-    if (this.fieldId) {
-      disclosureMenu.addItem({
-        label: Craft.t('app', 'Edit global field settings'),
-        icon: 'pencil',
-        onActivate: () => {
-          this.showFieldEditor();
-        },
       });
     }
 
