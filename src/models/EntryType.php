@@ -216,8 +216,8 @@ class EntryType extends Model implements
             $editId = sprintf('action-edit-%s', mt_rand());
             $items[] = [
                 'id' => $editId,
-                'icon' => 'edit',
-                'label' => Craft::t('app', 'Edit'),
+                'icon' => 'gear',
+                'label' => Craft::t('app', 'Entry type settings'),
             ];
 
             $view = Craft::$app->getView();

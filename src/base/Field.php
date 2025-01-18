@@ -544,8 +544,8 @@ abstract class Field extends SavableComponent implements FieldInterface, Iconic,
                 $editId = sprintf('action-edit-%s', mt_rand());
                 $items[] = [
                     'id' => $editId,
-                    'icon' => 'edit',
-                    'label' => Craft::t('app', 'Edit field'),
+                    'icon' => 'gear',
+                    'label' => Craft::t('app', 'Field settings'),
                 ];
                 $view->registerJsWithVars(fn($id, $params) => <<<JS
 (() => {
