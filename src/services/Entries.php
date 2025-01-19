@@ -1884,7 +1884,7 @@ SQL)->execute();
         $usages = [];
 
         // Sections
-        foreach (Craft::$app->getEntries()->getAllSections() as $section) {
+        foreach ($this->getAllSections() as $section) {
             foreach ($section->getEntryTypes() as $entryType) {
                 $usages[$entryType->id][] = $section;
             }
@@ -2008,7 +2008,7 @@ SQL)->execute();
         if (!empty($missingEntries)) {
             /** @var array<string,Section> $singleSections */
             $singleSections = ArrayHelper::index(
-                Craft::$app->getEntries()->getSectionsByType(Section::TYPE_SINGLE),
+                $this->getSectionsByType(Section::TYPE_SINGLE),
                 fn(Section $section) => $section->handle,
             );
             $fetchSectionIds = [];
