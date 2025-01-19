@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'ניתן להתחיל את זה במשתנה סביבה.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'סוג רשומת טיוטה זו לא זמין יותר. עדיין ניתן להציגה, אך לא להשתמש בה.',
     'This element is conditional' => 'האלמנט הזה מותנה',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'לשדה הזה יש טיפ',
     'This field has a warning' => 'לשדה הזה יש אזהרה',
     'This field has been modified.' => 'השדה שונה.',
