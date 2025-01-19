@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Môže sa začať premennou prostredia.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'Tento typ záznamu už nie je k dispozícii. Stále si ho môžete prezerať, ale už ho nemôžete použiť.',
     'This element is conditional' => 'Tento prvok je podmienený',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'Toto políčko má nápovedu',
     'This field has a warning' => 'Polá má výstrahu',
     'This field has been modified.' => 'Toto pole bolo upravené.',
