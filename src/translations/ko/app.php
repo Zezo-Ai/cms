@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => '유효성 검사 오류 때문에 상태를 업데이트할 수 없습니다.',
     'Could not write to the temporary upload folder.' => '임시 업로드 폴더에 쓸 수 없습니다.',
     'Couldn’t add all items to the cart.' => '모든 항목을 장바구니에 추가할 수 없음',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => '드래프트를 적용할 수 없습니다.',
     'Couldn’t apply new migrations.' => '새 마이그레이션을 적용할 수 없습니다.',
     'Couldn’t backup the database. How would you like to proceed?' => '데이터베이스를 백업할 수 없습니다. 계속 진행하시겠습니까?',
