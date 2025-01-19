@@ -231,7 +231,6 @@ JS;
             'Incorrect password.',
             'Indexing assets: {progress}',
             'Information',
-            'Instance settings',
             'Instructions',
             'Invalid email.',
             'Invalid username or email.',
