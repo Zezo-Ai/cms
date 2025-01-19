@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'این می تواند با یک متغیر محیطی شروع شود.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'نوع ورودی این پیش‌نویس دیگر در دسترس نیست. شما همچنان می توانید آن را مشاهده کنید، اما نمی توانید آن را اعمال کنید.',
     'This element is conditional' => 'این عنصر مشروط است',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'این فیلد تغییر پیدا کرده است.',
