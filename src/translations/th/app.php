@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'ไม่สามารถอัปเดตสถานะได้ เนื่องจากข้อผิดพลาดในการตรวจสอบความถูกต้อง',
     'Could not write to the temporary upload folder.' => 'ไม่สามารถเขียนไปยังโฟลเดอร์อัปโหลดชั่วคราวได้',
     'Couldn’t add all items to the cart.' => 'ไม่สามารถเพิ่มรายการทั้งหมดไปยังรถเข็นได้',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'ไม่สามารถใช้ฉบับร่างได้',
     'Couldn’t apply new migrations.' => 'ใช้การโอนย้ายข้อมูลใหม่ไม่ได้',
     'Couldn’t backup the database. How would you like to proceed?' => 'สำรองฐานข้อมูลไม่ได้ คุณต้องการดำเนินการต่ออย่างไร',
