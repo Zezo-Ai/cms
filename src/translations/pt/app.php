@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Isto pode começar com uma variável de ambiente.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'O tipo de entrada deste rascunho já não está disponível. Ainda pode visualizá-lo, mas não aplicá-lo.',
     'This element is conditional' => 'Este elemento é condicional',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'Este campo foi modificado.',
