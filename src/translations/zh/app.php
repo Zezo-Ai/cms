@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => '由于验证错误，无法更新状态。',
     'Could not write to the temporary upload folder.' => '无法写入临时上传文件夹。',
     'Couldn’t add all items to the cart.' => '无法将全部商品添加到购物车。',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => '无法应用草稿。',
     'Couldn’t apply new migrations.' => '无法应用新的迁移。',
     'Couldn’t backup the database. How would you like to proceed?' => '无法备份数据库。下一步该如何进行？',
