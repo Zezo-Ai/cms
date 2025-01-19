@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Kan ikke opdatere status på grund af valideringsfejl.',
     'Could not write to the temporary upload folder.' => 'Kan ikke skrive til midlertidig upload-mappe.',
     'Couldn’t add all items to the cart.' => 'Kunne ikke føje alle elementer til kurven.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Kunne ikke anvende kladde.',
     'Couldn’t apply new migrations.' => 'Kan ikke anvende nye migreringer.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Kan ikke lave backup af database. Hvordan vil du fortsætte?',
