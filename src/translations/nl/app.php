@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Kan statuswaarden niet bijwerken vanwege validatiefouten.',
     'Could not write to the temporary upload folder.' => 'Kan niet schrijven naar de tijdelijke uploadmap.',
     'Couldn’t add all items to the cart.' => 'Kan niet alle items toevoegen aan de winkelwagen.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Kon concept niet toepassen.',
     'Couldn’t apply new migrations.' => 'Kan nieuwe migraties niet toepassen.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Kan geen back-up maken van de database. Hoe wilt u verdergaan?',
