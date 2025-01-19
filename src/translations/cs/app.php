@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Stavy nelze aktualizovat kvůli chybám ověření.',
     'Could not write to the temporary upload folder.' => 'Do dočasné složky odeslání nelze zapisovat.',
     'Couldn’t add all items to the cart.' => 'Nepodařilo se přidat všechny položky do košíku.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Koncept nebylo možné použít.',
     'Couldn’t apply new migrations.' => 'Nové migrace nelze použít.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Tuto databázi nelze zálohovat. Jak chcete pokračovat?',
