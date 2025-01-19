@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Cela peut commencer par une variante d’environnement.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'Le type d\'entrée de ce brouillon n\'est plus disponible. Vous pouvez encore le consulter, mais pas l\'appliquer.',
     'This element is conditional' => 'Cet élément est conditionnel',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'Ce champ a été modifié.',
