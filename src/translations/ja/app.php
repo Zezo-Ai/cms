@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'これは環境変数で開始できます。',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'この下書きのエントリタイプは使用できません。表示できますが、適用できません。',
     'This element is conditional' => 'このエレメントは条件付きです',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'このフィールドにはヒントがあります',
     'This field has a warning' => 'このフィールドには警告があります',
     'This field has been modified.' => 'このフィールドは変更されました。',
