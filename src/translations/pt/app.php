@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Não foi possível atualizar os estados devido a erros de validação.',
     'Could not write to the temporary upload folder.' => 'Não foi possível escrever na pasta de carregamento temporária.',
     'Couldn’t add all items to the cart.' => 'Não foi possível adicionar todos os itens ao carrinho.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Não foi possível aplicar o rascunho.',
     'Couldn’t apply new migrations.' => 'Não foi possível aplicar novas migrações.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Não foi possível criar uma cópia de segurança da base de dados. Como gostaria de resolver a situação?',
