@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'לא ניתן לעדכן את הסטטוסים עקב שגיאות אימות.',
     'Could not write to the temporary upload folder.' => 'לא ניתן לכתוב לתיקיית הטעינה הזמנית.',
     'Couldn’t add all items to the cart.' => 'לא ניתן להוסיף את כל הפריטים לעגלה.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'לא ניתן להחיל את הטיוטה.',
     'Couldn’t apply new migrations.' => 'לא ניתן להחיל העברות חדשות.',
     'Couldn’t backup the database. How would you like to proceed?' => 'לא ניתן לגבות את מסד הנתונים. כיצד ברצונך להמשיך?',
