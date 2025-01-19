@@ -59,11 +59,9 @@ class m230617_070415_entrify_matrix_blocks extends Migration
         $projectConfig = Craft::$app->getProjectConfig();
         $fieldsService = Craft::$app->getFields();
 
-        // index entry type names and handles
-        $entryTypeNames = [];
+        // index entry handles
         $entryTypeHandles = [];
         foreach ($projectConfig->get(ProjectConfig::PATH_ENTRY_TYPES) ?? [] as $entryTypeConfig) {
-            $entryTypeNames[$entryTypeConfig['name']] = true;
             $entryTypeHandles[$entryTypeConfig['handle']] = true;
         }
 
@@ -100,7 +98,7 @@ class m230617_070415_entrify_matrix_blocks extends Migration
             foreach ($blockTypeConfigsByField[$fieldUid] as $blockTypeUid => $blockTypeConfig) {
                 $entryType = $newEntryTypes[] = $fieldEntryTypes[] = new EntryType([
                     'uid' => $blockTypeUid,
-                    'name' => $this->uniqueName($blockTypeConfig['name'], $entryTypeNames),
+                    'name' => $blockTypeConfig['name'],
                     'handle' => $this->uniqueHandle($blockTypeConfig['handle'], $entryTypeHandles),
                     'hasTitleField' => false,
                     'titleFormat' => null,
@@ -170,9 +168,6 @@ class m230617_070415_entrify_matrix_blocks extends Migration
                 'entryTypes' => array_map(function(EntryType $entryType) use ($fieldUid, $blockTypeConfigsByField) {
                     $config = ['uid' => $entryType->uid];
                     $blockTypeConfig = $blockTypeConfigsByField[$fieldUid][$entryType->uid];
-                    if ($entryType->name !== $blockTypeConfig['name']) {
-                        $config['name'] = $blockTypeConfig['name'];
-                    }
                     if ($blockTypeConfig['handle'] !== $entryType->handle) {
                         $config['handle'] = $blockTypeConfig['handle'];
                     }
