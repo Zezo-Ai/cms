@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Érvényesítési hibák miatt nem sikerült frissíteni az állapotokat.',
     'Could not write to the temporary upload folder.' => 'Nem sikerült írni az átmeneti feltöltési mappába.',
     'Couldn’t add all items to the cart.' => 'Nem sikerült az összes elemet a kosárba rakni.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'A vázlat alkalmazása sikertelen volt.',
     'Couldn’t apply new migrations.' => 'Nem lehet új áttelepítéseket alkalmazni.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Az adatbázis frissítése nem sikerült. Hogyan szeretné folytatni?',
