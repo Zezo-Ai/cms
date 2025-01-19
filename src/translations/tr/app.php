@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Doğrulama hataları nedeniyle durumlar güncellenemedi.',
     'Could not write to the temporary upload folder.' => 'Geçici karşıya yükleme klasörüne yazılamadı.',
     'Couldn’t add all items to the cart.' => 'Tüm ürünler sepete eklenemedi.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Taslak uygulanamadı.',
     'Couldn’t apply new migrations.' => 'Yeni geçişler uygulanamadı.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Veritabanı yedeklenemedi. Nasıl devam etmek istiyorsunuz?',
