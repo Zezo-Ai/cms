@@ -32,6 +32,7 @@
 - Improved the accessibility of timepicker inputs. ([#16152](https://github.com/craftcms/cms/pull/16152))
 
 ### Administration
+- Added the ability to override entry type names and handles for sections and Matrix fields. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Added the “Affiliated Site” native user field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added support for setting site-specific email setting overrides. ([#16187](https://github.com/craftcms/cms/pull/16187))
 - Added the “View users” user permission. ([#16206](https://github.com/craftcms/cms/pull/16206))
@@ -88,6 +89,7 @@
 - Added `craft\base\ElementTrait::$viewMode`. ([#16324](https://github.com/craftcms/cms/pull/16324))
 - Added `craft\base\Field::copyCrossSiteValue()`. ([#14056](https://github.com/craftcms/cms/pull/14056))
 - Added `craft\base\Field::dbTypeForValueSql()`.
+- Added `craft\base\Indicative`.
 - Added `craft\base\NestedElementTrait::ownerType()`.
 - Added `craft\base\PluginTrait::$hasReadOnlyCpSettings`. ([#16265](https://github.com/craftcms/cms/pull/16265))
 - Added `craft\base\Plugininterface::getReadOnlySettingsResponse()`. ([#16265](https://github.com/craftcms/cms/pull/16265))
@@ -128,8 +130,12 @@
 - Added `craft\mail\Mailer::$siteId`.
 - Added `craft\mail\Mailer::$siteOverrides`.
 - Added `craft\models\AssetIndexingSession::$forceStop`. ([#16435](https://github.com/craftcms/cms/pull/16435))
+- Added `craft\models\EntryType::$original`. ([#16453](https://github.com/craftcms/cms/pull/16453))
+- Added `craft\models\EntryType::$validateHandleUniqueness`. ([#16453](https://github.com/craftcms/cms/pull/16453))
+- Added `craft\models\EntryType::getUsageConfig()`. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Added `craft\models\MailSettings::$siteOverrides`.
 - Added `craft\services\Elements::canSaveCanonical()`.
+- Added `craft\services\Entries::getEntryType()`. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Added `craft\services\Gql::getFieldLayoutArguments()`.
 - Added `craft\web\ErrorHandler::EVENT_BEFORE_REDIRECT`. ([#16355](https://github.com/craftcms/cms/pull/16355))
 - Added `craft\web\RedirectRule`. ([#16355](https://github.com/craftcms/cms/pull/16355))
@@ -144,6 +150,7 @@
 - Added `craft\web\View::startJsImportBuffer()`. ([#16414](https://github.com/craftcms/cms/pull/16414))
 - Added `craft\web\twig\variables\Cp::EVENT_REGISTER_READ_ONLY_CP_SETTINGS`. ([#16265](https://github.com/craftcms/cms/pull/16265))
 - `GuzzleHttp\Client` is now instantiated via `Craft::createObject()`. ([#16366](https://github.com/craftcms/cms/pull/16366))
+- `craft\elements\Entry::getAvailableEntryTypes()` now has a `$triggerEvent` argument.
 - `craft\elements\NestedElementManager::getIndexHtml()` now supports passing `defaultSort` in the `$config` array. ([#16236](https://github.com/craftcms/cms/discussions/16236))
 - `craft\elements\conditions\entries\MatrixFieldConditionRule` is now an alias of `FieldConditionRule`.
 - `craft\helpers\App::envConfig()` now checks for a `craft\attributes\EnvName` attribute on public properties, which can be used to override the environment variable name (sans prefix) that is associated with the property.
@@ -161,7 +168,10 @@
 - Deprecated `craft\fields\Link::$showTargetField`.
 - `_includes/forms/autosuggest.twig` now supports a `suggestTemplates` variable. 
 - `_includes/forms/colorSelect.twig` now supports `options` and `withBlankOption` variables.
+- `_includes/forms/componentSelect.twig` now supports a `showIndicators` variable.
+- `_includes/forms/entryTypeSelect.twig` now supports an `allowOverrides` variable.
 - `_includes/forms/selectize.twig` now supports a `color` property in option data, which can be set to a hex value or a color name.
+- Added `Craft.EntryTypeSelectInput`.
 - Added `Craft.IntervalManager`. ([#16398](https://github.com/craftcms/cms/pull/16398))
 - Sortable checkbox selects now always display the selected options first on initial render.
 
@@ -176,6 +186,8 @@
 - Pages which contain image transform generation URLs now set no-cache headers. ([#16195](https://github.com/craftcms/cms/discussions/16195))
 - Action requests (such as `actions/app/health-check`) now send no-cache headers by default. ([#16364](https://github.com/craftcms/cms/pull/16364))
 - Reduced the size of GraphQL introspection schemas. ([#16326](https://github.com/craftcms/cms/pull/16326))
+- Entry types names are no longer renamed for uniqueness when upgrading to Craft 5. ([#16453](https://github.com/craftcms/cms/pull/16453))
+- Entry type handles are now overridden to match their prior values for sections and Matrix fields, when upgrading to Craft 5. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Updated Twig to 3.15. ([#16207](https://github.com/craftcms/cms/discussions/16207))
 - Image cleansing now preserves the original image quality, if known.
 - Added the Symfony CssSelector component.

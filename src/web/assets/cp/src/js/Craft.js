@@ -2580,8 +2580,9 @@ $.extend(Craft, {
    *
    * @param {jQuery|HTMLElement} chip
    * @param {Array} actions
+   * @param {boolean} [prepend]
    */
-  addActionsToChip(chip, actions) {
+  addActionsToChip(chip, actions, prepend = false) {
     if (!actions?.length) {
       return;
     }
@@ -2621,12 +2622,22 @@ $.extend(Craft, {
     const safeActions = actions.filter((a) => !a.destructive);
     const destructiveActions = actions.filter((a) => a.destructive);
 
+    let before = prepend
+      ? disclosureMenu.$container.children().first().get(0)
+      : null;
+
     if (safeActions.length) {
-      disclosureMenu.addItems(safeActions, disclosureMenu.addGroup());
+      disclosureMenu.addItems(
+        safeActions,
+        disclosureMenu.addGroup(null, true, before)
+      );
     }
 
     if (destructiveActions.length) {
-      disclosureMenu.addItems(destructiveActions, disclosureMenu.addGroup());
+      disclosureMenu.addItems(
+        destructiveActions,
+        disclosureMenu.addGroup(null, true, before)
+      );
     }
 
     Craft.initUiElements(disclosureMenu.$container);

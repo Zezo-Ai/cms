@@ -861,6 +861,12 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
     private ?int $_oldTypeId = null;
 
     /**
+     * @var EntryType|null Entry Type
+     * @see getType()
+     */
+    private ?EntryType $_type = null;
+
+    /**
      * @inheritdoc
      * @since 3.5.0
      */
@@ -1463,17 +1469,19 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
     public function setTypeId(int $typeId): void
     {
         $this->_typeId = $typeId;
+        $this->_type = null;
         $this->fieldLayoutId = null;
     }
 
     /**
      * Returns the available entry types for the entry.
      *
+     * @param bool $triggerEvent
      * @return EntryType[]
      * @throws InvalidConfigException
      * @since 3.6.0
      */
-    public function getAvailableEntryTypes(): array
+    public function getAvailableEntryTypes(bool $triggerEvent = true): array
     {
         if (isset($this->fieldId)) {
             /** @var EntryType[] $entryTypes */
@@ -1485,7 +1493,7 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
         }
 
         // Fire a 'defineEntryTypes' event
-        if ($this->hasEventHandlers(self::EVENT_DEFINE_ENTRY_TYPES)) {
+        if ($triggerEvent && $this->hasEventHandlers(self::EVENT_DEFINE_ENTRY_TYPES)) {
             $event = new DefineEntryTypesEvent(['entryTypes' => $entryTypes]);
             $this->trigger(self::EVENT_DEFINE_ENTRY_TYPES, $event);
             $entryTypes = $event->entryTypes;
@@ -1515,20 +1523,26 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
      */
     public function getType(): EntryType
     {
-        if (!isset($this->_typeId)) {
-            // Default to the section/field's first entry type
-            $entryTypes = $this->getAvailableEntryTypes();
-            if (!$entryTypes) {
-                throw new InvalidConfigException('Entry is missing its type ID');
+        if (!isset($this->_type)) {
+            if (isset($this->_typeId)) {
+                $entryType = ArrayHelper::firstWhere(
+                    $this->getAvailableEntryTypes(false),
+                    fn(EntryType $entryType) => $entryType->id === $this->_typeId,
+                );
+                if (!$entryType) {
+                    throw new InvalidConfigException("Invalid entry type ID: $this->_typeId");
+                }
+            } else {
+                // Default to the section/field's first entry type
+                $entryType = ArrayHelper::firstValue($this->getAvailableEntryTypes());
+                if (!$entryType) {
+                    throw new InvalidConfigException('Entry is missing its type ID');
+                }
             }
-            $this->_typeId = $entryTypes[0]->id;
+            $this->_type = $entryType;
         }
 
-        $entryType = Craft::$app->getEntries()->getEntryTypeById($this->_typeId);
-        if (!$entryType) {
-            throw new InvalidConfigException("Invalid entry type ID: $this->_typeId");
-        }
-        return $entryType;
+        return $this->_type;
     }
 
     /**

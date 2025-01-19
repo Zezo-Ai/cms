@@ -18,6 +18,7 @@ use craft\base\ElementInterface;
 use craft\base\FieldLayoutElement;
 use craft\base\Grippable;
 use craft\base\Iconic;
+use craft\base\Indicative;
 use craft\base\NestedElementInterface;
 use craft\base\Statusable;
 use craft\base\Thumbable;
@@ -345,6 +346,7 @@ class Cp
             'showHandle' => false,
             'showStatus' => true,
             'showThumb' => true,
+            'showIndicators' => false,
             'size' => self::CHIP_SIZE_SMALL,
             'sortable' => false,
         ];
@@ -353,6 +355,7 @@ class Cp
         $config['showHandle'] = $config['showHandle'] && $component instanceof Grippable;
         $config['showStatus'] = $config['showStatus'] && $component instanceof Statusable;
         $config['showThumb'] = $config['showThumb'] && ($component instanceof Thumbable || $component instanceof Iconic);
+        $config['showIndicators'] = $config['showIndicators'] && $component instanceof Indicative;
 
         $color = $component instanceof Colorable ? $component->getColor() : null;
 
@@ -420,13 +423,33 @@ class Cp
             if ($config['hyperlink'] && $component instanceof CpEditable) {
                 $labelHtml = Html::a($labelHtml, $component->getCpEditUrl());
             }
+            $labelHtml = Html::tag('div', $labelHtml);
             if ($config['showHandle']) {
                 /** @var Chippable&Grippable $component */
                 $handle = $component->getHandle();
                 if ($handle) {
                     $labelHtml .= Html::tag('div', Html::encode($handle), [
-                        'class' => ['my-2xs', 'smalltext', 'light', 'code'],
+                        'class' => ['smalltext', 'light', 'code'],
                     ]);
+                }
+            }
+            if ($config['showIndicators']) {
+                /** @var Chippable&Indicative $component */
+                $indicators = $component->getIndicators();
+                if (!empty($indicators)) {
+                    $labelHtml .= Html::beginTag('div', ['class' => 'indicators']) .
+                        implode('', array_map(function(array $indicator) {
+                            $color = $indicator['iconColor'] ?? null;
+                            if ($color instanceof Color) {
+                                $color = $color->value;
+                            }
+                            return Html::tag('div', Cp::iconSvg($indicator['icon']), [
+                                'class' => array_filter(['cp-icon', 'puny', $color]),
+                                'title' => $indicator['label'],
+                                'aria' => ['label' => $indicator['label']],
+                            ]);
+                        }, $indicators)) .
+                        Html::endTag('div');
                 }
             }
             $html .= Html::tag('div', $labelHtml, [

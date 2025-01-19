@@ -51,6 +51,7 @@ use Illuminate\Support\Collection;
 use Throwable;
 use yii\base\Component;
 use yii\base\Exception;
+use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\caching\TagDependency;
 
@@ -695,20 +696,21 @@ class Entries extends Component
             // Update the entry type relations
             // -----------------------------------------------------------------
 
-            $entryTypeIds = array_filter(array_map(
-                fn(string $uid) => $this->getEntryTypeByUid($uid)?->id,
-                $data['entryTypes'] ?? [],
-            ));
-
             Db::delete(Table::SECTIONS_ENTRYTYPES, ['sectionId' => $sectionRecord->id]);
             Db::batchInsert(
                 Table::SECTIONS_ENTRYTYPES,
-                ['sectionId', 'typeId', 'sortOrder'],
-                Collection::make($entryTypeIds)->map(fn(int $id, int $i) => [
-                    $sectionRecord->id,
-                    $id,
-                    $i + 1,
-                ])->all(),
+                ['sectionId', 'typeId', 'sortOrder', 'name', 'handle'],
+                Collection::make($data['entryTypes'] ?? [])
+                    ->map(fn($entryType) => $this->getEntryType($entryType))
+                    ->filter()
+                    ->map(fn(EntryType $entryType, int $i) => [
+                        $sectionRecord->id,
+                        $entryType->id,
+                        $i + 1,
+                        isset($entryType->original) && $entryType->name !== $entryType->original->name ? $entryType->name : null,
+                        isset($entryType->original) && $entryType->handle !== $entryType->original->handle ? $entryType->handle : null,
+                    ])
+                    ->all(),
             );
 
             // Update the site settings
@@ -1355,15 +1357,15 @@ SQL)->execute();
             return array_map(fn(array $result) => new EntryType($result), $results);
         }
 
-        $ids = (new Query())
-            ->select('typeId')
+        $entryTypes = (new Query())
+            ->select(['id' => 'typeId', 'name', 'handle'])
             ->from(Table::SECTIONS_ENTRYTYPES)
             ->where(['sectionId' => $sectionId])
             ->orderBy(['sortOrder' => SORT_ASC])
-            ->column();
+            ->all();
 
         return array_values(array_filter(
-            array_map(fn(int $id) => $this->_entryTypes()->firstWhere('id', $id), $ids),
+            array_map(fn($entryType) => $this->getEntryType($entryType), $entryTypes),
         ));
     }
 
@@ -1489,6 +1491,56 @@ SQL)->execute();
     public function getEntryTypeByHandle(string $entryTypeHandle): ?EntryType
     {
         return $this->_entryTypes()->firstWhere('handle', $entryTypeHandle, true);
+    }
+
+    /**
+     * Returns an entry type by its usage config.
+     *
+     * @param EntryType|int|string|array{id?:int,uid?:string,name?:string,handle?:string} $entryType
+     * @return EntryType|null
+     * @since 5.6.0
+     */
+    public function getEntryType(mixed $entryType): ?EntryType
+    {
+        if ($entryType instanceof EntryType) {
+            return $entryType;
+        }
+
+        if (is_numeric($entryType)) {
+            return $this->getEntryTypeById($entryType);
+        }
+
+        if (is_string($entryType)) {
+            try {
+                $config = Json::decode($entryType);
+            } catch (InvalidArgumentException) {
+                return $this->getEntryTypeByUid($entryType);
+            }
+        } else {
+            $config = $entryType;
+        }
+
+        if (isset($config['id'])) {
+            $entryType = $this->getEntryTypeById($config['id']);
+        } elseif (isset($config['uid'])) {
+            $entryType = $this->getEntryTypeByUid($config['uid']);
+        } else {
+            throw new InvalidArgumentException('Invalid entry type.');
+        }
+
+        if (!$entryType) {
+            return null;
+        }
+
+        if (isset($config['name']) || isset($config['handle'])) {
+            $original = $entryType;
+            $entryType = clone $original;
+            $entryType->name = $config['name'] ?? $original->name;
+            $entryType->handle = $config['handle'] ?? $original->handle;
+            $entryType->original = $original;
+        }
+
+        return $entryType;
     }
 
     /**

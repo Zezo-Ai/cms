@@ -14,8 +14,10 @@ use craft\base\FieldLayoutElement;
 use craft\elements\Entry;
 use craft\enums\Color;
 use craft\fieldlayoutelements\entries\EntryTitleField;
+use craft\helpers\ArrayHelper;
 use craft\helpers\Cp;
 use craft\helpers\Html;
+use craft\helpers\StringHelper;
 use craft\models\EntryType;
 use craft\models\Section;
 use craft\web\Controller;
@@ -283,5 +285,84 @@ class EntryTypesController extends Controller
             'pagination' => $pagination,
             'data' => $tableData,
         ]);
+    }
+
+    /**
+     * Renders an entry type’s override settings for an entry type select input.
+     *
+     * @return Response
+     * @since 5.6.0
+     */
+    public function actionRenderOverrideSettings(): Response
+    {
+        $entryType = $this->_entryTypeForSelectInput();
+        $entryType->name = $this->request->getBodyParam('name') ?? $entryType->name;
+        $entryType->handle = $this->request->getBodyParam('handle') ?? $entryType->handle;
+
+        $namespace = StringHelper::randomString(10);
+        $view = Craft::$app->getView();
+
+        $html = $view->namespaceInputs(
+            fn() => $view->renderTemplate('_includes/forms/entry-type-select/selection-settings.twig', [
+                'entryType' => $entryType,
+            ]),
+            $namespace,
+        );
+
+        return $this->asJson([
+            'settingsHtml' => $html,
+            'namespace' => $namespace,
+            'headHtml' => $view->getHeadHtml(),
+            'bodyHtml' => $view->getBodyHtml(),
+        ]);
+    }
+
+    /**
+     * Validates and returns an entry type’s override settings for an entry type select input.
+     *
+     * @return Response
+     * @since 5.6.0
+     */
+    public function actionApplyOverrideSettings(): Response
+    {
+        $entryType = $this->_entryTypeForSelectInput();
+
+        $settingsStr = $this->request->getBodyParam('settings');
+        parse_str($settingsStr, $postedSettings);
+        $settingsNamespace = $this->request->getRequiredBodyParam('settingsNamespace');
+        $settings = array_filter(ArrayHelper::getValue($postedSettings, $settingsNamespace, []));
+
+        if (!empty($settings)) {
+            Craft::configure($entryType, $settings);
+            $entryType->validateHandleUniqueness = false;
+
+            if (!$entryType->validate(array_keys($settings))) {
+                return $this->asModelFailure($entryType, Craft::t('app', 'Couldn’t apply changes.'), 'entryType');
+            }
+        }
+
+        $chipHtml = Cp::chipHtml($entryType, [
+            'showHandle' => true,
+            'showIndicators' => true,
+        ]);
+
+        return $this->asJson([
+            'config' => $entryType->toArray(['id', 'name', 'handle']),
+            'chipHtml' => $chipHtml,
+        ]);
+    }
+
+    private function _entryTypeForSelectInput(): EntryType
+    {
+        $id = $this->request->getRequiredBodyParam('id');
+        $original = Craft::$app->getEntries()->getEntryTypeById($id);
+
+        if (!$original) {
+            throw new BadRequestHttpException("Invalid entry type ID: $id");
+        }
+
+        $entryType = clone $original;
+        $entryType->original = $original;
+        return $entryType;
     }
 }

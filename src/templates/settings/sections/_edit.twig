@@ -97,6 +97,7 @@
         id: 'entry-types',
         name: 'entryTypes[]',
         values: section.getEntryTypes(),
+        allowOverrides: true,
         errors: section.getErrors('entryTypes'),
         create: not readOnly,
         disabled: readOnly,

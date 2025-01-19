@@ -365,7 +365,10 @@ class Matrix extends Field implements
     public function getSettings(): array
     {
         $settings = parent::getSettings();
-        $settings['entryTypes'] = array_map(fn(EntryType $entryType) => $entryType->uid, $this->_entryTypes);
+        $settings['entryTypes'] = array_map(
+            fn(EntryType $entryType) => $entryType->getUsageConfig(),
+            $this->getEntryTypes(),
+        );
         return $settings;
     }
 
@@ -477,23 +480,15 @@ class Matrix extends Field implements
     /**
      * Sets the available entry types.
      *
-     * @param array<int|string|EntryType> $entryTypes The entry types, or their IDs or UUIDs
+     * @param array<EntryType|int|string|array{id?:int,uid?:string,name?:string,handle?:string}> $entryTypes The entry types
      */
     public function setEntryTypes(array $entryTypes): void
     {
         $entriesService = Craft::$app->getEntries();
-
-        $this->_entryTypes = array_values(array_filter(array_map(function(EntryType|string|int $entryType) use ($entriesService) {
-            if (is_numeric($entryType)) {
-                $entryType = $entriesService->getEntryTypeById($entryType);
-            } elseif (is_string($entryType)) {
-                $entryTypeUid = $entryType;
-                $entryType = $entriesService->getEntryTypeByUid($entryTypeUid);
-            } elseif (!$entryType instanceof EntryType) {
-                throw new InvalidArgumentException('Invalid entry type');
-            }
-            return $entryType;
-        }, $entryTypes)));
+        $this->_entryTypes = array_values(array_filter(array_map(
+            fn($entryType) => $entriesService->getEntryType($entryType),
+            $entryTypes,
+        )));
     }
 
     /**
