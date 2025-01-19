@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Може починатися зі змінної середовища.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'Тип запису в цій чернетці вже недоступний. Ви можете його переглянути, але не застосувати.',
     'This element is conditional' => 'Цей елемент є умовним',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'Поле змінено.',
