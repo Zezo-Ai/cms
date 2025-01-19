@@ -523,7 +523,7 @@ JS, [
                     $field->addErrors(['label' => $field->getErrors('name')]);
                     $field->clearErrors('name');
                 }
-                return $this->asModelFailure($field, Craft::t('app', 'Couldn’t save field.'), 'field');
+                return $this->asModelFailure($field, Craft::t('app', 'Couldn’t apply changes.'), 'field');
             }
         }
 
