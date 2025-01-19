@@ -1239,7 +1239,7 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
             const $field = this.slideout.$container.find(
               `[data-error-key="${name}"]`
             );
-            if ($field) {
+            if ($field.length) {
               Craft.ui.addErrorsToField($field, fieldErrors);
               this.fieldsWithErrors.push($field);
             }
