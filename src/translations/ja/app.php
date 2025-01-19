@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => '検証エラーが発生したため、ステータスを更新できませんでした。',
     'Could not write to the temporary upload folder.' => '一時アップロードフォルダーに書き込めませんでした。',
     'Couldn’t add all items to the cart.' => 'すべてのアイテムをカートに追加できませんでした。',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => '下書きを適用できませんでした。',
     'Couldn’t apply new migrations.' => '新しいマイグレーションを適用できませんでした。',
     'Couldn’t backup the database. How would you like to proceed?' => 'データベースをバックアップできませんでした。どのように進めますか？',
