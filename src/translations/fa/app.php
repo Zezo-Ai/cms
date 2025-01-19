@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'به خاطر خطاهای اعتبارسنجی نتوانست وضعیت ها را بروز کند.',
     'Could not write to the temporary upload folder.' => 'نتوانست در پوشه آپلود موقت بنویسد.',
     'Couldn’t add all items to the cart.' => 'نتوانست تمامی آیتم ها را به سبد خرید اضافه نماید.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'پیش‌نویس اعمال نشد.',
     'Couldn’t apply new migrations.' => 'نتوانست تغییرات جدید در ساختار پایگاه داده را اعمال کند.',
     'Couldn’t backup the database. How would you like to proceed?' => 'نتوانست از پایگاه داده پشتیبان تهیه نماید. چطور تمایل به ادامه دارید؟',
