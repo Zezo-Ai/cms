@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => '支持以环境变量开头。',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => '此草稿的条目类型不再可用。您仍然可以查看，但无法应用。',
     'This element is conditional' => '此元素是有条件的',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => '此字段已被修改。',
