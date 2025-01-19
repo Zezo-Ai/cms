@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'นี่สามารถเริ่มต้นด้วยตัวแปรสภาพแวดล้อมได้',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'ประเภทรายการของแบบร่างไม่พร้อมใช้งานอีกต่อไป คุณยังสามารถดูได้ แต่ไม่สามารถใช้ได้',
     'This element is conditional' => 'องค์ประกอบนี้มีเงื่อนไข',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'This field has been modified.',
