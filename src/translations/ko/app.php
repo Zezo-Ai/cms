@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => '환경 변수로 시작할 수 있습니다.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => '이 드래프트의 항목 타입은 더 이상 사용할 수 없습니다. 계속해서 볼 수 있지만 적용할 수는 없습니다.',
     'This element is conditional' => '이 요소는 조건부입니다',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => '이 필드가 수정되었습니다.',
