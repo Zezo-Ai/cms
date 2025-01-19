@@ -165,8 +165,7 @@ class SectionsController extends Controller
             $section->defaultPlacement = $this->request->getBodyParam('defaultPlacement') ?? $section->defaultPlacement;
         }
 
-        $entryTypeIds = $this->request->getBodyParam('entryTypes') ?: [];
-        $section->setEntryTypes(array_map(fn($id) => $sectionsService->getEntryTypeById((int)$id), array_filter($entryTypeIds)));
+        $section->setEntryTypes(array_filter($this->request->getBodyParam('entryTypes') ?: []));
 
         // Site-specific settings
         $allSiteSettings = [];

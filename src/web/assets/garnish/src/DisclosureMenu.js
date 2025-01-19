@@ -609,14 +609,19 @@ export default Base.extend(
       return li;
     },
 
-    addItem: function (item, ul) {
+    addItem: function (item, ul, prepend = false) {
       const li = this.createItem(item);
 
       if (!ul) {
         ul = this.$container.children('ul').last().get(0) || this.addGroup();
       }
 
-      ul.append(li);
+      if (prepend) {
+        ul.prepend(li);
+      } else {
+        ul.append(li);
+      }
+
       const el = li.querySelector('a, button');
 
       // show or hide it (show, in case the UL is already hidden)

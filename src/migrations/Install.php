@@ -587,6 +587,8 @@ class Install extends Migration
             'sectionId' => $this->integer()->notNull(),
             'typeId' => $this->integer()->notNull(),
             'sortOrder' => $this->smallInteger()->unsigned()->notNull(),
+            'name' => $this->string(),
+            'handle' => $this->string(),
             'PRIMARY KEY([[sectionId]], [[typeId]])',
         ]);
         $this->createTable(Table::SECTIONS_SITES, [

@@ -167,7 +167,17 @@ class m230617_070415_entrify_matrix_blocks extends Migration
             $fieldConfig['settings'] += [
                 'maxEntries' => ArrayHelper::remove($fieldConfig['settings'], 'maxBlocks'),
                 'minEntries' => ArrayHelper::remove($fieldConfig['settings'], 'minBlocks'),
-                'entryTypes' => array_map(fn(EntryType $entryType) => $entryType->uid, $fieldEntryTypes),
+                'entryTypes' => array_map(function(EntryType $entryType) use ($fieldUid, $blockTypeConfigsByField) {
+                    $config = ['uid' => $entryType->uid];
+                    $blockTypeConfig = $blockTypeConfigsByField[$fieldUid][$entryType->uid];
+                    if ($entryType->name !== $blockTypeConfig['name']) {
+                        $config['name'] = $blockTypeConfig['name'];
+                    }
+                    if ($blockTypeConfig['handle'] !== $entryType->handle) {
+                        $config['handle'] = $blockTypeConfig['handle'];
+                    }
+                    return $config;
+                }, $fieldEntryTypes),
                 'viewMode' => Matrix::VIEW_MODE_BLOCKS,
             ];
             unset($fieldConfig['settings']['contentTable']);

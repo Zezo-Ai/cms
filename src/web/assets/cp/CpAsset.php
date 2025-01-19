@@ -204,6 +204,7 @@ JS;
             'Enabled',
             'Enter the name of the folder',
             'Enter your password to log back in.',
+            'Entry type settings',
             'Error',
             'Existing {type}',
             'Export Type',
