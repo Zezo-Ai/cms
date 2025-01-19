@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Не вдалося оновити статус через помилки перевірки.',
     'Could not write to the temporary upload folder.' => 'Не вдалося записати в тимчасову папку для завантаження.',
     'Couldn’t add all items to the cart.' => 'Не вдалося додати всі об\'єкти до кошика.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Не вдалося застосувати чернетку.',
     'Couldn’t apply new migrations.' => 'Не вдалося застосувати нові перенесення.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Не вдалося створити резервну копію бази даних. Що робити далі?',
