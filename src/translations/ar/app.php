@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'تعذر تحديث الحالات بسبب أخطاء في التحقق من الصحة.',
     'Could not write to the temporary upload folder.' => 'تعذرت الكتابة إلى مجلد التحميل المؤقت.',
     'Couldn’t add all items to the cart.' => 'تعذرت إضافة كل البنود إلى السلة.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'تعذر تطبيق المسودة.',
     'Couldn’t apply new migrations.' => 'تعذر تطبيق الترحيلات الجديدة.',
     'Couldn’t backup the database. How would you like to proceed?' => 'تعذر عمل نسخ احتياطي لقاعدة البيانات. كيف ترغب في المتابعة؟',
