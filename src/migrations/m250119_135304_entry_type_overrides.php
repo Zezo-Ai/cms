@@ -15,8 +15,10 @@ class m250119_135304_entry_type_overrides extends Migration
      */
     public function safeUp(): bool
     {
-        $this->addColumn(Table::SECTIONS_ENTRYTYPES, 'name', $this->string()->after('sortOrder'));
-        $this->addColumn(Table::SECTIONS_ENTRYTYPES, 'handle', $this->string()->after('name'));
+        if (!$this->db->columnExists(Table::SECTIONS_ENTRYTYPES, 'name')) {
+            $this->addColumn(Table::SECTIONS_ENTRYTYPES, 'name', $this->string()->after('sortOrder'));
+            $this->addColumn(Table::SECTIONS_ENTRYTYPES, 'handle', $this->string()->after('name'));
+        }
         return true;
     }
 
