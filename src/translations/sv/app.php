@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Det kan börja med en miljövariabel.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'Detta utkasts inläggstyp är inte längre tillgänglig. Du kan fortfarande visa den, men inte tillämpa den.',
     'This element is conditional' => 'Det här elementet är villkorsbetingat',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'This field has a tip',
     'This field has a warning' => 'This field has a warning',
     'This field has been modified.' => 'Fältet har modifierats.',
