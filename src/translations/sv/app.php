@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Det gick inte att uppdatera statusar på grund av valideringsfel.',
     'Could not write to the temporary upload folder.' => 'Det gick inte att skriva till den tillfälliga överföringsmappen.',
     'Couldn’t add all items to the cart.' => 'Det gick inte att lägga till alla objekt i kundvagnen.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Kunde inte använda utkast.',
     'Couldn’t apply new migrations.' => 'Kunde inte tillämpa nya migreringar.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Det gick inte att säkerhetskopiera databasen. Hur vill du fortsätta?',
