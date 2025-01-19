@@ -1718,6 +1718,7 @@ return [
     'This can begin with an environment variable.' => 'Deze kan beginnen met een omgevingsvariabele.',
     'This draft’s entry type is no longer available. You can still view it, but not apply it.' => 'Het inhoudtype van dit concept is niet langer beschikbaar. U kunt het nog steeds bekijken, maar niet toepassen.',
     'This element is conditional' => 'Dit element is conditioneel',
+    'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.' => 'This entry type’s {attributes} {totalAttributes, plural, =1{has} other{have}} been overridden.',
     'This field has a tip' => 'Dit veld heeft een tip',
     'This field has a warning' => 'Dit veld heeft een waarschuwing',
     'This field has been modified.' => 'Dit veld is gewijzigd.',
