@@ -380,6 +380,7 @@ return [
     'Could not update statuses due to validation errors.' => 'Stavy sa nepodarilo aktualizovať pre chyby overenia.',
     'Could not write to the temporary upload folder.' => 'Nepodarilo sa zapísať do dočasného priečinka nahraných súborov.',
     'Couldn’t add all items to the cart.' => 'Nepodarilo sa vložiť všetky položky do košíka.',
+    'Couldn’t apply changes.' => 'Couldn’t apply changes.',
     'Couldn’t apply draft.' => 'Koncept nebolo možné použiť.',
     'Couldn’t apply new migrations.' => 'Nové migrácie sa nepodarilo uplatniť.',
     'Couldn’t backup the database. How would you like to proceed?' => 'Databázu sa nepodarilo zálohovať. Ako chcete pokračovať?',
