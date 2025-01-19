@@ -1510,21 +1510,19 @@ SQL)->execute();
             return $this->getEntryTypeById($entryType);
         }
 
-        if (is_string($entryType) && StringHelper::isUUID($entryType)) {
-            return $this->getEntryTypeByUid($entryType);
-        }
-
         if (is_string($entryType)) {
-            $config = Json::decode($entryType);
-        } elseif (is_array($entryType)) {
-            $config = $entryType;
+            try {
+                $config = Json::decode($entryType);
+            } catch (InvalidArgumentException) {
+                return $this->getEntryTypeByUid($entryType);
+            }
         } else {
-            throw new InvalidArgumentException('Invalid entry type.');
+            $config = $entryType;
         }
 
         if (isset($config['id'])) {
             $entryType = $this->getEntryTypeById($config['id']);
-        } elseif ($config['uid']) {
+        } elseif (isset($config['uid'])) {
             $entryType = $this->getEntryTypeByUid($config['uid']);
         } else {
             throw new InvalidArgumentException('Invalid entry type.');
