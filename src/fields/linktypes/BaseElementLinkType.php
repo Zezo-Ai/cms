@@ -14,6 +14,7 @@ use craft\helpers\Cp;
 use craft\helpers\Html;
 use craft\services\ElementSources;
 use Illuminate\Support\Collection;
+use yii\base\InvalidArgumentException;
 
 /**
  * Base element link type.
@@ -198,11 +199,47 @@ JS, [
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function validateValue(string $value, ?string &$error = null): bool
     {
         return true;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function normalizeValue(ElementInterface|int|string $value): string
+    {
+        if ($value instanceof ElementInterface) {
+            if (!is_a($value, static::elementType())) {
+                throw new InvalidArgumentException(sprintf('$value must be an %s instance, ID, or reference tag.', static::elementType()::lowerDisplayName()));
+            }
+            $value = sprintf('{%s:%s@%s:url}',
+                static::elementType()::refHandle(),
+                $value->id,
+                $value->siteId,
+            );
+        }
+        if (is_numeric($value)) {
+            $value = sprintf('{%s:%s@%s:url}',
+                static::elementType()::refHandle(),
+                $value,
+                Craft::$app->getSites()->getCurrentSite()->id,
+            );
+        }
+
+        return parent::normalizeValue($value);
+    }
+
+    /**
+     * Returns an Element that the field is supposed to link to.
+     *
+     * @param string|null $value
+     * @return ElementInterface|null
+     * @throws \craft\errors\SiteNotFoundException
+     */
     public function element(?string $value): ?ElementInterface
     {
         if (

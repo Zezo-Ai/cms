@@ -63,8 +63,8 @@ trait EditUserTrait
         }
 
         if (!$user->getIsCurrent()) {
-            // Make sure they have permission to edit other users
-            $this->requirePermission('editUsers');
+            // Make sure they have permission to view other users
+            $this->requirePermission('viewUsers');
         }
 
         return $user;
