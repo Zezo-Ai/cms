@@ -1368,13 +1368,18 @@ class UsersController extends Controller
             throw new BadRequestHttpException('An elevated session is required to change your password.');
         }
 
+        $user = static::currentUser();
+
+        if (!$user->getHasPassword()) {
+            throw new BadRequestHttpException('Only users with current passwords can set new ones.');
+        }
+
         $newPassword = $this->request->getRequiredBodyParam('newPassword');
 
         if ($newPassword === '') {
             return null;
         }
 
-        $user = static::currentUser();
         $user->newPassword = $newPassword;
         $user->setScenario(User::SCENARIO_PASSWORD);
 

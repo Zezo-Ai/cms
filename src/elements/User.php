@@ -837,6 +837,10 @@ class User extends Element implements IdentityInterface
             $this->username = $this->email;
         }
 
+        if ($this->password === '') {
+            $this->password = null;
+        }
+
         $this->normalizeNames();
     }
 
@@ -1111,6 +1115,25 @@ class User extends Element implements IdentityInterface
     public function getIsCredentialed(): bool
     {
         return $this->active || $this->pending;
+    }
+
+    /**
+     * Returns whether the user has a password.
+     *
+     * @return bool
+     * @since 5.6.0
+     */
+    public function getHasPassword(): bool
+    {
+        if (isset($this->password)) {
+            return true;
+        }
+
+        return (bool)(new Query())
+            ->select('password')
+            ->from(Table::USERS)
+            ->where(['id' => $this->id])
+            ->scalar();
     }
 
     /**

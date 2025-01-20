@@ -107,7 +107,7 @@ trait EditUserTrait
             $screens = $event->screens;
         }
 
-        if ($user->getIsCurrent()) {
+        if ($user->getIsCurrent() && $user->getHasPassword()) {
             $screens[self::SCREEN_PASSWORD] = ['label' => Craft::t('app', 'Password & Verification')];
             $screens[self::SCREEN_PASSKEYS] = ['label' => Craft::t('app', 'Passkeys')];
         }
