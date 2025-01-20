@@ -16,6 +16,7 @@
 - Structure views are now available to element indexes on mobile browsers. ([#16190](https://github.com/craftcms/cms/discussions/16190))
 - Datepickers now include a dropdown menu for selecting the year. ([#16376](https://github.com/craftcms/cms/pull/16376))
 - Custom fields within element edit pages can now have action menus with “Copy value from site…”, “Edit field” and “Copy field handle” items. ([#16415](https://github.com/craftcms/cms/pull/16415), [#14056](https://github.com/craftcms/cms/pull/14056))
+- Element exports now include date attribute values set to the system time zone. ([#16447](https://github.com/craftcms/cms/pull/16447))
 - Heads-up displays now reposition themselves on window scroll.
 
 ### Accessibility
