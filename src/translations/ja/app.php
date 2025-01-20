@@ -20,7 +20,7 @@ return [
     'A server error occurred.' => 'サーバーエラーが発生しました。',
     'A subpath is required for this filesystem.' => 'このファイルシステムにはサブパスが必要です。',
     'A template name cannot contain NUL bytes.' => 'テンプレート名に NUL バイトを含めることはできません。',
-    'ARIA Label' => 'ARIA Label',
+    'ARIA Label' => 'ARIA ラベル',
     'Abandoned' => '破棄済み',
     'Abort the update' => 'アップデートを中止',
     'Access the control panel when the system is offline' => 'システムがオフラインの場合にコントロールパネルにアクセスする',
