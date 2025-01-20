@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed an error that could occur when setting `relatedTo*` GraphQL arguments to `null`. ([#16433](https://github.com/craftcms/cms/issues/16433))
+- Fixed a bug where old structure data wasn’t getting soft-deleted when a section was assigned a new structure UUID when applying project config changes. ([#16450](https://github.com/craftcms/cms/issues/16450))
 
 ## 4.13.10 - 2025-01-14
 
