@@ -41,6 +41,7 @@
 - Added the “Palette” setting to Color fields, which replaces “Presets”. ([#16249](https://github.com/craftcms/cms/pull/16249))
 - Added the “Allow custom colors” setting to Color fields. ([#16249](https://github.com/craftcms/cms/pull/16249))
 - Added the “Field” entry condition rule, which replaces “Matrix field”, includes a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
+- Added a card view designer for addresses. ([#16446](https://github.com/craftcms/cms/pull/16446))
 - It’s now possible to view (but not edit) system and plugin settings on environments where `allowAdminChanges` is disabled. ([#16265](https://github.com/craftcms/cms/pull/16265)) 
 - Section condition rules now have a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
 - Added “Copy plugin handle” and “Copy package name” options to plugins’ action menus on the Plugins index page. ([#16281](https://github.com/craftcms/cms/discussions/16281))
