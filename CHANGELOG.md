@@ -5,6 +5,7 @@
 - Fixed an error that could occur when setting `relatedTo*` GraphQL arguments to `null`. ([#16433](https://github.com/craftcms/cms/issues/16433))
 - Fixed an error that occurred if a new user couldn’t be created due to validation errors. ([#16437](https://github.com/craftcms/cms/issues/16437))
 - Fixed an error that could occur when adding or removing card attributes.
+- Fixed a bug where element query params that included `*` weren’t respecting `caseInsensitive: true`. ([#16409](https://github.com/craftcms/cms/issues/16409))
 
 ## 5.5.10 - 2025-01-14
 
