@@ -673,7 +673,12 @@ class Db
                     } else {
                         $operator = $operator === '=' ? 'like' : 'not like';
                     }
-                    $condition[] = [$operator, $column, static::escapeForLike($val), false];
+
+                    if ($caseInsensitive && $isMysql) {
+                        $condition[] = [$operator, $caseColumn, static::escapeForLike($val), false];
+                    } else {
+                        $condition[] = [$operator, $column, static::escapeForLike($val), false];
+                    }
                     continue;
                 }
 
