@@ -201,3 +201,4 @@
 - Fixed a bug where element queries were ignoring params for custom fields that weren’t involved with the query, rather than returning zero results.
 - Fixed a bug where opening heads-up displays could cause the page to scroll to the focused element.
 - Fixed a bug where field labels weren’t being read by screen readers. ([#16424](https://github.com/craftcms/cms/pull/16424))
+- Fixed a bug where not all status labels were getting styled correctly. ([#16448](https://github.com/craftcms/cms/pull/16448))
