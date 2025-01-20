@@ -97,7 +97,7 @@ return [
     'All users' => 'Alla användare',
     'All' => 'Alla',
     'Allow Upscaling' => 'Tillåt uppskalning',
-    'Allow anchors' => 'Allow anchors',
+    'Allow anchors' => 'Tillåt ankare',
     'Allow custom colors' => 'Allow custom colors',
     'Allow custom options' => 'Tillåt anpassade alternativ',
     'Allow line breaks' => 'Tillåt radbrytning',
