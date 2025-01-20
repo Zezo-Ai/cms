@@ -560,7 +560,10 @@ JS, [
         $showThumb = $this->request->getBodyParam('showThumb', false);
 
         if (!isset($fieldLayoutConfig['id'])) {
-            $fieldLayout = Craft::createObject(FieldLayout::class, $fieldLayoutConfig);
+            $fieldLayout = Craft::createObject([
+                'class' => FieldLayout::class,
+                ...$fieldLayoutConfig,
+            ]);
             $fieldLayout->type = $fieldLayoutConfig['type'];
         } else {
             $fieldLayout = Craft::$app->getFields()->getLayoutById($fieldLayoutConfig['id']);
