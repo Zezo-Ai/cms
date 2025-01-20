@@ -9,6 +9,7 @@ namespace craft\fields\data;
 
 use craft\base\ElementInterface;
 use craft\base\Serializable;
+use craft\elements\db\ElementQueryInterface;
 use craft\fields\linktypes\BaseElementLinkType;
 use craft\fields\linktypes\BaseLinkType;
 use craft\helpers\Html;
@@ -20,6 +21,7 @@ use yii\base\BaseObject;
  * Link field data class.
  *
  * @property-read ElementInterface|null $element The element linked by the field, if there is one
+ * @property-read ElementQueryInterface|null $elementQuery An element query that will fetch the element linked by the field, if there is one
  * @property-read Markup|null $link An anchor tag for this link
  * @property-read string $label The link label
  * @property-read string $type The link type ID
@@ -170,6 +172,20 @@ class LinkData extends BaseObject implements Serializable
         }
 
         return Template::raw($html);
+    }
+
+    /**
+     * Returns an element query that will fetch the element linked by the field, if there is one.
+     *
+     * @return ElementQueryInterface|null
+     * @since 5.6.0
+     */
+    public function getElementQuery(): ?ElementQueryInterface
+    {
+        if (!$this->linkType instanceof BaseElementLinkType) {
+            return null;
+        }
+        return $this->linkType->elementQuery($this->value);
     }
 
     /**

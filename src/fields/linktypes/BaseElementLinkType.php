@@ -9,6 +9,8 @@ namespace craft\fields\linktypes;
 
 use Craft;
 use craft\base\ElementInterface;
+use craft\elements\db\ElementQueryInterface;
+use craft\errors\SiteNotFoundException;
 use craft\fields\Link;
 use craft\helpers\Cp;
 use craft\helpers\Html;
@@ -234,13 +236,13 @@ JS, [
     }
 
     /**
-     * Returns an Element that the field is supposed to link to.
+     * Returns an element query that will fetch the element the field is supposed to link to.
      *
      * @param string|null $value
-     * @return ElementInterface|null
-     * @throws \craft\errors\SiteNotFoundException
+     * @return ElementQueryInterface|null
+     * @since 5.6.0
      */
-    public function element(?string $value): ?ElementInterface
+    public function elementQuery(?string $value): ?ElementQueryInterface
     {
         if (
             !$value ||
@@ -249,23 +251,41 @@ JS, [
             return null;
         }
 
+        $id = $match[1];
+        $siteId = $match[2] ?? null;
+
+        $query = static::elementType()::find()
+            ->id((int)$id)
+            ->status(null)
+            ->drafts(null)
+            ->revisions(null);
+
+        if ($siteId) {
+            $query->siteId((int)$siteId);
+        } else {
+            $query
+                ->site('*')
+                ->unique()
+                ->preferSites([Craft::$app->getSites()->getCurrentSite()->id]);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Returns an Element that the field is supposed to link to.
+     *
+     * @param string|null $value
+     * @return ElementInterface|null
+     * @throws SiteNotFoundException
+     */
+    public function element(?string $value): ?ElementInterface
+    {
         if (!isset(self::$fetchedElements[$value])) {
-            $id = $match[1];
-            $siteId = $match[2] ?? null;
+            $query = $this->elementQuery($value);
 
-            $query = static::elementType()::find()
-                ->id((int)$id)
-                ->status(null)
-                ->drafts(null)
-                ->revisions(null);
-
-            if ($siteId) {
-                $query->siteId((int)$siteId);
-            } else {
-                $query
-                    ->site('*')
-                    ->unique()
-                    ->preferSites([Craft::$app->getSites()->getCurrentSite()->id]);
+            if (!$query) {
+                return null;
             }
 
             self::$fetchedElements[$value] = $query->one() ?? false;

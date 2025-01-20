@@ -118,7 +118,9 @@
 - Added `craft\fields\data\LinkData::$rel`.
 - Added `craft\fields\data\LinkData::$title`.
 - Added `craft\fields\data\LinkData::$urlSuffix`.
+- Added `craft\fields\data\LinkData::getElementQuery()`. ([#16458](https://github.com/craftcms/cms/issues/16458))
 - Added `craft\fields\data\LinkData::getUrl()`.
+- Added `craft\fields\linktypes\BaseElementLinkType::elementQuery()`.
 - Added `craft\gql\types\LinkData`.
 - Added `craft\gql\types\generators\LinkDataType`.
 - Added `craft\helpers\Cp::colorHtml()`.
