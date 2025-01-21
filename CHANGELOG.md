@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.0.1 - 2025-01-21
 
 - Fixed an error that occurred when referencing a single section entry by its handle. ([#16474](https://github.com/craftcms/cms/issues/16474))
 
