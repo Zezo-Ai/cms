@@ -194,8 +194,8 @@
 - Entry types names are no longer renamed for uniqueness when upgrading to Craft 5. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Entry type handles are now overridden to match their prior values for sections and Matrix fields, when upgrading to Craft 5. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - The “Password & Verification” and “Passkeys” pages are no longer shown for users who don’t currently have a password.
-- Updated Twig to 3.15. ([#16207](https://github.com/craftcms/cms/discussions/16207))
 - Image cleansing now preserves the original image quality, if known.
+- Updated Twig to 3.15. ([#16207](https://github.com/craftcms/cms/discussions/16207))
 - Added the Symfony CssSelector component.
 - Added the Symfony DomCrawler component.
 - Fixed a bug where `craft\config\GeneralConfig::safeMode()` set Safe Mode to `false` by default.
