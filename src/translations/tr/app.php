@@ -577,7 +577,7 @@ return [
     'Edit “{entryType}”' => '“{entryType}” düzenleme',
     'Edit “{title}”' => '“{title}” düzenleme',
     'Edit' => 'Düzenle',
-    'Edited {updated}' => '{updated} düzenlendi',
+    'Edited {updated}' => '{updated} tarihinde düzenlendi',
     'Edited' => 'Düzenlendi',
     'Eircode' => 'Eircode',
     'Element' => 'Öge',
