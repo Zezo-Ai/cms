@@ -1281,7 +1281,7 @@ return [
     'Regenerating project config YAML files from the loaded project config…' => 'สร้างไฟล์การกำหนดค่าโครงการ YAML ของคุณใหม่จากการกำหนดค่าโครงการที่โหลดแล้ว...',
     'Region' => 'ภูมิภาค',
     'Register users' => 'ลงทะเบียนผู้ใช้',
-    'Relate {type} from a specific site?' => 'Relate {type} from a specific site?',
+    'Relate {type} from a specific site?' => 'เชื่อมโยง {type} จากเว็บไซต์เฉพาะหรือไม่',
     'Related To' => 'เกี่ยวข้องกับ',
     'Related {type} Title' => 'ชื่อ {type} ที่เกี่ยวข้อง',
     'Relations don’t store the selected site, so this should only be enabled if some {type} aren’t propagated to all sites.' => 'Relations don’t store the selected site, so this should only be enabled if some {type} aren’t propagated to all sites.',
