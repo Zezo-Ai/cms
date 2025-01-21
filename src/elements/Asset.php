@@ -2139,6 +2139,8 @@ JS,[
             return null;
         }
 
+        $transform = $transform ?? $this->_transform;
+
         // Fire a 'beforeDefineUrl' event
         if ($this->hasEventHandlers(self::EVENT_BEFORE_DEFINE_URL)) {
             $event = new DefineAssetUrlEvent([
@@ -2180,7 +2182,6 @@ JS,[
         }
 
         $volume = $this->getVolume();
-        $transform = $transform ?? $this->_transform;
 
         if (
             $transform && (
