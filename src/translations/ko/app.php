@@ -258,7 +258,7 @@ return [
     'Changelog' => '로그 변경',
     'Changes discarded.' => '변경 사항이 취소되었습니다.',
     'Changes saved.' => '변경 사항이 저장되었습니다.',
-    'Changes to these settings aren’t permitted in this environment.' => '이러한 설정에 대한 변경 사항은 이 환경에서는 허용되지 않습니다.',
+    'Changes to these settings aren’t permitted in this environment.' => '이러한 설정에 대한 변경 사항은 이 환경에서 허용되지 않습니다.',
     'Changing this may result in data loss.' => '이렇게 변경하면 데이터가 손실될 수 있습니다.',
     'Channel' => '채널',
     'Channels' => '채널',
