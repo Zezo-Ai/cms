@@ -2,21 +2,21 @@
 
 ## 4.14.0 - 2025-01-21
 
-## Content Management
+### Content Management
 - The global sidebar no longer shows “Failed” for queue jobs, for users that don’t have access to the Queue Manager. ([#16184](https://github.com/craftcms/cms/issues/16184))
 
-## Administration
+### Administration
 - Added the `elements/delete-all-of-type` command. ([#16423](https://github.com/craftcms/cms/pull/16423))
 - Added the `utils/delete-empty-volume-folders` command. ([#16388](https://github.com/craftcms/cms/issues/16388))
 - The Queue Manager utility now shows jobs’ class names. ([#16228](https://github.com/craftcms/cms/pull/16228)) 
 
-## Development
+### Development
 - Added the `primarySite` global Twig variable. ([#16370](https://github.com/craftcms/cms/discussions/16370))
 - The `duration` Twig filter now has a `language` argument. ([#16332](https://github.com/craftcms/cms/pull/16332))
 - Added support for specifying the current site via an `X-Craft-Site` header set to a site ID or handle. ([#16367](https://github.com/craftcms/cms/pull/16367))
 - Deprecated the `ucfirst` Twig filter. `capitalize` should be used instead.
 
-## Extensibility
+### Extensibility
 - Added `craft\helpers\Image::EXIF_IFD0_ROTATE_0_MIRRORED`.
 - Added `craft\helpers\Image::EXIF_IFD0_ROTATE_0`.
 - Added `craft\helpers\Image::EXIF_IFD0_ROTATE_180_MIRRORED`.
@@ -26,7 +26,7 @@
 - `GuzzleHttp\Client` is now instantiated via `Craft::createObject()`. ([#16366](https://github.com/craftcms/cms/pull/16366))
 - `craft\helpers\DateTimeHelper::humanDuration()` now has a `$language` argument. ([#16332](https://github.com/craftcms/cms/pull/16332))
 
-## System
+### System
 - Database rows with foreign keys referencing nonexistent rows are now deleted via garbage collection.
 - Pages which contain image transform generation URLs now set no-cache headers. ([#16195](https://github.com/craftcms/cms/discussions/16195))
 - Action requests (such as `actions/app/health-check`) now send no-cache headers by default. ([#16364](https://github.com/craftcms/cms/pull/16364))
