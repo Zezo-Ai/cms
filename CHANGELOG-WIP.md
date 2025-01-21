@@ -38,7 +38,7 @@
 - Added the “Affiliated Site” native user field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added the “View users” user permission. ([#16206](https://github.com/craftcms/cms/pull/16206))
 - Added the ability to override entry type names and handles for sections and Matrix fields. ([#16453](https://github.com/craftcms/cms/pull/16453))
-- Added the “Advanced Fields” setting to Link fields, with “Target”, “URL Suffix”, “Title Text”, “ARIA Label”, “Class Name”, “ID”, and “Relation (rel)” options. ([#15813](https://github.com/craftcms/cms/discussions/15813))
+- Added the “Advanced Fields” setting to Link fields, with “Target”, “URL Suffix”, “Title Text”, “ARIA Label”, “Class Name”, “ID”, and “Relation (rel)” options. ([#16268](https://github.com/craftcms/cms/pull/16268))
 - Added the “Palette” setting to Color fields, which replaces “Presets”. ([#16249](https://github.com/craftcms/cms/pull/16249))
 - Added the “Allow custom colors” setting to Color fields. ([#16249](https://github.com/craftcms/cms/pull/16249))
 - Added the “GraphQL Mode” Link field setting. ([#16237](https://github.com/craftcms/cms/pull/16237))
