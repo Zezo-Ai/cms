@@ -634,7 +634,7 @@ return [
     'Edit {type}' => '{type} öğesini düzenle',
     'Edit “{title}”' => '“{title}” düzenleme',
     'Edit' => 'Düzenle',
-    'Edited {updated}' => '{updated} düzenlendi',
+    'Edited {updated}' => '{updated} tarihinde düzenlendi',
     'Edited' => 'Düzenlendi',
     'Eircode' => 'Eircode',
     'Element' => 'Öge',
