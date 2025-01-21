@@ -1,8 +1,10 @@
 # Release notes for Craft CMS 5.6 (WIP)
 
 ### Content Management
-- It’s now possible to copy custom field values from other sites. ([#14056](https://github.com/craftcms/cms/pull/14056))
+- Custom fields within element edit pages can now have action menus with “Copy value from site…”, “Edit field” and “Copy field handle” items. ([#16415](https://github.com/craftcms/cms/pull/16415), [#14056](https://github.com/craftcms/cms/pull/14056))
+- Added the “Field” entry condition rule, which replaces “Matrix field”, includes a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
 - “Related To”, “Not Related To”, “Author”, and relational field condition rules now allow multiple elements to be specified. ([#16121](https://github.com/craftcms/cms/discussions/16121))
+- Section condition rules now have a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
 - Added the “Widget Title” setting to Quick Post widgets. ([#16429](https://github.com/craftcms/cms/pull/16429))
 - Improved the styling of inline code fragments. ([#16141](https://github.com/craftcms/cms/pull/16141))
 - Improved the styling of attribute previews in card view. ([#16324](https://github.com/craftcms/cms/pull/16324))
@@ -15,7 +17,6 @@
 - Entry indexes now only show table column options and sort options for custom fields associated with the selected sections/entry types within custom entry sources’ conditions.
 - Structure views are now available to element indexes on mobile browsers. ([#16190](https://github.com/craftcms/cms/discussions/16190))
 - Datepickers now include a dropdown menu for selecting the year. ([#16376](https://github.com/craftcms/cms/pull/16376))
-- Custom fields within element edit pages can now have action menus with “Copy value from site…”, “Edit field” and “Copy field handle” items. ([#16415](https://github.com/craftcms/cms/pull/16415), [#14056](https://github.com/craftcms/cms/pull/14056))
 - Element exports now include date attribute values set to the system time zone. ([#16447](https://github.com/craftcms/cms/pull/16447))
 - Heads-up displays now reposition themselves on window scroll.
 
@@ -33,18 +34,16 @@
 - Improved the accessibility of timepicker inputs. ([#16152](https://github.com/craftcms/cms/pull/16152))
 
 ### Administration
-- Added the ability to override entry type names and handles for sections and Matrix fields. ([#16453](https://github.com/craftcms/cms/pull/16453))
-- Added the “Affiliated Site” native user field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added support for setting site-specific email setting overrides. ([#16187](https://github.com/craftcms/cms/pull/16187))
+- Added the “Affiliated Site” native user field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added the “View users” user permission. ([#16206](https://github.com/craftcms/cms/pull/16206))
+- Added the ability to override entry type names and handles for sections and Matrix fields. ([#16453](https://github.com/craftcms/cms/pull/16453))
 - Added the “Advanced Fields” setting to Link fields, with “Target”, “URL Suffix”, “Title Text”, “ARIA Label”, “Class Name”, “ID”, and “Relation (rel)” options. ([#15813](https://github.com/craftcms/cms/discussions/15813))
-- Added the “GraphQL Mode” Link field setting. ([#16237](https://github.com/craftcms/cms/pull/16237))
 - Added the “Palette” setting to Color fields, which replaces “Presets”. ([#16249](https://github.com/craftcms/cms/pull/16249))
 - Added the “Allow custom colors” setting to Color fields. ([#16249](https://github.com/craftcms/cms/pull/16249))
-- Added the “Field” entry condition rule, which replaces “Matrix field”, includes a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
+- Added the “GraphQL Mode” Link field setting. ([#16237](https://github.com/craftcms/cms/pull/16237))
 - Added a card view designer for addresses. ([#16446](https://github.com/craftcms/cms/pull/16446))
-- It’s now possible to view (but not edit) system and plugin settings on environments where `allowAdminChanges` is disabled. ([#16265](https://github.com/craftcms/cms/pull/16265)) 
-- Section condition rules now have a “has a value” operator. ([#16270](https://github.com/craftcms/cms/discussions/16270))
+- It’s now possible to view (but not edit) system and plugin settings on environments where `allowAdminChanges` is disabled. ([#16265](https://github.com/craftcms/cms/pull/16265))
 - Added “Copy plugin handle” and “Copy package name” options to plugins’ action menus on the Plugins index page. ([#16281](https://github.com/craftcms/cms/discussions/16281))
 - The Updates utility now shows an action menu for each plugin, with “Copy plugin handle” and “Copy package name” options. ([#16281](https://github.com/craftcms/cms/discussions/16281))
 - The Queue Manager utility now shows jobs’ class names. ([#16228](https://github.com/craftcms/cms/pull/16228))
@@ -64,19 +63,19 @@
 ### Development
 - Added support for fallback element partial templates, e.g. `_partials/entry.twig` as opposed to `_partials/entry/typeHandle.twig`. ([#16125](https://github.com/craftcms/cms/pull/16125))
 - Added the `primarySite` global Twig variable. ([#16370](https://github.com/craftcms/cms/discussions/16370))
-- Added the `affiliatedSite` and `affiliatedSiteId` user query and GraphQL params. ([#16174](https://github.com/craftcms/cms/pull/16174))
-- Added the `affiliatedSiteHandle` and `affiliatedSiteId` user GraphQL field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added the `PHP_INT_MAX` global Twig variable.
-- Added the `withProvisionalDrafts` element query param, which causes the resulting elements to be replaced with any provisional drafts for the current user.
-- It’s now possible to pass nested custom field value keys into element queries’ `orderBy` and `select` params (e.g. `myDateField.tz`). ([#16157](https://github.com/craftcms/cms/discussions/16157))
-- It’s now possible to set Link field values to arrays with `value` keys set to element instances or IDs. ([#16255](https://github.com/craftcms/cms/pull/16255))
 - The `duration` Twig filter now has a `language` argument. ([#16332](https://github.com/craftcms/cms/pull/16332))
 - The `indexOf` Twig filter now has a `default` argument, which can be any integer or `null`. (`-1` by default for backwards compatibility.)
 - `{% cache %}` tags now cache any JavaScript import map entries registered via `craft\web\View::registerJsImport()` within them.
 - The `{% requireAdmin %}` tag now supports passing a boolean value, which determines whether administrative changes must be allowed (defaults to `true`).
+- Added the `withProvisionalDrafts` element query param, which causes the resulting elements to be replaced with any provisional drafts for the current user.
+- It’s now possible to pass nested custom field value keys into element queries’ `orderBy` and `select` params (e.g. `myDateField.tz`). ([#16157](https://github.com/craftcms/cms/discussions/16157))
 - It’s now possible to reference custom field handles in element queries’ `where` params. ([#16318](https://github.com/craftcms/cms/pull/16318))
 - Number fields’ scalar values now return an integer if Decimals is set to `0`, and a number formatted with the correct decimal points when using MySQL. ([16369](https://github.com/craftcms/cms/issues/16369))
+- Added the `affiliatedSite` and `affiliatedSiteId` user query and GraphQL params. ([#16174](https://github.com/craftcms/cms/pull/16174))
+- Added the `affiliatedSiteHandle` and `affiliatedSiteId` user GraphQL field. ([#16174](https://github.com/craftcms/cms/pull/16174))
 - Added support for specifying the current site via an `X-Craft-Site` header set to a site ID or handle. ([#16367](https://github.com/craftcms/cms/pull/16367))
+- It’s now possible to set Link field values to arrays with `value` keys set to element instances or IDs. ([#16255](https://github.com/craftcms/cms/pull/16255))
 - Added the `disable2fa` config setting. ([#16426](https://github.com/craftcms/cms/pull/16426))
 - Added support for defining redirects from `config/redirects.php`. ([#16355](https://github.com/craftcms/cms/pull/16355))
 - Deprecated the `ucfirst` Twig filter. `capitalize` should be used instead.
