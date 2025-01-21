@@ -3,6 +3,8 @@
 ## Unreleased
 
 - Fixed an error that could occur when setting `relatedTo*` GraphQL arguments to `null`. ([#16433](https://github.com/craftcms/cms/issues/16433))
+- Fixed a bug where old structure data wasn’t getting soft-deleted when a section was assigned a new structure UUID when applying project config changes. ([#16450](https://github.com/craftcms/cms/issues/16450))
+- Fixed a bug where `craft\events\DefineAssetUrlEvent::$transform` wasn’t always defined for assets’ `EVENT_BEFORE_DEFINE_URL` and `EVENT_DEFINE_URL` events. ([#16464](https://github.com/craftcms/cms/pull/16464))
 - Fixed an error that occurred if a new user couldn’t be created due to validation errors. ([#16437](https://github.com/craftcms/cms/issues/16437))
 - Fixed an error that could occur when adding or removing card attributes.
 - Fixed a bug where element query params that included `*` weren’t respecting `caseInsensitive: true`. ([#16409](https://github.com/craftcms/cms/issues/16409))
