@@ -28,8 +28,8 @@
 - Improved the accessibility of Selectize inputs. ([#16110](https://github.com/craftcms/cms/pull/16110))
 - Improved the accessibility of the image rotation control within the Image Editor. ([#16218](https://github.com/craftcms/cms/pull/16218))
 - Improved the accessibility of action menus on the Plugins index page.
-- Improved the accessibility of “More” and “Advanced” toggle triggers. ([#16293]](https://github.com/craftcms/cms/pull/16293))
-- Improved the accessibility of the Craft Support widget. ([#16293]](https://github.com/craftcms/cms/pull/16293))
+- Improved the accessibility of “More” and “Advanced” toggle triggers. ([#16293](https://github.com/craftcms/cms/pull/16293))
+- Improved the accessibility of the Craft Support widget. ([#16293](https://github.com/craftcms/cms/pull/16293))
 - Improved the accessibility of field translatable indicators and tooltips.
 - Progress bars now announce their progress to screen readers. ([#16398](https://github.com/craftcms/cms/pull/16398))
 - Loading spinners within element indexes and inline-editable Matrix fields are now announced to screen readers. ([#16417](https://github.com/craftcms/cms/pull/16417))
