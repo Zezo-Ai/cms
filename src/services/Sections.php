@@ -616,8 +616,8 @@ class Sections extends Component
                 // see https://github.com/craftcms/cms/issues/16450
                 if (
                     $isNewStructure &&
-                    $event->oldValue['type'] === Section::TYPE_STRUCTURE &&
-                    $event->oldValue['structure']['uid'] !== $structureUid &&
+                    ($event->oldValue['type'] ?? null) === Section::TYPE_STRUCTURE &&
+                    ($event->oldValue['structure']['uid'] ?? null) !== $structureUid &&
                     $sectionRecord->structureId
                 ) {
                     $structuresService->deleteStructureById($sectionRecord->structureId);
