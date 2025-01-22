@@ -368,7 +368,9 @@ class Color extends Field implements InlineEditableFieldInterface, MergeableFiel
                 'options' => array_filter([
                     ...array_map(
                         fn(array $color) => [
-                            'label' => $color['label'] ?? $color['color'],
+                            'label' => isset($color['label']) && $color['label'] !== ''
+                                ? Craft::t('site', $color['label'])
+                                : $color['color'],
                             'value' => $color['color'],
                         ],
                         $this->palette,

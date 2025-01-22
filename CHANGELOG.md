@@ -1,5 +1,10 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
+- Fixed a bug where Color fields weren’t translating color palette labels.
+
 ## 5.6.0.2 - 2025-01-21
 
 - Fixed an error that occurred when creating a new Structure section. ([#16476](https://github.com/craftcms/cms/issues/16476))
