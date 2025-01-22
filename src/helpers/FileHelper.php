@@ -256,7 +256,7 @@ class FileHelper extends \yii\helpers\FileHelper
 
         // Remove invisible chars from the filename
         // https://github.com/craftcms/cms/issues/12741
-        $filename = preg_replace(StringHelper::getInvisibleCharsRegex(), '', $filename);
+        $filename = preg_replace(StringHelper::invisibleCharsRegex(), '', $filename);
 
         // Strip any characters not allowed.
         $filename = str_replace($disallowedChars, '', strip_tags($filename));

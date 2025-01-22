@@ -2044,8 +2044,9 @@ class StringHelper extends \yii\helpers\StringHelper
      * Returns a regex pattern for invisible characters.
      *
      * @return string
+     * @since 4.14.1
      */
-    public static function getInvisibleCharsRegex(): string
+    public static function invisibleCharsRegex(): string
     {
         $invisibleCharCodes = [
             '00ad', // soft hyphen
@@ -2066,6 +2067,6 @@ class StringHelper extends \yii\helpers\StringHelper
             fn(&$charCode) => $charCode = sprintf('\\x{%s}', $charCode)
         );
 
-        return '/' . implode('|', $invisibleCharCodes) . '/iu';
+        return sprintf('/%s/iu', implode('|', $invisibleCharCodes));
     }
 }
