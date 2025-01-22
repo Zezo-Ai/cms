@@ -1,5 +1,7 @@
 # Release Notes for Craft CMS 4
 
+## Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
+
 ## 4.14.0.2 - 2025-01-21
 
 - Fixed an error that occurred when creating a new Structure section. ([#16476](https://github.com/craftcms/cms/issues/16476))
