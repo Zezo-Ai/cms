@@ -8,6 +8,7 @@
 - Fixed a bug where the Login Page Logo general setting had inaccurate instructions. ([#16482](https://github.com/craftcms/cms/issues/16482))
 - Fixed a bug where element indexes’ View menus could have a horizontal scrollbar. ([#16473](https://github.com/craftcms/cms/issues/16473))
 - Fixed a bug where info icons weren’t shown within slideouts.
+- Fixed a bug where the `utils/delete-empty-volume-folders` command was deleting folders that had no assets directly, but had subfolders. ([#16388](https://github.com/craftcms/cms/issues/16388))
 
 ## 5.6.0.2 - 2025-01-21
 
