@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Row heading',
     'Row {index}' => 'Row {index}',
     'Rule Type' => 'Rule Type',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG file recommended. The logo will be displayed at {size} wide.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Same as asset filesystem',
     'Same as language' => 'Same as language',
     'Savable' => 'Saveable',
