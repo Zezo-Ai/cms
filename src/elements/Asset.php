@@ -1958,6 +1958,8 @@ JS,[
 
             $sizeTransform = $transform ? $transform->toArray() : [];
 
+            unset($sizeTransform['name'], $sizeTransform['handle']);
+
             if ($unit === 'w') {
                 $sizeTransform['width'] = (int)$value;
             } else {

@@ -2056,4 +2056,34 @@ class StringHelper extends \yii\helpers\StringHelper
     {
         return implode("\n", array_map(fn(string $line) => $indent . $line, static::lines($str)));
     }
+
+    /**
+     * Returns a regex pattern for invisible characters.
+     *
+     * @return string
+     * @since 5.6.1
+     */
+    public static function invisibleCharsRegex(): string
+    {
+        $invisibleCharCodes = [
+            '00ad', // soft hyphen
+            '0083', // no break
+            '200b', // zero width space
+            '200c', // zero width non-joiner
+            '200d', // zero width joiner
+            '200e', // LTR character
+            '200f', // RTL character
+            '2062', // invisible times
+            '2063', // invisible comma
+            '2064', // invisible plus
+            'feff', //zero width non-break space
+        ];
+
+        array_walk(
+            $invisibleCharCodes,
+            fn(&$charCode) => $charCode = sprintf('\\x{%s}', $charCode)
+        );
+
+        return sprintf('/%s/iu', implode('|', $invisibleCharCodes));
+    }
 }

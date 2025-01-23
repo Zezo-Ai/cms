@@ -428,6 +428,8 @@ class ImageTransforms extends Component
                         ...$refTransform->toArray(),
                 ]);
 
+                unset($transform->name, $transform->handle);
+
                 if ($sizeUnit === 'w') {
                     $transform->width = (int)$sizeValue;
                 } else {

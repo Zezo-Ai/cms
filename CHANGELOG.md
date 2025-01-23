@@ -1,5 +1,12 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
+- Fixed a bug where Color fields weren’t translating color palette labels.
+- Fixed a bug where `craft\elements\Asset::getSrcset()` (and `srcset` method arguments) weren’t producing the correct transform URLs if the asset already had a named transform applied to it. ([#16486](https://github.com/craftcms/cms/issues/16486))
+- Fixed a bug where the Login Page Logo general setting had inaccurate instructions. ([#16482](https://github.com/craftcms/cms/issues/16482))
+
 ## 5.6.0.2 - 2025-01-21
 
 - Fixed an error that occurred when creating a new Structure section. ([#16476](https://github.com/craftcms/cms/issues/16476))
