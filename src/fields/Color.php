@@ -415,7 +415,6 @@ class Color extends Field implements InlineEditableFieldInterface, MergeableFiel
                     'describedBy' => $this->describedBy,
                     'name' => "$this->handle[custom]",
                     'value' => $isCustom ? $value->getHex() : null,
-                    'presets' => $this->getPresets(),
                 ]) .
                 Html::endTag('div');
         } elseif ($value && !$isInPalette) {
