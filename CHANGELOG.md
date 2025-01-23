@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added a `cp.login.alternative-login-methods` hook to the system login template.
 - Fixed a bug where Color fields’ custom color inputs were including presets based on the color palette.
 
 ## 5.6.1 - 2025-01-22
