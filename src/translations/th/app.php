@@ -2030,7 +2030,7 @@ return [
     'You must set at least one of the dimensions.' => 'คุณจำเป็นต้องตั้งค่าขนาดอย่างน้อยหนึ่งรายการ',
     'You must specify a tab name.' => 'คุณจะต้องระบุชื่อแท็บ',
     'You need to be on at least Craft CMS {version} before you can manually update to Craft CMS {targetVersion}.' => 'คุณจำเป็นต้องใช้งาน Craft CMS เวอร์ชัน {version} เป็นอย่างน้อย ก่อนที่คุณจะสามารถอัปเดตเป็น Craft CMS {targetVersion} ด้วยตัวเองได้ ',
-    'You need to be on at least {plugin} {version} before you can update to {plugin} {targetVersion}.' => 'You need to be on at least {plugin} {version} before you can update to {plugin} {targetVersion}.',
+    'You need to be on at least {plugin} {version} before you can update to {plugin} {targetVersion}.' => 'คุณจำเป็นต้องใช้งาน {plugin} เวอร์ชัน {version} เป็นอย่างน้อย ก่อนที่คุณจะสามารถอัปเดตเป็น {plugin} {targetVersion} ได้',
     'You need to reset your password, but an error was encountered when sending the password reset email.' => 'คุณจำเป็นต้องรีเซ็ตรหัสผ่านของคุณ แต่เกิดข้อผิดพลาดขึ้นในขณะที่ส่งอีเมลรีเซ็ตรหัสผ่าน',
     'You need to reset your password. Check your email for instructions.' => 'You need to reset your password. Check your email for instructions.',
     'You need to reset your password.' => 'You need to reset your password.',
