@@ -2104,18 +2104,19 @@ $.extend(Craft, {
      * Swap any instruction text with info icons
      * This needs to happen before the `infoicon` method
      */
-    $('.field.info-icon-instructions > .instructions, #details .meta > .field > .instructions', $container).each(
-      function () {
-        const $instructions = $(this);
-        const $label = $instructions.siblings('.heading').find('label');
-        $('<div/>', {
-          class: 'info',
-          html: $instructions.children().html(),
-        }).appendTo($label);
-        // Keep the original element around in case an aria-describedby attribute is referencing it
-        $instructions.addClass('visually-hidden');
-      }
-    );
+    $(
+      '.field.info-icon-instructions > .instructions, #details .meta > .field > .instructions',
+      $container
+    ).each(function () {
+      const $instructions = $(this);
+      const $label = $instructions.siblings('.heading').find('label');
+      $('<div/>', {
+        class: 'info',
+        html: $instructions.children().html(),
+      }).appendTo($label);
+      // Keep the original element around in case an aria-describedby attribute is referencing it
+      $instructions.addClass('visually-hidden');
+    });
 
     $('.info', $container).infoicon();
 
