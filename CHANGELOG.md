@@ -1,5 +1,10 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Added a `cp.login.alternative-login-methods` hook to the system login template.
+- Fixed a bug where Color fields’ custom color inputs were including presets based on the color palette.
+
 ## 5.6.1 - 2025-01-22
 
 - Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
