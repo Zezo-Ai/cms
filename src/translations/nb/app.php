@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Overskrift for rad',
     'Row {index}' => 'Rad {index}',
     'Rule Type' => 'Regeltype',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG-fil anbefales. Logoen vises med bredde {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Samme som filsystem for filer',
     'Same as language' => 'Samme som språk',
     'Savable' => 'Kan lagres',
