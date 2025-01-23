@@ -48,7 +48,11 @@ class DeleteEmptyVolumeFoldersController extends Controller
             ->select(['folders.id'])
             ->from(['folders' => Table::VOLUMEFOLDERS])
             ->leftJoin(['assets' => Table::ASSETS], '[[assets.folderId]] = [[folders.id]]')
-            ->where(['assets.id' => null])
+            ->leftJoin(['subfolders' => Table::VOLUMEFOLDERS], '[[subfolders.parentId]] = [[folders.id]]')
+            ->where([
+                'assets.id' => null,
+                'subfolders.id' => null,
+            ])
             ->andWhere(['not', ['folders.parentId' => null]])
             ->andWhere(['not', ['folders.path' => null]]);
 
