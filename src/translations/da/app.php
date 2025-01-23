@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Rækkeoverskrift',
     'Row {index}' => 'Række {index}',
     'Rule Type' => 'Regeltype',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG-fil anbefales. Logoet vises med en bredde på {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Sammen som aktivfilsystem',
     'Same as language' => 'Samme som sprog',
     'Savable' => 'Kan gemmes',

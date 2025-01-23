@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Záhlaví řádku',
     'Row {index}' => 'Řádek {index}',
     'Rule Type' => 'Typ pravidla',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'Je doporučen soubor SVG. Logo se bude zobrazovat v šířce {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Stejný jako systém souborů aktiv',
     'Same as language' => 'Stejné jako jazyk',
     'Savable' => 'Lze uložit',

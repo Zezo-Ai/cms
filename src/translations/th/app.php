@@ -1394,7 +1394,7 @@ return [
     'Row heading' => 'หัวข้อแถว',
     'Row {index}' => 'แถว {index}',
     'Rule Type' => 'ประเภทกฎ',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'แนะนำให้ใช้ไฟล์ SVG โลโก้จะแสดงที่ความกว้าง {size}',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'เหมือนกับระบบไฟล์แอสเซท',
     'Same as language' => 'เหมือนกับภาษา',
     'Savable' => 'บันทึกได้',

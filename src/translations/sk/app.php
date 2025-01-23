@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Nadpis riadku',
     'Row {index}' => 'Riadok {index}',
     'Rule Type' => 'Typ pravidla',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'Odporúča sa súbor SVG. Logo sa zobrazí so šírkou {size} .',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Rovnaký ako súborový systém prostriedkov',
     'Same as language' => 'Rovnaké ako jazyk',
     'Savable' => 'Uložiteľné',

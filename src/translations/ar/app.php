@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'عنوان الصف',
     'Row {index}' => 'الصف {index}',
     'Rule Type' => 'نوع القاعدة',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'يوصى باستخدام ملف SVG. سيتم عرض الشعار بعرض {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'مثل نظام ملفات الأصول',
     'Same as language' => 'مثل اللغة',
     'Savable' => 'قابل للحفظ',

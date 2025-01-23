@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Заголовок строки',
     'Row {index}' => 'Строка {index}',
     'Rule Type' => 'Тип правила',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'Рекомендуется файл SVG. Логотип будет отображаться с шириной {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Совпадает с файловой системой ресурсов',
     'Same as language' => 'Так же, как для языка',
     'Savable' => 'Сохраняемые',
