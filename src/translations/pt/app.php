@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Cabeçalho da linha',
     'Row {index}' => 'Linha {index}',
     'Rule Type' => 'Tipo de regra',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'É recomendado um ficheiro SVG. O logótipo será apresentado com {size} de largura.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Igual ao sistema de ficheiros do recurso',
     'Same as language' => 'Igual ao idioma',
     'Savable' => 'Permite guardar',
