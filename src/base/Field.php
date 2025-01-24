@@ -1004,7 +1004,7 @@ JS, [
         }
 
         if ($key !== null && (!is_array($dbType) || !isset($dbType[$key]))) {
-            throw new InvalidArgumentException(sprintf('%s doesn’t store values under the key “%s”.', __CLASS__, $key));
+            throw new InvalidArgumentException(sprintf('%s doesn’t store values under the key “%s”.', self::class, $key));
         }
 
         $db = Craft::$app->getDb();

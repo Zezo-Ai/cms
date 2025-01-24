@@ -941,7 +941,7 @@ EOD;
 
         if ($acquireLock) {
             $channel = $this->channel();
-            $mutexName = sprintf('%s::%s', __CLASS__, $channel);
+            $mutexName = sprintf('%s::%s', self::class, $channel);
             if (!$this->mutex->acquire($mutexName, $timeout ?? $this->mutexTimeout)) {
                 if ($throwException) {
                     throw new MutexException($mutexName, "Could not acquire a mutex lock for the queue ($channel).");
