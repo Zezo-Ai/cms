@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 4
 
+## Unreleased
+
+- Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
+
 ## 4.14.1 - 2025-01-22
 
 - Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))

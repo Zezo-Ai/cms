@@ -1123,6 +1123,7 @@ abstract class Element extends Component implements ElementInterface
             'collapsedElementIds' => Craft::$app->getRequest()->getParam('collapsedElementIds'),
             'showCheckboxes' => $showCheckboxes,
             'tableName' => static::pluralDisplayName(),
+            'elementQuery' => $elementQuery,
         ];
 
         $db = Craft::$app->getDb();
