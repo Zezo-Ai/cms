@@ -9,4 +9,7 @@ return RectorConfig::configure()
         __DIR__ . '/lib',
         __DIR__ . '/src',
     ])
+    ->withSkip([
+        __DIR__ . '/src/icons/index.php',
+    ])
     ->withPhpSets(php56: true);
