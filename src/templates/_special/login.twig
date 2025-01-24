@@ -138,5 +138,7 @@
         {{ provider.getCpLoginHtml()|raw }}
       {% endfor %}
     {% endif %}
+
+    {% hook 'cp.login.alternative-login-methods' %}
   </div>
 </div>
