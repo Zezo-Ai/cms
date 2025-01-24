@@ -1219,6 +1219,7 @@ abstract class Element extends Component implements ElementInterface
             'inlineEditing' => $viewState['inlineEditing'] ?? false,
             'nestedInputNamespace' => $viewState['nestedInputNamespace'] ?? null,
             'tableName' => static::pluralDisplayName(),
+            'elementQuery' => $elementQuery,
         ];
 
         $db = Craft::$app->getDb();
