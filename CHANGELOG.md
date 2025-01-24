@@ -5,6 +5,7 @@
 - Added a `cp.login.alternative-login-methods` hook to the system login template.
 - Fixed a bug where Color fields’ custom color inputs were including presets based on the color palette.
 - Fixed a bug where nested Matrix entries weren’t getting assigned a post date if they were created while saving the owner element with a custom validation scenario. ([#16504](https://github.com/craftcms/cms/pull/16504))
+- Fixed a bug where plugin settings pages weren’t displaying a read-only notice and had Save buttons, when `allowAdminChanges` was `false`. ([#16509](https://github.com/craftcms/cms/pull/16509))
 
 ## 5.6.1 - 2025-01-22
 
