@@ -2451,8 +2451,11 @@ class ElementQuery extends Query implements ElementQueryInterface
                 "element::$this->elementType",
             ];
 
-            // If specific IDs were requested, then use those
-            if (is_numeric($this->id) || (is_array($this->id) && ArrayHelper::isNumeric($this->id))) {
+            // If (<= 100) specific IDs were requested, then use those
+            if (
+                is_numeric($this->id) ||
+                (is_array($this->id) && count($this->id) <= 100 && ArrayHelper::isNumeric($this->id))
+            ) {
                 array_push($this->_cacheTags, ...array_map(fn($id) => "element::$id", (array)$this->id));
             } else {
                 $queryTags = $this->cacheTags();
