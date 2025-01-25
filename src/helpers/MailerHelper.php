@@ -18,7 +18,6 @@ use craft\mail\transportadapters\Sendmail;
 use craft\mail\transportadapters\Smtp;
 use craft\mail\transportadapters\TransportAdapterInterface;
 use yii\base\Event;
-use yii\helpers\Inflector;
 
 /**
  * Class MailerHelper
@@ -151,13 +150,6 @@ class MailerHelper
             $settingsAttributes = $transportAdapter->settingsAttributes();
             foreach ($settingsAttributes as $name) {
                 $transportSettings[$transportAdapter->getAttributeLabel($name)] = $transportAdapter->$name;
-            }
-        } else {
-            // Otherwise just output whatever public properties we have available on the transport
-            /** @var array $asArray */
-            $asArray = (array)$transportAdapter;
-            foreach ($asArray as $name => $value) {
-                $transportSettings[Inflector::camel2words($name, true)] = $value;
             }
         }
 
