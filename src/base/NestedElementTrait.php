@@ -164,25 +164,31 @@ trait NestedElementTrait
                 return null;
             }
 
-            $ownerType = $this->ownerType();
-            if (!$ownerType) {
-                return null;
-            }
+            if (isset($this->elementQueryResult)) {
+                // Eager-load the primary owner for each of the elements in the result,
+                // as we're probably going to end up needing them too
+                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, ['primaryOwner']);
+            } else {
+                $ownerType = $this->ownerType();
+                if (!$ownerType) {
+                    return null;
+                }
 
-            $this->_primaryOwner = $ownerType::find()
-                ->id($primaryOwnerId)
-                ->site('*')
-                ->preferSites([$this->siteId])
-                ->unique()
-                ->status(null)
-                ->drafts(null)
-                ->provisionalDrafts(null)
-                ->revisions(null)
-                ->trashed(null)
-                ->one() ?? false;
+                $this->_primaryOwner = $ownerType::find()
+                    ->id($primaryOwnerId)
+                    ->site('*')
+                    ->preferSites([$this->siteId])
+                    ->unique()
+                    ->status(null)
+                    ->drafts(null)
+                    ->provisionalDrafts(null)
+                    ->revisions(null)
+                    ->trashed(null)
+                    ->one() ?? false;
 
-            if (!$this->_primaryOwner) {
-                throw new InvalidConfigException("Invalid owner ID: $primaryOwnerId");
+                if (!$this->_primaryOwner) {
+                    throw new InvalidConfigException("Invalid owner ID: $primaryOwnerId");
+                }
             }
         }
 
@@ -230,25 +236,31 @@ trait NestedElementTrait
                 return $this->getPrimaryOwner();
             }
 
-            $ownerType = $this->ownerType();
-            if (!$ownerType) {
-                return null;
-            }
+            if (isset($this->elementQueryResult)) {
+                // Eager-load the owner for each of the elements in the result,
+                // as we're probably going to end up needing them too
+                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, ['owner']);
+            } else {
+                $ownerType = $this->ownerType();
+                if (!$ownerType) {
+                    return null;
+                }
 
-            $this->_owner = $ownerType::find()
-                ->id($ownerId)
-                ->site('*')
-                ->preferSites([$this->siteId])
-                ->unique()
-                ->status(null)
-                ->drafts(null)
-                ->provisionalDrafts(null)
-                ->revisions(null)
-                ->trashed(null)
-                ->one() ?? false;
+                $this->_owner = $ownerType::find()
+                    ->id($ownerId)
+                    ->site('*')
+                    ->preferSites([$this->siteId])
+                    ->unique()
+                    ->status(null)
+                    ->drafts(null)
+                    ->provisionalDrafts(null)
+                    ->revisions(null)
+                    ->trashed(null)
+                    ->one() ?? false;
 
-            if (!$this->_owner) {
-                throw new InvalidConfigException("Invalid owner ID: $ownerId");
+                if (!$this->_owner) {
+                    throw new InvalidConfigException("Invalid owner ID: $ownerId");
+                }
             }
         }
 
