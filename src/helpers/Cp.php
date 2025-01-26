@@ -1517,7 +1517,10 @@ JS, [
             $userSessionService->getIsAdmin() &&
             $userSessionService->getIdentity()->getPreference('showFieldHandles')
         );
-        $showActionMenu = !empty($config['actionMenuItems']);
+        $showActionMenu = (
+            !empty($config['actionMenuItems']) &&
+            ($label || $showAttribute || isset($config['labelExtra']))
+        );
         $showLabelExtra = $showAttribute || $showActionMenu || isset($config['labelExtra']);
 
         $instructionsHtml = $instructions

@@ -10,6 +10,7 @@
 - Fixed a bug where nested Matrix entries weren’t getting assigned a post date if they were created while saving the owner element with a custom validation scenario. ([#16504](https://github.com/craftcms/cms/pull/16504))
 - Fixed a bug where plugin settings pages weren’t displaying a read-only notice and had Save buttons, when `allowAdminChanges` was `false`. ([#16509](https://github.com/craftcms/cms/pull/16509))
 - Fixed a bug where eager-loading elements on nested entries resulted in a large number of database queries.
+- Fixed a bug where field action menus were showing on fields that didn’t have a label or visible field handle. ([#16510](https://github.com/craftcms/cms/discussions/16510))
 
 ## 5.6.1 - 2025-01-22
 
