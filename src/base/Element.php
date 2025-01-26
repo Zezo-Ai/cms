@@ -4010,7 +4010,7 @@ abstract class Element extends Component implements ElementInterface
      */
     private function _outdatedAttributes(): array
     {
-        if (!static::trackChanges() || !$this->getIsDraft() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 
@@ -4284,7 +4284,7 @@ abstract class Element extends Component implements ElementInterface
      */
     private function _outdatedFields(): array
     {
-        if (!static::trackChanges() || !$this->getIsDraft() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 
