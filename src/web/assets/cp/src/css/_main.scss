@@ -5874,8 +5874,12 @@ $min2ColWidth: 400px;
         padding-inline-start linear 100ms,
         padding-inline-end linear 100ms;
 
-      &.nested > .heading {
-        padding-inline-start: calc(var(--m) * 2);
+      &.nested {
+        padding-inline-start: 38px;
+
+        & > .heading {
+          padding-inline-start: 10px;
+        }
       }
 
       &.add {
@@ -5883,8 +5887,9 @@ $min2ColWidth: 400px;
 
         &::before {
           position: absolute;
+          inset-block-start: var(--m);
           inset-inline-start: 0;
-          width: 31px;
+          width: 48px;
           text-align: end;
           @include mixins.icon;
           content: 'plus';
