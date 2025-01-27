@@ -16,6 +16,7 @@
 - Fixed a styling issue. ([#16515](https://github.com/craftcms/cms/issues/16515))
 - Fixed a bug where the login modal could be displayed too short for its contents.
 - Fixed a bug where SSO logins would redirect to the front end by default.
+- Fixed a bug where SSO users were able to “reset” their passwords.
 - Fixed JavaScript error that occurred if there was problem sending a password-reset email.
 
 ## 5.6.1 - 2025-01-22

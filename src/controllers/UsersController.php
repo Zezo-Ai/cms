@@ -667,7 +667,7 @@ class UsersController extends Controller
 
             $user = Craft::$app->getUsers()->getUserByUsernameOrEmail($loginName);
 
-            if (!$user || !$user->getIsCredentialed()) {
+            if (!$user || !$user->getIsCredentialed() || !$user->getHasPassword()) {
                 $errors[] = Craft::$app->getConfig()->getGeneral()->useEmailAsUsername
                     ? Craft::t('app', 'Invalid email.')
                     : Craft::t('app', 'Invalid username or email.');
