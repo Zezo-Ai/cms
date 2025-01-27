@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Zeilenüberschrift',
     'Row {index}' => 'Zeile {index}',
     'Rule Type' => 'Regeltyp',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG-Datei empfohlen. Logo wird mit Höhe von {size} und variabler Breite angezeigt.',
     'Same as asset filesystem' => 'Gleich wie das Dateisystem für Dateien',
     'Same as language' => 'Gleich wie Sprache',
     'Savable' => 'Speicherbar',
