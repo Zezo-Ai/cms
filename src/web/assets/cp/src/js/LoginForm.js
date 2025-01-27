@@ -98,6 +98,7 @@ Craft.LoginForm = Garnish.Base.extend(
         this.$altMethodContainer.children().filter('.btn:not(.hidden)').length
       ) {
         this.$altMethodContainer.removeClass('hidden');
+        Garnish.$win.trigger('resize');
       }
     },
 
