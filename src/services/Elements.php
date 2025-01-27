@@ -3282,8 +3282,13 @@ class Elements extends Component
 
         // Validate
         if ($runValidation) {
-            // If we're propagating, only validate changed custom fields
-            if ($element->propagating) {
+            // If we're propagating, only validate changed custom fields,
+            // unless we're enabling this element
+            if ($element->propagating && !(
+                $element->isProvisionalDraft &&
+                $element->getEnabledForSite() &&
+                !$element->getCanonical()->getEnabledForSite())
+            ) {
                 $names = array_map(
                     fn(string $handle) => "field:$handle",
                     array_unique(array_merge($dirtyFields, $element->getModifiedFields()))
