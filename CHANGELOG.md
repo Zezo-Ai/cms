@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
+- Added `craft\web\User::getDefaultReturnUrl()`.
 - Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
 - Fixed a bug where changes to custom fields within nested Matrix entries weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
 - Fixed a bug where native fields (e.g. Title) were showing changed statuses when viewing revisions, if they had been updated since the time the revision was created.
@@ -13,6 +15,11 @@
 - Fixed a bug where eager-loading elements on nested entries resulted in a large number of database queries.
 - Fixed a bug where field action menus were showing on fields that didn’t have a label or visible field handle. ([#16510](https://github.com/craftcms/cms/discussions/16510))
 - Fixed a styling issue. ([#16515](https://github.com/craftcms/cms/issues/16515))
+- Fixed a bug where the login modal could be displayed too short for its contents.
+- Fixed a bug where SSO logins would redirect to the front end by default.
+- Fixed a bug where SSO users were able to “reset” their passwords.
+- Fixed JavaScript error that occurred if there was problem sending a password-reset email.
+- Fixed an error that could occur when working with an entry whose type is no longer allowed by its section/field. ([#16539](https://github.com/craftcms/cms/issues/16539))
 
 ## 5.6.1 - 2025-01-22
 

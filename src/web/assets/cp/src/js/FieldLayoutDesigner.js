@@ -322,6 +322,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
 
       this.addListener($elements, 'activate', (ev) => {
         ev.stopPropagation();
+        ev.originalEvent.preventDefault();
         this.addLibraryElementToActiveTab(ev.currentTarget);
       });
     },
@@ -368,10 +369,6 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
       const element = tab.initElement($element);
       element.updatePositionInConfig();
       this.tabGrid.refreshCols(true);
-
-      Garnish.requestAnimationFrame(() => {
-        hud.hide();
-      });
     },
   },
   {
@@ -486,7 +483,6 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
       this.designer.$fieldLibrary.scrollTop(0);
     });
     hud.on('hide', () => {
-      this.designer.$libraryContainer.appendTo(this.designer.$innerContainer);
       this.$addBtn.focus();
     });
 
@@ -1712,15 +1708,6 @@ Craft.FieldLayoutDesigner.ElementDrag =
       }
 
       this.setMidpoints();
-
-      // If we're dragging an element from the library, and it's within an HUD,
-      // hide the HUD
-      if (this.draggingLibraryElement) {
-        const $hud = this.$draggee.closest('.fld-library-hud');
-        if ($hud.length) {
-          $hud.data('hud').hide();
-        }
-      }
     },
 
     /**
