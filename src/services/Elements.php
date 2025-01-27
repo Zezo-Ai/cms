@@ -3166,7 +3166,7 @@ class Elements extends Component
      *
      * @param class-string<ElementInterface> $elementType The root element type class
      * @param ElementInterface[] $elements The root element models that should be updated with the eager-loaded elements
-     * @param string[]|string|EagerLoadPlan[] $with Dot-delimited paths of the elements that should be eager-loaded into the root elements
+     * @param array<string|array>|string|EagerLoadPlan[] $with Dot-delimited paths of the elements that should be eager-loaded into the root elements
      */
     public function eagerLoadElements(string $elementType, array $elements, array|string $with): void
     {
@@ -3558,8 +3558,14 @@ class Elements extends Component
 
         // Validate
         if ($runValidation) {
-            // If we're propagating, only validate changed custom fields
-            if ($element->propagating) {
+            // If we're propagating, only validate changed custom fields,
+            // unless we're enabling this element
+            if ($element->propagating && !(
+                $element->getIsDerivative() &&
+                $element->getIsDraft() &&
+                $element->getEnabledForSite() &&
+                !$element->getCanonical()->getEnabledForSite())
+            ) {
                 $names = array_map(
                     fn(string $handle) => "field:$handle",
                     array_unique(array_merge($dirtyFields, $element->getModifiedFields()))

@@ -193,6 +193,7 @@ class CraftTooltip extends HTMLElement {
           : `translateY(0)`,
         // Make sure if a user hovers over the label itself, it stays open
         pointerEvents: 'auto',
+        zIndex: 101,
       });
 
       autoUpdate(this.triggerElement, this.tooltip, this.update);
