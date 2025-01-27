@@ -3285,7 +3285,8 @@ class Elements extends Component
             // If we're propagating, only validate changed custom fields,
             // unless we're enabling this element
             if ($element->propagating && !(
-                $element->isProvisionalDraft &&
+                $element->getIsDerivative() &&
+                $element->getIsDraft() &&
                 $element->getEnabledForSite() &&
                 !$element->getCanonical()->getEnabledForSite())
             ) {
