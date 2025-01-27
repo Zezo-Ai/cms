@@ -120,11 +120,10 @@ class User extends \yii\web\User
     {
         // Set the default based on the config, if it’s not specified
         if ($defaultUrl === null) {
-            // Is this a control panel request and can they access the control panel?
-            if (Craft::$app->getRequest()->getIsCpRequest() && $this->checkPermission('accessCp')) {
-                $defaultUrl = UrlHelper::cpUrl(Craft::$app->getConfig()->getGeneral()->getPostCpLoginRedirect());
+            if ($this->getIsGuest()) {
+                $defaultUrl = UrlHelper::actionUrl('users/redirect');
             } else {
-                $defaultUrl = UrlHelper::siteUrl(Craft::$app->getConfig()->getGeneral()->getPostLoginRedirect());
+                $defaultUrl = $this->getDefaultReturnUrl();
             }
         }
 
@@ -134,6 +133,22 @@ class User extends \yii\web\User
         // i.e. if there was a {siteUrl} tag in the Site URL setting, but no matching environment variable,
         // so they ended up on something like http://example.com/%7BsiteUrl%7D/some/path
         return str_replace(['{', '}'], '', $url);
+    }
+
+    /**
+     * Returns the default return URL.
+     *
+     * @return string
+     * @since 5.6.2
+     */
+    public function getDefaultReturnUrl(): string
+    {
+        // Is this a control panel request and can they access the control panel?
+        if (Craft::$app->getRequest()->getIsCpRequest() && $this->checkPermission('accessCp')) {
+            return UrlHelper::cpUrl(Craft::$app->getConfig()->getGeneral()->getPostCpLoginRedirect());
+        }
+
+        return UrlHelper::siteUrl(Craft::$app->getConfig()->getGeneral()->getPostLoginRedirect());
     }
 
     /**

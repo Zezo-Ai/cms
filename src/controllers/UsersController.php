@@ -371,6 +371,16 @@ class UsersController extends Controller
     }
 
     /**
+     * Redirects the user to the default post-login URL.
+     *
+     * @return Response
+     */
+    public function actionRedirect(): Response
+    {
+        return $this->redirect(Craft::$app->getUser()->getDefaultReturnUrl());
+    }
+
+    /**
      * Logs a user in for impersonation.
      *
      * @return Response|null
