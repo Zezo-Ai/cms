@@ -295,7 +295,11 @@
                   // Scroll to the entry
                   Garnish.scrollContainerToElement($entry);
                   // Focus on the first focusable element
-                  $entry.find('.flex-fields :focusable').first().focus();
+                  $entry
+                    .find('.flex-fields :focusable')
+                    .not('.prevent-autofocus')
+                    .first()
+                    .focus();
                 }
 
                 // Resume the element editor

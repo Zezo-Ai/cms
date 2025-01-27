@@ -189,4 +189,8 @@ body.login {
     color: var(--error-color);
     margin-block-start: 1em;
   }
+
+  .login-reset-password .login-errors {
+    margin-block-start: 0;
+  }
 }

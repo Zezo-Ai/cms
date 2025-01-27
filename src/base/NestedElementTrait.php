@@ -167,7 +167,12 @@ trait NestedElementTrait
             if (isset($this->id, $this->elementQueryResult)) {
                 // Eager-load the primary owner for each of the elements in the result,
                 // as we're probably going to end up needing them too
-                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, ['primaryOwner']);
+                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, [
+                    [
+                        'path' => 'primaryOwner',
+                        'criteria' => $this->ownerCriteria(),
+                    ],
+                ]);
             }
 
             if (!isset($this->_primaryOwner) || $this->_primaryOwner === false) {
@@ -177,17 +182,9 @@ trait NestedElementTrait
                     return null;
                 }
 
-                $this->_primaryOwner = $ownerType::find()
-                    ->id($primaryOwnerId)
-                    ->site('*')
-                    ->preferSites([$this->siteId])
-                    ->unique()
-                    ->status(null)
-                    ->drafts(null)
-                    ->provisionalDrafts(null)
-                    ->revisions(null)
-                    ->trashed(null)
-                    ->one() ?? false;
+                $query = $ownerType::find()->id($primaryOwnerId);
+                Craft::configure($query, $this->ownerCriteria());
+                $this->_primaryOwner = $query->one() ?? false;
 
                 if (!$this->_primaryOwner) {
                     throw new InvalidConfigException("Invalid owner ID: $primaryOwnerId");
@@ -242,7 +239,12 @@ trait NestedElementTrait
             if (isset($this->id, $this->elementQueryResult)) {
                 // Eager-load the owner for each of the elements in the result,
                 // as we're probably going to end up needing them too
-                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, ['owner']);
+                Craft::$app->getElements()->eagerLoadElements($this::class, $this->elementQueryResult, [
+                    [
+                        'path' => 'owner',
+                        'criteria' => $this->ownerCriteria(),
+                    ],
+                ]);
             }
 
             if (!isset($this->_owner) || $this->_owner === false) {
@@ -252,17 +254,9 @@ trait NestedElementTrait
                     return null;
                 }
 
-                $this->_owner = $ownerType::find()
-                    ->id($ownerId)
-                    ->site('*')
-                    ->preferSites([$this->siteId])
-                    ->unique()
-                    ->status(null)
-                    ->drafts(null)
-                    ->provisionalDrafts(null)
-                    ->revisions(null)
-                    ->trashed(null)
-                    ->one() ?? false;
+                $query = $ownerType::find()->id($ownerId);
+                Craft::configure($query, $this->ownerCriteria());
+                $this->_owner = $query->one() ?? false;
 
                 if (!$this->_owner) {
                     throw new InvalidConfigException("Invalid owner ID: $ownerId");
@@ -271,6 +265,20 @@ trait NestedElementTrait
         }
 
         return $this->_owner ?: null;
+    }
+
+    private function ownerCriteria(): array
+    {
+        return [
+            'site' => '*',
+            'preferSites' => [$this->siteId],
+            'unique' => true,
+            'status' => null,
+            'drafts' => null,
+            'provisionalDrafts' => null,
+            'revisions' => null,
+            'trashed' => null,
+        ];
     }
 
     /**
