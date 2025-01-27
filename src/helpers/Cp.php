@@ -1532,7 +1532,7 @@ JS, [
 
         $translationDescription = $config['translationDescription'] ?? Craft::t('app', 'This field is translatable.');
         $translationIconHtml = Html::button('', [
-            'class' => ['t9n-indicator'],
+            'class' => ['t9n-indicator', 'prevent-autofocus'],
             'data' => [
                 'icon' => 'language',
             ],
@@ -1610,7 +1610,7 @@ JS, [
                         ($showActionMenu ? static::disclosureMenu($config['actionMenuItems'], [
                             'hiddenLabel' => Craft::t('app', 'Actions'),
                             'buttonAttributes' => [
-                                'class' => ['action-btn', 'small'],
+                                'class' => ['action-btn', 'small', 'prevent-autofocus'],
                             ],
                         ]) : '') .
                         ($showAttribute ? static::renderTemplate('_includes/forms/copytextbtn.twig', [
