@@ -20,6 +20,7 @@
 - Fixed a bug where SSO users were able to “reset” their passwords.
 - Fixed JavaScript error that occurred if there was problem sending a password-reset email.
 - Fixed an error that could occur when working with an entry whose type is no longer allowed by its section/field. ([#16539](https://github.com/craftcms/cms/issues/16539))
+- Fixed a bug where tooltips were displaying behind slideouts. ([#16529](https://github.com/craftcms/cms/issues/16529))
 
 ## 5.6.1 - 2025-01-22
 
