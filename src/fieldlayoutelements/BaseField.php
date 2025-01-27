@@ -396,7 +396,7 @@ abstract class BaseField extends FieldLayoutElement
                             'element-id' => $element->id,
                             'layout-element' => $this->uid,
                             'label' => $label,
-                            'namespace' => ($namespace && $namespace !== 'field')
+                            'namespace' => ($namespace && $namespace !== 'fields')
                                 ? StringHelper::removeRight($namespace, '[fields]')
                                 : null,
                         ],
