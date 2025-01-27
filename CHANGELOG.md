@@ -6,6 +6,7 @@
 - Fixed a bug where changes to custom fields within Matrix blocks weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
 - Fixed a bug where native fields (e.g. Title) were showing changed statuses when viewing revisions, if they had been updated since the time the revision was created.
 - Fixed a bug where eager-loading element queries could create an excessive amount of cache invalidation tags.
+- Fixed a bug where it was possible to enable elements for new sites with validation errors. ([#16505](https://github.com/craftcms/cms/issues/16505))
 
 ## 4.14.1 - 2025-01-22
 
