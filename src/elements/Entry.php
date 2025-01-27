@@ -1530,7 +1530,12 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
                     fn(EntryType $entryType) => $entryType->id === $this->_typeId,
                 );
                 if (!$entryType) {
-                    throw new InvalidConfigException("Invalid entry type ID: $this->_typeId");
+                    // Maybe the section/field no longer allows this type,
+                    // so get it directly from the Entries service instead
+                    $entryType = Craft::$app->getEntries()->getEntryTypeById($this->_typeId);
+                    if (!$entryType) {
+                        throw new InvalidConfigException("Invalid entry type ID: $this->_typeId");
+                    }
                 }
             } else {
                 // Default to the section/field's first entry type
