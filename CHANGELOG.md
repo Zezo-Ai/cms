@@ -2,7 +2,45 @@
 
 ## Unreleased
 
+- The Login page now displays the Login Page Logo above the login form, rather than within the header. ([#16564](https://github.com/craftcms/cms/pull/16564))
+- The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
+- The “Settings” global nav item now has an alternate icon when `allowAdminChanges` is disabled, indicating that settings are read-only. ([#16563](https://github.com/craftcms/cms/pull/16563))
+- Added `craft\web\User::getDefaultReturnUrl()`.
+- Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
+- Fixed a bug where changes to custom fields within nested Matrix entries weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
+- Fixed a bug where native fields (e.g. Title) were showing changed statuses when viewing revisions, if they had been updated since the time the revision was created.
+- Fixed a bug where eager-loading element queries could create an excessive amount of cache invalidation tags.
+- Fixed a bug where it was possible to enable elements for new sites with validation errors. ([#16505](https://github.com/craftcms/cms/issues/16505))
+- Fixed a bug where ʻokina characters weren’t being removed in auto-generated slugs. ([#16548](https://github.com/craftcms/cms/issues/16548))
+- Added a `cp.login.alternative-login-methods` hook to the system login template.
+- Fixed a bug where Color fields’ custom color inputs were including presets based on the color palette.
+- Fixed a bug where nested Matrix entries weren’t getting assigned a post date if they were created while saving the owner element with a custom validation scenario. ([#16504](https://github.com/craftcms/cms/pull/16504))
+- Fixed a bug where plugin settings pages weren’t displaying a read-only notice and had Save buttons, when `allowAdminChanges` was `false`. ([#16509](https://github.com/craftcms/cms/pull/16509))
+- Fixed a bug where eager-loading elements on nested entries resulted in a large number of database queries.
+- Fixed a bug where field action menus were showing on fields that didn’t have a label or visible field handle. ([#16510](https://github.com/craftcms/cms/discussions/16510))
+- Fixed a styling issue. ([#16515](https://github.com/craftcms/cms/issues/16515))
+- Fixed a bug where the login modal could be displayed too short for its contents.
+- Fixed a bug where SSO logins would redirect to the front end by default.
+- Fixed a bug where SSO users were able to “reset” their passwords.
+- Fixed JavaScript error that occurred if there was problem sending a password-reset email.
+- Fixed an error that could occur when working with an entry whose type is no longer allowed by its section/field. ([#16539](https://github.com/craftcms/cms/issues/16539))
+- Fixed a bug where tooltips were displaying behind slideouts. ([#16529](https://github.com/craftcms/cms/issues/16529))
+- Fixed a bug where field translation indicators and action menu buttons could be autofocussed when creating a new entry within a Matrix field, or opening an element editor slideout. ([#16528](https://github.com/craftcms/cms/issues/16528))
+- Fixed a bug where field values copied from another site weren’t always saving. ([#16537](https://github.com/craftcms/cms/issues/16537))
+- Fixed errors that could occur on Ajax requests when deleting an inline-editable Matrix block. ([#16540](https://github.com/craftcms/cms/issues/16540))
+- Fixed compatibility with the Google Authenticator app for TOTP-based authentication. ([#16466](https://github.com/craftcms/cms/issues/16466), [#16552](https://github.com/craftcms/cms/issues/16552))
+- Fixed a bug where the Updates utility wasn’t showing the “Update all” button if multiple updates were available. ([#16565](https://github.com/craftcms/cms/issues/16565))
 - Fixed a bug where `\craft\services\Sso::findUser` wasn't accounting for soft-deleted users.
+
+## 5.6.1 - 2025-01-22
+
+- Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
+- Fixed a bug where Color fields weren’t translating color palette labels.
+- Fixed a bug where `craft\elements\Asset::getSrcset()` (and `srcset` method arguments) weren’t producing the correct transform URLs if the asset already had a named transform applied to it. ([#16486](https://github.com/craftcms/cms/issues/16486))
+- Fixed a bug where the Login Page Logo general setting had inaccurate instructions. ([#16482](https://github.com/craftcms/cms/issues/16482))
+- Fixed a bug where element indexes’ View menus could have a horizontal scrollbar. ([#16473](https://github.com/craftcms/cms/issues/16473))
+- Fixed a bug where info icons weren’t shown within slideouts.
+- Fixed a bug where the `utils/delete-empty-volume-folders` command was deleting folders that had no assets directly, but had subfolders. ([#16388](https://github.com/craftcms/cms/issues/16388))
 
 ## 5.6.0.2 - 2025-01-21
 

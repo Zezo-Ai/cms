@@ -29,6 +29,6 @@ class m250119_135304_entry_type_overrides extends Migration
     {
         $this->dropColumn(Table::SECTIONS_ENTRYTYPES, 'name');
         $this->dropColumn(Table::SECTIONS_ENTRYTYPES, 'handle');
-        return false;
+        return true;
     }
 }

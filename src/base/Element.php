@@ -1219,6 +1219,7 @@ abstract class Element extends Component implements ElementInterface
             'inlineEditing' => $viewState['inlineEditing'] ?? false,
             'nestedInputNamespace' => $viewState['nestedInputNamespace'] ?? null,
             'tableName' => static::pluralDisplayName(),
+            'elementQuery' => $elementQuery,
         ];
 
         $db = Craft::$app->getDb();
@@ -4801,7 +4802,7 @@ JS, [
      */
     private function _outdatedAttributes(): array
     {
-        if (!static::trackChanges() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 
@@ -5075,7 +5076,7 @@ JS, [
      */
     private function _outdatedFields(): array
     {
-        if (!static::trackChanges() || !$this->getIsDraft() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 

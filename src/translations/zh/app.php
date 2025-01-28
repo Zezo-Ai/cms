@@ -1393,7 +1393,7 @@ return [
     'Row heading' => '行标题',
     'Row {index}' => '行 {index}',
     'Rule Type' => '规则类型',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => '建议使用 SVG 文件。标志的显示宽度为 {size}。',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => '与资产文件系统相同',
     'Same as language' => '语言相同',
     'Savable' => '可保存',

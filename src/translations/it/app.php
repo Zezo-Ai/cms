@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Intestazione di riga',
     'Row {index}' => 'Riga {index}',
     'Rule Type' => 'Tipo di regola',
-    'SVG file recommended. The logo will be displayed at {size} wide.' => 'File SVG consigliato. Il logo verrà mostrato con larghezza {size}.',
+    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
     'Same as asset filesystem' => 'Uguale al file system di risorse',
     'Same as language' => 'Uguale alla lingua',
     'Savable' => 'Contenuti salvabili',
