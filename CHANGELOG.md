@@ -25,6 +25,7 @@
 - Fixed a bug where tooltips were displaying behind slideouts. ([#16529](https://github.com/craftcms/cms/issues/16529))
 - Fixed a bug where field translation indicators and action menu buttons could be autofocussed when creating a new entry within a Matrix field, or opening an element editor slideout. ([#16528](https://github.com/craftcms/cms/issues/16528))
 - Fixed a bug where field values copied from another site weren’t always saving. ([#16537](https://github.com/craftcms/cms/issues/16537))
+- Fixed errors that could occur on Ajax requests when deleting an inline-editable Matrix block. ([#16540](https://github.com/craftcms/cms/issues/16540))
 
 ## 5.6.1 - 2025-01-22
 

@@ -156,6 +156,14 @@
 
           this.trigger('afterInit');
         }, 100);
+
+        // If this field is nested within something that's deletable, be ready to handle that
+        this.$container.closest('.js-deletable').on('delete', (ev) => {
+          // Ignore delete events that came from nested elements
+          if (ev.target === ev.currentTarget) {
+            this.destroy();
+          }
+        });
       },
 
       canAddMoreEntries: function () {
@@ -355,6 +363,19 @@
 
       get maxEntries() {
         return this.settings.maxEntries;
+      },
+
+      destroy: function () {
+        this.entrySort?.destroy();
+        this.entrySelect?.destroy();
+        delete this.entrySort;
+        delete this.entrySelect;
+
+        this.$entriesContainer.children('.matrixblock').each((i, container) => {
+          $(container).data('entry')?.destroy();
+        });
+
+        this.base();
       },
     },
     {
@@ -925,10 +946,12 @@
         }
       }
 
-      this.actionDisclosure.hide();
+      this.actionDisclosure?.hide();
     },
 
     selfDestruct: function () {
+      this.destroy();
+
       // Remove any inputs from the form data
       $('[name]', this.$container).removeAttr('name');
 
@@ -1153,6 +1176,22 @@
 
       // re-grab dismissible tips, re-attach listener, hide on re-load
       this.matrix.elementEditor?.handleDismissibleTips();
+    },
+
+    destroy: function () {
+      this.actionDisclosure?.hide();
+
+      this.tabManager?.destroy();
+      this.actionDisclosure?.destroy();
+      this.formObserver?.destroy();
+      delete this.tabManager;
+      delete this.actionDisclosure;
+      delete this.formObserver;
+
+      // alert any nested inputs that we're getting deleted
+      this.$container.trigger('delete');
+
+      this.base();
     },
   });
 })(jQuery);
