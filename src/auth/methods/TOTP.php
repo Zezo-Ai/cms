@@ -283,6 +283,8 @@ JS, [
      */
     private function generateQrCode(string $secret): string
     {
+        $secret = str_replace(' ', '', $secret);
+
         $qrCodeUrl = (new Google2FA())->getQRCodeUrl(
             Craft::$app->getSystemName(),
             $this->user->email,
