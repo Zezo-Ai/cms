@@ -37,6 +37,7 @@ $icons = [
     'custom-icons/element-card-slash.svg',
     'custom-icons/element-card.svg',
     'custom-icons/element-cards.svg',
+    'custom-icons/gear-slash.svg',
     'custom-icons/graphql.svg',
     'custom-icons/grip-dots.svg',
     'custom-icons/image-slash.svg',

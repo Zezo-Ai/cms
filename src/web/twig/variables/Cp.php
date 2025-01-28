@@ -337,7 +337,7 @@ class Cp extends Component
             $navItems[] = [
                 'url' => 'settings',
                 'label' => Craft::t('app', 'Settings'),
-                'icon' => 'gear',
+                'icon' => Craft::$app->getConfig()->getGeneral()->allowAdminChanges ? 'gear' : 'gear-slash',
             ];
 
             $navItems[] = [

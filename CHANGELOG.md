@@ -2,7 +2,9 @@
 
 ## Unreleased
 
+- The Login page now displays the Login Page Logo above the login form, rather than within the header. ([#16564](https://github.com/craftcms/cms/pull/16564))
 - The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
+- The “Settings” global nav item now has an alternate icon when `allowAdminChanges` is disabled, indicating that settings are read-only. ([#16563](https://github.com/craftcms/cms/pull/16563))
 - Added `craft\web\User::getDefaultReturnUrl()`.
 - Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
 - Fixed a bug where changes to custom fields within nested Matrix entries weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
@@ -25,6 +27,13 @@
 - Fixed a bug where tooltips were displaying behind slideouts. ([#16529](https://github.com/craftcms/cms/issues/16529))
 - Fixed a bug where field translation indicators and action menu buttons could be autofocussed when creating a new entry within a Matrix field, or opening an element editor slideout. ([#16528](https://github.com/craftcms/cms/issues/16528))
 - Fixed a bug where field values copied from another site weren’t always saving. ([#16537](https://github.com/craftcms/cms/issues/16537))
+- Fixed errors that could occur on Ajax requests when deleting an inline-editable Matrix block. ([#16540](https://github.com/craftcms/cms/issues/16540))
+- Fixed compatibility with the Google Authenticator app for TOTP-based authentication. ([#16466](https://github.com/craftcms/cms/issues/16466), [#16552](https://github.com/craftcms/cms/issues/16552))
+- Fixed a bug where the Updates utility wasn’t showing the “Update all” button if multiple updates were available. ([#16565](https://github.com/craftcms/cms/issues/16565))
+- Fixed a bug where `craft\services\Sso::findUser()` wasn't accounting for soft-deleted users. ([#16491](https://github.com/craftcms/cms/pull/16491))
+- Fixed a bug where Color fields weren’t getting fully instantiated when present on a newly-created nested entry within a Matrix field. ([#16554](https://github.com/craftcms/cms/issues/16554))
+- Fixed a bug where content footers could bleed out of their containers on smaller screens. ([#16557](https://github.com/craftcms/cms/issues/16557))
+- Fixed a bug where email settings weren’t validating if any System Email Address or Reply-To Address site override settings were set to environment variables. ([#16559](https://github.com/craftcms/cms/issues/16559))
 
 ## 5.6.1 - 2025-01-22
 
