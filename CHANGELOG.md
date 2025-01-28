@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.2 - 2024-01-28
 
 - The Login page now displays the Login Page Logo above the login form, rather than within the header. ([#16564](https://github.com/craftcms/cms/pull/16564))
 - The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
