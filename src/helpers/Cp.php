@@ -3365,9 +3365,19 @@ JS;
             // system icon name?
             if (preg_match('/^[a-z\-]+(\d?)$/', $icon)) {
                 $path = match ($icon) {
-                    'asterisk-slash', 'diamond-slash', 'element-card', 'element-card-slash', 'element-cards', 'graphql',
-                    'grip-dots', 'image-slash', 'list-flip', 'list-tree-flip', 'share-flip' =>
-                    Craft::getAlias("@app/icons/custom-icons/$icon.svg"),
+                    'asterisk-slash',
+                    'diamond-slash',
+                    'element-card',
+                    'gear-slash',
+                    'element-card-slash',
+                    'element-cards',
+                    'graphql',
+                    'grip-dots',
+                    'image-slash',
+                    'list-flip',
+                    'list-tree-flip',
+                    'share-flip',
+                    => Craft::getAlias("@app/icons/custom-icons/$icon.svg"),
                     default => Craft::getAlias("@appicons/$icon.svg"),
                 };
                 if (!file_exists($path)) {
