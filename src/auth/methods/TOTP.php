@@ -94,7 +94,7 @@ JS, [
         ]);
 
         return $view->renderTemplate('_components/auth/methods/TOTP/setup.twig', [
-            'secret' => $secret,
+            'secret' => rtrim(chunk_split($secret, 4, ' ')),
             'user' => $this->user,
             'qrCode' => $this->generateQrCode($secret),
             'totpFormId' => $totpFormId,
@@ -180,7 +180,7 @@ JS, [
             }
         }
 
-        return rtrim(chunk_split($secret, 4, ' '));
+        return $secret;
     }
 
     /**
@@ -283,8 +283,6 @@ JS, [
      */
     private function generateQrCode(string $secret): string
     {
-        $secret = str_replace(' ', '', $secret);
-
         $qrCodeUrl = (new Google2FA())->getQRCodeUrl(
             Craft::$app->getSystemName(),
             $this->user->email,
