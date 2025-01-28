@@ -8,6 +8,7 @@
 - Fixed a bug where eager-loading element queries could create an excessive amount of cache invalidation tags.
 - Fixed a bug where it was possible to enable elements for new sites with validation errors. ([#16505](https://github.com/craftcms/cms/issues/16505))
 - Fixed a bug where setting `transaction: true` in the Codeception configuration wasn’t rolling back database DML changes after a test. ([#16546](https://github.com/craftcms/cms/issues/16546))
+- Fixed a bug where ʻokina characters weren’t being removed in auto-generated slugs. ([#16548](https://github.com/craftcms/cms/issues/16548))
 
 ## 4.14.1 - 2025-01-22
 
