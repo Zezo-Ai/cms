@@ -34,6 +34,7 @@
 - Fixed a bug where Color fields weren’t getting fully instantiated when present on a newly-created nested entry within a Matrix field. ([#16554](https://github.com/craftcms/cms/issues/16554))
 - Fixed a bug where content footers could bleed out of their containers on smaller screens. ([#16557](https://github.com/craftcms/cms/issues/16557))
 - Fixed a bug where email settings weren’t validating if any System Email Address or Reply-To Address site override settings were set to environment variables. ([#16559](https://github.com/craftcms/cms/issues/16559))
+- Fixed a bug where tooltips could be closed immediately. ([#16530](https://github.com/craftcms/cms/issues/16530))
 
 ## 5.6.1 - 2025-01-22
 
