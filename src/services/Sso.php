@@ -10,7 +10,6 @@ namespace craft\services;
 use Craft;
 use craft\auth\sso\ProviderInterface;
 use craft\base\MemoizableArray;
-use craft\db\Query;
 use craft\db\Table;
 use craft\elements\User;
 use craft\enums\CmsEdition;
