@@ -3,6 +3,7 @@
 ## Unreleased
 
 - The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
+- The “Settings” global nav item now has an alternate icon when `allowAdminChanges` is disabled, indicating that settings are read-only. ([#16563](https://github.com/craftcms/cms/pull/16563))
 - Added `craft\web\User::getDefaultReturnUrl()`.
 - Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
 - Fixed a bug where changes to custom fields within nested Matrix entries weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
