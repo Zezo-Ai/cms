@@ -1798,7 +1798,7 @@ class StringHelper extends \yii\helpers\StringHelper
         }
 
         // Remove inner-word punctuation.
-        $str = preg_replace('/[\'"‘’“”\[\]\(\)\{\}:]/u', '', $str);
+        $str = preg_replace('/[\'"‘’“”ʻ\[\]\(\)\{\}:]/u', '', $str);
 
         // Split on the words and return
         return static::splitOnWords($str);
@@ -1817,7 +1817,7 @@ class StringHelper extends \yii\helpers\StringHelper
         $handle = static::stripHtml($str);
 
         // Remove inner-word punctuation
-        $handle = preg_replace('/[\'"‘’“”\[\]\(\)\{\}:]/', '', $handle);
+        $handle = preg_replace('/[\'"‘’“”ʻ\[\]\(\)\{\}:]/', '', $handle);
 
         // Make it lowercase
         $handle = static::toLowerCase($handle);
