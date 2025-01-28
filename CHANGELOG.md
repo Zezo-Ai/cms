@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- The Login page now displays the Login Page Logo above the login form, rather than within the header. ([#16564](https://github.com/craftcms/cms/pull/16564))
 - The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))
 - The “Settings” global nav item now has an alternate icon when `allowAdminChanges` is disabled, indicating that settings are read-only. ([#16563](https://github.com/craftcms/cms/pull/16563))
 - Added `craft\web\User::getDefaultReturnUrl()`.
