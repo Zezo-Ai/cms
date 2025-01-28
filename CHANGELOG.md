@@ -8,6 +8,8 @@
 - Fixed a bug where changes to custom fields within nested Matrix entries weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
 - Fixed a bug where native fields (e.g. Title) were showing changed statuses when viewing revisions, if they had been updated since the time the revision was created.
 - Fixed a bug where eager-loading element queries could create an excessive amount of cache invalidation tags.
+- Fixed a bug where it was possible to enable elements for new sites with validation errors. ([#16505](https://github.com/craftcms/cms/issues/16505))
+- Fixed a bug where ʻokina characters weren’t being removed in auto-generated slugs. ([#16548](https://github.com/craftcms/cms/issues/16548))
 - Added a `cp.login.alternative-login-methods` hook to the system login template.
 - Fixed a bug where Color fields’ custom color inputs were including presets based on the color palette.
 - Fixed a bug where nested Matrix entries weren’t getting assigned a post date if they were created while saving the owner element with a custom validation scenario. ([#16504](https://github.com/craftcms/cms/pull/16504))
@@ -20,6 +22,9 @@
 - Fixed a bug where SSO users were able to “reset” their passwords.
 - Fixed JavaScript error that occurred if there was problem sending a password-reset email.
 - Fixed an error that could occur when working with an entry whose type is no longer allowed by its section/field. ([#16539](https://github.com/craftcms/cms/issues/16539))
+- Fixed a bug where tooltips were displaying behind slideouts. ([#16529](https://github.com/craftcms/cms/issues/16529))
+- Fixed a bug where field translation indicators and action menu buttons could be autofocussed when creating a new entry within a Matrix field, or opening an element editor slideout. ([#16528](https://github.com/craftcms/cms/issues/16528))
+- Fixed a bug where field values copied from another site weren’t always saving. ([#16537](https://github.com/craftcms/cms/issues/16537))
 
 ## 5.6.1 - 2025-01-22
 

@@ -1,4 +1,11 @@
-import {arrow, autoUpdate, computePosition, flip, offset, shift} from '@floating-ui/dom';
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  flip,
+  offset,
+  shift,
+} from '@floating-ui/dom';
 
 /**
  * Tooltip
@@ -198,17 +205,16 @@ class CraftTooltip extends HTMLElement {
 
     // Only show the tooltip if it's not already open
     if (!this.showing) {
-
       // Check that no click event occurred shortly after
       setTimeout(() => {
         if (currentTime === this.lastShow) {
           this.show();
         }
-      }, this.eventDelay)
+      }, this.eventDelay);
     }
 
     this.show();
-  }
+  };
 
   handleBlur = () => {
     if (this.delayTimeout) {
@@ -216,7 +222,7 @@ class CraftTooltip extends HTMLElement {
     }
 
     this.hide();
-  }
+  };
 
   handleClick = () => {
     if (this.delayTimeout) {
@@ -233,7 +239,7 @@ class CraftTooltip extends HTMLElement {
     } else {
       this.toggle();
     }
-  }
+  };
 
   toggle = () => {
     if (this.showing) {
@@ -251,6 +257,7 @@ class CraftTooltip extends HTMLElement {
         : `translateY(0)`,
       // Make sure if a user hovers over the label itself, it stays open
       pointerEvents: 'auto',
+      zIndex: 101,
     });
 
     autoUpdate(this.triggerElement, this.tooltip, this.update);
