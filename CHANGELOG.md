@@ -31,6 +31,7 @@
 - Fixed compatibility with the Google Authenticator app for TOTP-based authentication. ([#16466](https://github.com/craftcms/cms/issues/16466), [#16552](https://github.com/craftcms/cms/issues/16552))
 - Fixed a bug where the Updates utility wasn’t showing the “Update all” button if multiple updates were available. ([#16565](https://github.com/craftcms/cms/issues/16565))
 - Fixed a bug where `craft\services\Sso::findUser()` wasn't accounting for soft-deleted users. ([#16491](https://github.com/craftcms/cms/pull/16491))
+- Fixed a bug where Color fields weren’t getting fully instantiated when present on a newly-created nested entry within a Matrix field. ([#16554](https://github.com/craftcms/cms/issues/16554))
 
 ## 5.6.1 - 2025-01-22
 

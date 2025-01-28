@@ -290,9 +290,11 @@
             'fast',
             async () => {
               $entry.css('margin-bottom', '');
-              Craft.initUiElements($entry.children('.fields'));
+              // Execute the response JS first so any Selectize inputs, etc.,
+              // get instantiated before field toggles
               await Craft.appendHeadHtml(data.headHtml);
               await Craft.appendBodyHtml(data.bodyHtml);
+              Craft.initUiElements($entry.children('.fields'));
               new Craft.MatrixInput.Entry(this, $entry);
               this.entrySort.addItems($entry);
               this.entrySelect.addItems($entry);
