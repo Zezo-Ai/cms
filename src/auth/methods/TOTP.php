@@ -161,8 +161,8 @@ JS, [
     }
 
     /**
-     * Gets User's 2FA secret from the database
-     * and returns as a string formatted into a 4 character chunks.
+     * Returns User's 2FA secret from the database
+     * or generates a new one.
      *
      * @return string
      */
