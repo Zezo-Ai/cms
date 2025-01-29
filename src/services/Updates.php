@@ -358,6 +358,7 @@ class Updates extends Component
     public function updateCraftVersionInfo(): bool
     {
         $info = Craft::$app->getInfo();
+        $oldSchemaVersion = $info->schemaVersion;
         $info->version = Craft::$app->getVersion();
         $info->schemaVersion = Craft::$app->schemaVersion;
 
@@ -366,7 +367,7 @@ class Updates extends Component
         // Only update the schema version if it's changed from what's in the file,
         // so we don't accidentally overwrite other pending changes
         $projectConfig = Craft::$app->getProjectConfig();
-        if ($projectConfig->get(ProjectConfig::PATH_SCHEMA_VERSION, true) !== $info->schemaVersion) {
+        if ($projectConfig->get(ProjectConfig::PATH_SCHEMA_VERSION, true) !== $oldSchemaVersion) {
             Craft::$app->getProjectConfig()->set(ProjectConfig::PATH_SCHEMA_VERSION, $info->schemaVersion, 'Update Craft schema version');
         }
 

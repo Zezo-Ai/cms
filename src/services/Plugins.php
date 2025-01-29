@@ -849,7 +849,9 @@ class Plugins extends Component
 
         // Update our cache of the versions
         $this->loadPlugins();
+        $oldPluginSchemaVersion = $plugin->schemaVersion;
         if (isset($this->_storedPluginInfo[$plugin->id])) {
+            $oldPluginSchemaVersion = $this->_storedPluginInfo[$plugin->id]['schemaVersion'];
             $this->_storedPluginInfo[$plugin->id]['version'] = $plugin->getVersion();
             $this->_storedPluginInfo[$plugin->id]['schemaVersion'] = $plugin->schemaVersion;
         }
@@ -859,7 +861,7 @@ class Plugins extends Component
         $projectConfig = Craft::$app->getProjectConfig();
         $key = ProjectConfig::PATH_PLUGINS . ".$plugin->id.schemaVersion";
 
-        if ($projectConfig->get($key, true) !== $plugin->schemaVersion) {
+        if ($projectConfig->get($key, true) !== $oldPluginSchemaVersion) {
             Craft::$app->getProjectConfig()->set($key, $plugin->schemaVersion, "Update plugin schema version for “{$plugin->handle}”");
         }
     }
