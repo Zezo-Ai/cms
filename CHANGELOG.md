@@ -5,6 +5,8 @@
 - Fixed an error that could occur when eager-loading nested elements’ owners, if any of the queried elements didn’t have an owner ID. ([#16570](https://github.com/craftcms/cms/issues/16570), [#16572](https://github.com/craftcms/cms/issues/16572), [#16576](https://github.com/craftcms/cms/issues/16576))
 - Fixed a bug where collapsed elements within element indexes in structure view weren’t showing their expand/collapse toggles.
 - Fixed a bug where Color fields weren’t getting fully instantiated within slideouts, Live Preview, and after copying the field value from another site. ([#16571](https://github.com/craftcms/cms/pull/16571))
+- Fixed a bug where buttons weren’t getting focus rings.
+- Fixed a bug where light text didn’t meet minimum contrast requirements.
 
 ## 5.6.2 - 2024-01-28
 
