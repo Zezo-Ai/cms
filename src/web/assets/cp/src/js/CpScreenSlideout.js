@@ -387,9 +387,11 @@ Craft.CpScreenSlideout = Craft.Slideout.extend(
         this.$footer.removeClass('hidden');
 
         Garnish.requestAnimationFrame(async () => {
-          Craft.initUiElements(this.$content);
+          // Execute the response JS first so any Selectize inputs, etc.,
+          // get instantiated before field toggles
           await Craft.appendHeadHtml(data.headHtml);
           await Craft.appendBodyHtml(data.bodyHtml);
+          Craft.initUiElements(this.$content);
           Craft.cp.elementThumbLoader.load($(this.$content));
 
           if (data.sidebar) {

@@ -13,6 +13,7 @@ use craft\base\ElementAction;
 use craft\base\ElementActionInterface;
 use craft\base\ElementExporterInterface;
 use craft\base\ElementInterface;
+use craft\db\ExcludeDescendantIdsExpression;
 use craft\elements\actions\DeleteActionInterface;
 use craft\elements\actions\Restore;
 use craft\elements\conditions\ElementCondition;
@@ -791,7 +792,8 @@ class ElementIndexesController extends BaseElementsController
                 }
 
                 if (!empty($descendantIds)) {
-                    $query->andWhere(['not', ['elements.id' => $descendantIds]]);
+                    /** @phpstan-ignore-next-line */
+                    $query->andWhere(new ExcludeDescendantIdsExpression($descendantIds));
                     $hasFilters = true;
                 }
             }
