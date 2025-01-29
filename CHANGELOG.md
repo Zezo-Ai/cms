@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.3 - 2025-01-29
 
 - Added `craft\db\ExpressionBuilder`.
 - Added `craft\db\ExpressionInterface`.
