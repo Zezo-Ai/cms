@@ -8,6 +8,7 @@
 - Fixed a bug where buttons weren’t getting focus rings.
 - Fixed a bug where light text didn’t meet minimum contrast requirements.
 - Fixed an error that could occur when attempting to edit a recursively-nested entry. ([#16566](https://github.com/craftcms/cms/issues/16566))
+- Fixed a bug where custom options set to Checkboxes and Radio Buttons fields weren’t showing up in field previews. ([#16575](https://github.com/craftcms/cms/pull/16575))
 
 ## 5.6.2 - 2024-01-28
 
