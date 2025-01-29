@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Sor fejléce',
     'Row {index}' => 'Sor {index}',
     'Rule Type' => 'Szabálytípus',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG fájl javasolt.  A logó {size} szélesen fog megjelenni.',
     'Same as asset filesystem' => 'Ugyanaz, mint a tartalom fájlrendszere',
     'Same as language' => 'Ugyanaz, mint a nyelv',
     'Savable' => 'Elmenthető',
