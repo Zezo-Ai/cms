@@ -45,13 +45,16 @@ trait NestedElementTrait
 
                 return [
                     'elementType' => $ownerType,
-                    'map' => array_map(fn(NestedElementInterface $element) => [
-                        'source' => $element->id,
-                        'target' => match ($handle) {
+                    'map' => array_filter(array_map(function(NestedElementInterface $element) use ($handle) {
+                        $ownerId = match ($handle) {
                             'owner' => $element->getOwnerId(),
                             'primaryOwner' => $element->getPrimaryOwnerId(),
-                        },
-                    ], $sourceElements),
+                        };
+                        return $ownerId ? [
+                            'source' => $element->id,
+                            'target' => $ownerId,
+                        ] : null;
+                    }, $sourceElements)),
                     'criteria' => [
                         'status' => null,
                     ],

@@ -15,6 +15,7 @@ use craft\behaviors\RevisionBehavior;
 use craft\db\CoalesceColumnsExpression;
 use craft\db\Command;
 use craft\db\Connection;
+use craft\db\ExcludeDescendantIdsExpression;
 use craft\db\Query;
 use craft\db\Table;
 use craft\elements\actions\Delete;
@@ -1219,7 +1220,7 @@ abstract class Element extends Component implements ElementInterface
             'inlineEditing' => $viewState['inlineEditing'] ?? false,
             'nestedInputNamespace' => $viewState['nestedInputNamespace'] ?? null,
             'tableName' => static::pluralDisplayName(),
-            'elementQuery' => $elementQuery,
+            'elementQuery' => self::elemnetQueryWithAllDescendants($elementQuery),
         ];
 
         $db = Craft::$app->getDb();
@@ -1321,6 +1322,24 @@ abstract class Element extends Component implements ElementInterface
         $template = '_elements/' . $viewState['mode'] . 'view/' . ($includeContainer ? 'container' : 'elements');
 
         return Craft::$app->getView()->renderTemplate($template, $variables);
+    }
+
+    private static function elemnetQueryWithAllDescendants(ElementQueryInterface $elementQuery): ElementQueryInterface
+    {
+        if (is_array($elementQuery->where)) {
+            foreach ($elementQuery->where as $key => $condition) {
+                if ($condition instanceof ExcludeDescendantIdsExpression) {
+                    $elementQuery = clone $elementQuery;
+                    unset($elementQuery->where[$key]);
+                    break;
+                }
+            }
+        } elseif ($elementQuery->where instanceof ExcludeDescendantIdsExpression) {
+            $elementQuery = clone $elementQuery;
+            $elementQuery->where = null;
+        }
+
+        return $elementQuery;
     }
 
     /**

@@ -3235,8 +3235,10 @@ class Elements extends Component
                     $targetElementIdsBySourceIds = [];
 
                     foreach ($map['map'] as $mapping) {
-                        $uniqueTargetElementIds[$mapping['target']] = true;
-                        $targetElementIdsBySourceIds[$mapping['source']][$mapping['target']] = true;
+                        if (!empty($mapping['target'])) {
+                            $uniqueTargetElementIds[$mapping['target']] = true;
+                            $targetElementIdsBySourceIds[$mapping['source']][$mapping['target']] = true;
+                        }
                     }
 
                     // Get the target elements

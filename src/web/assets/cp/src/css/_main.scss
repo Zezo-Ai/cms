@@ -1954,27 +1954,15 @@ ul.icons {
   text-wrap: nowrap;
   background-color: var(--button-bg);
 
-  &:not(:focus) {
-    box-shadow: var(--button-shadow);
-  }
-
   &:hover {
     border: var(--button-border--hover);
     background: var(--button-bg--hover);
-
-    &:not(:focus) {
-      box-shadow: var(--button-shadow--hover);
-    }
   }
 
   &:active,
   &.active {
     border: var(--button-border--active);
     background: var(--button-bg--active);
-
-    &:not(:focus) {
-      box-shadow: var(--button-shadow--active);
-    }
   }
 
   &:not([aria-current]) {
@@ -2467,7 +2455,6 @@ craft-copy-attribute {
     border: var(--primary-button-border) !important;
     color: var(--primary-button-text-color) !important;
     background: var(--primary-button-bg) !important;
-    box-shadow: var(--primary-button-shadow) !important;
 
     &:not(.disabled, .inactive, .loading) {
       &:hover,
@@ -2475,7 +2462,6 @@ craft-copy-attribute {
       &:focus {
         border: var(--primary-button-border--hover) !important;
         background: var(--primary-button-bg--hover) !important;
-        box-shadow: var(--primary-button-shadow--hover) !important;
       }
 
       &:active,
@@ -2483,7 +2469,6 @@ craft-copy-attribute {
       &[aria-expanded='true'] {
         border: var(--primary-button-border--active) !important;
         background: var(--primary-button-bg--active) !important;
-        box-shadow: var(--primary-button-shadow--active) !important;
       }
     }
   }
@@ -2514,7 +2499,6 @@ craft-copy-attribute {
   border: var(--secondary-button-border) !important;
   color: var(--secondary-button-text-color) !important;
   background: var(--secondary-button-bg) !important;
-  box-shadow: var(--secondary-button-shadow) !important;
 }
 
 .secondary-buttons .btn.submit:not(.disabled, .inactive, .loading):hover,
@@ -2525,7 +2509,6 @@ craft-copy-attribute {
 .btn.secondary:not(.disabled, .inactive, .loading):focus {
   border: var(--secondary-button-border--hover) !important;
   background: var(--secondary-button-bg--hover) !important;
-  box-shadow: var(--secondary-button-shadow--hover) !important;
 }
 
 .secondary-buttons .btn.submit:not(.disabled, .inactive, .loading):active,
@@ -2537,7 +2520,6 @@ craft-copy-attribute {
 .btn.secondary:not(.disabled, .inactive, .loading)[aria-expanded='true'] {
   border: var(--secondary-button-border--active) !important;
   background: var(--secondary-button-bg--active) !important;
-  box-shadow: var(--secondary-button-shadow--active) !important;
 }
 
 div.btn.submit {
