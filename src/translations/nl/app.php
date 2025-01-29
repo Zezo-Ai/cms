@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Rijkop',
     'Row {index}' => 'Rij {index}',
     'Rule Type' => 'Regeltype',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG-bestand aanbevolen. Het logo wordt weergegeven met een breedte van {size}.',
     'Same as asset filesystem' => 'Zelfde als bestandssysteem',
     'Same as language' => 'Hetzelfde als de taal',
     'Savable' => 'Bewaarbaar',
