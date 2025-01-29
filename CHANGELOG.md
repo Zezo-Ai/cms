@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added compatibility with codeception/module-yii2 1.1.6+. ([#16580](https://github.com/craftcms/cms/pull/16580))
 - Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
 
 ## 4.14.2 - 2025-01-28
