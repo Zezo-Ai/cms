@@ -130,11 +130,20 @@ class CraftConnector extends Yii2
      * We'll open the connection after all of the transaction listeners are
      * registered.
      *
+     * Method has nullable param to support `codeception/module-yii2` both in
+     * the < 1.1.6 and >= 1.1.6 versions. The method signature is now compliant
+     * with the `parent` for both branches.
+     *
+     * @param null|\yii\log\Logger $logger
+     *
      * @inheritDoc
      */
-    public function startApp(): void
+    public function startApp(?\yii\log\Logger $logger = null): void
     {
-        parent::startApp();
+        // Pass through all method arguments as to support
+        // `codeception/module-yii2` < 1.1.6 AND >= 1.1.6 versions, whilst
+        // also keeping PHPStan satisfied for both versions.
+        parent::startApp(...func_get_args());
 
         \Craft::$app->db->close();
     }
