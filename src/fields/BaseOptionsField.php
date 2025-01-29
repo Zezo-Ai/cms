@@ -488,7 +488,8 @@ abstract class BaseOptionsField extends Field implements PreviewableFieldInterfa
             foreach ($value as $option) {
                 /** @var OptionData $option */
                 if (!$this->isValueEmpty($option, $element)) {
-                    $labels[] = Craft::t('site', $option->label);
+                    // Custom values have no label
+                    $labels[] = $option->label ? Craft::t('site', (string)$option->label) : Craft::t('site', (string)$option->value);
                 }
             }
 
@@ -496,7 +497,12 @@ abstract class BaseOptionsField extends Field implements PreviewableFieldInterfa
         }
 
         /** @var SingleOptionFieldData $value */
-        return !$this->isValueEmpty($value, $element) ? Craft::t('site', (string)$value->label) : '';
+        if (!$this->isValueEmpty($value, $element)) {
+            // Custom values have no label
+            return $value->label ? Craft::t('site', (string)$value->label) : Craft::t('site', (string)$value->value);
+        }
+
+        return '';
     }
 
     /**
