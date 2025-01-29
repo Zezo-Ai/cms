@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'عنوان ردیف',
     'Row {index}' => 'ردیف {index}',
     'Rule Type' => 'نوع قاعده',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'فایل SVG پیشنهاد می گردد. لوگو با عرض {size} نمایش داده خواهد شد.',
     'Same as asset filesystem' => 'مشابه سیستم‌فایل فایل پروژه',
     'Same as language' => 'مشابه با زبان',
     'Savable' => 'قابل ذخیره سازی',
