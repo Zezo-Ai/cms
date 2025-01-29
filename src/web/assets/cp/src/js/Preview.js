@@ -395,9 +395,11 @@ Craft.Preview = Garnish.Base.extend(
         this.$editorContainer.serialize()
       );
 
-      Craft.initUiElements(this.$editorContainer);
+      // Execute the response JS first so any Selectize inputs, etc.,
+      // get instantiated before field toggles
       await Craft.appendHeadHtml(data.headHtml);
       await Craft.appendBodyHtml(data.bodyHtml);
+      Craft.initUiElements(this.$editorContainer);
 
       this.elementEditor = new Craft.ElementEditor(
         this.$editorContainer,

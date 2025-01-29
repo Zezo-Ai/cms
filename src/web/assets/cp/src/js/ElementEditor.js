@@ -680,9 +680,12 @@ Craft.ElementEditor = Garnish.Base.extend(
 
           const $newField = $(fieldHtml);
           $field.replaceWith($newField);
-          Craft.initUiElements($newField);
+
+          // Execute the response JS first so any Selectize inputs, etc.,
+          // get instantiated before field toggles
           await Craft.appendHeadHtml(headHtml);
           await Craft.appendBodyHtml(bodyHtml);
+          Craft.initUiElements($newField);
 
           Craft.cp.displaySuccess(message);
         } finally {
