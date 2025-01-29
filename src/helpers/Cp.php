@@ -916,12 +916,6 @@ class Cp
         $user = Craft::$app->getUser()->getIdentity();
         $editable = $user && $elementsService->canView($element, $user);
 
-        $primaryOwner = null;
-        try {
-            $primaryOwner = $element instanceof NestedElementInterface ? $element->getPrimaryOwner() : null;
-        } catch (InvalidConfigException $e) {
-        }
-        
         return ArrayHelper::merge(
             Html::normalizeTagAttributes($element->getHtmlAttributes($config['context'])),
             [
@@ -939,7 +933,7 @@ class Cp
                     'field-id' => $element instanceof NestedElementInterface ? $element->getField()?->id : null,
                     'primary-owner-id' => $element instanceof NestedElementInterface ? $element->getPrimaryOwnerId() : null,
                     'owner-id' => $element instanceof NestedElementInterface ? $element->getOwnerId() : null,
-                    'owner-is-canonical' => $primaryOwner?->getIsCanonical(),
+                    'owner-is-canonical' => self::elementOwnerIsCanonical($element),
                     'site-id' => $element->siteId,
                     'status' => $element->getStatus(),
                     'label' => (string)$element,
@@ -954,6 +948,30 @@ class Cp
                 ]),
             ],
         );
+    }
+
+    private static function elementOwnerIsCanonical(ElementInterface $element): bool
+    {
+        // figure out if the element has any non-canonical owners
+        $ownerIsCanonical = false;
+
+        do {
+            $owner = null;
+            try {
+                $owner = $element instanceof NestedElementInterface ? $element->getPrimaryOwner() : null;
+            } catch (InvalidConfigException) {
+            }
+            if (!$owner) {
+                break;
+            }
+            $ownerIsCanonical = $owner->getIsCanonical();
+            if (!$ownerIsCanonical) {
+                break;
+            }
+            $element = $owner;
+        } while (true);
+
+        return $ownerIsCanonical;
     }
 
     private static function componentCheckboxHtml(string $labelId): string

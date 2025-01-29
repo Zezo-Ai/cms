@@ -7,6 +7,7 @@
 - Fixed a bug where Color fields weren’t getting fully instantiated within slideouts, Live Preview, and after copying the field value from another site. ([#16571](https://github.com/craftcms/cms/pull/16571))
 - Fixed a bug where buttons weren’t getting focus rings.
 - Fixed a bug where light text didn’t meet minimum contrast requirements.
+- Fixed an error that could occur when attempting to edit a recursively-nested entry. ([#16566](https://github.com/craftcms/cms/issues/16566))
 
 ## 5.6.2 - 2024-01-28
 
