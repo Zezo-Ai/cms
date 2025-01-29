@@ -1393,7 +1393,7 @@ return [
     'Row heading' => '行の見出し',
     'Row {index}' => '行{index}',
     'Rule Type' => 'ルールタイプ',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG ファイルを推奨します。ロゴは {size} 幅で表示されます。',
     'Same as asset filesystem' => 'アセットファイルシステムと同じ',
     'Same as language' => '言語に合わせる',
     'Savable' => '保存可能',

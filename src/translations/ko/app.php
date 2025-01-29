@@ -1393,7 +1393,7 @@ return [
     'Row heading' => '행 제목',
     'Row {index}' => '행 {index}',
     'Rule Type' => '규칙 유형',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG 파일을 권장합니다. 로고는 {size}에 넓게 표시됩니다.',
     'Same as asset filesystem' => '에셋 파일 시스템과 동일',
     'Same as language' => '언어와 동일',
     'Savable' => '저장 가능',
