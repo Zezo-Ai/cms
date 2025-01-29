@@ -2,8 +2,11 @@
 
 ## Unreleased
 
+- Added `craft\db\ExpressionBuilder`.
+- Added `craft\db\ExpressionInterface`.
 - Added compatibility with codeception/module-yii2 1.1.6+. ([#16580](https://github.com/craftcms/cms/pull/16580))
 - Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
+- Fixed a bug where collapsed elements within element indexes in structure view weren’t showing their expand/collapse toggles.
 
 ## 4.14.2 - 2025-01-28
 
