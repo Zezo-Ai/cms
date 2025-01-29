@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.3 - 2024-01-29
 
 - Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
 - Fixed an error that could occur when eager-loading nested elements’ owners, if any of the queried elements didn’t have an owner ID. ([#16570](https://github.com/craftcms/cms/issues/16570), [#16572](https://github.com/craftcms/cms/issues/16572), [#16576](https://github.com/craftcms/cms/issues/16576))
