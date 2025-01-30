@@ -64,7 +64,7 @@ import './updates.scss';
               this.createUpdateForm(
                 Craft.t('app', 'Update all'),
                 this.installableUpdates
-              ).insertAfter($('#header > .flex:last'));
+              ).appendTo(Craft.cp.$header);
             }
           } else {
             $graphic.removeClass('spinner').addClass('success');

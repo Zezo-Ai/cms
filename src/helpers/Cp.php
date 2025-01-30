@@ -916,12 +916,6 @@ class Cp
         $user = Craft::$app->getUser()->getIdentity();
         $editable = $user && $elementsService->canView($element, $user);
 
-        $primaryOwner = null;
-        try {
-            $primaryOwner = $element instanceof NestedElementInterface ? $element->getPrimaryOwner() : null;
-        } catch (InvalidConfigException $e) {
-        }
-        
         return ArrayHelper::merge(
             Html::normalizeTagAttributes($element->getHtmlAttributes($config['context'])),
             [
@@ -939,7 +933,7 @@ class Cp
                     'field-id' => $element instanceof NestedElementInterface ? $element->getField()?->id : null,
                     'primary-owner-id' => $element instanceof NestedElementInterface ? $element->getPrimaryOwnerId() : null,
                     'owner-id' => $element instanceof NestedElementInterface ? $element->getOwnerId() : null,
-                    'owner-is-canonical' => $primaryOwner?->getIsCanonical(),
+                    'owner-is-canonical' => self::elementOwnerIsCanonical($element),
                     'site-id' => $element->siteId,
                     'status' => $element->getStatus(),
                     'label' => (string)$element,
@@ -954,6 +948,30 @@ class Cp
                 ]),
             ],
         );
+    }
+
+    private static function elementOwnerIsCanonical(ElementInterface $element): bool
+    {
+        // figure out if the element has any non-canonical owners
+        $ownerIsCanonical = false;
+
+        do {
+            $owner = null;
+            try {
+                $owner = $element instanceof NestedElementInterface ? $element->getPrimaryOwner() : null;
+            } catch (InvalidConfigException) {
+            }
+            if (!$owner) {
+                break;
+            }
+            $ownerIsCanonical = $owner->getIsCanonical();
+            if (!$ownerIsCanonical) {
+                break;
+            }
+            $element = $owner;
+        } while (true);
+
+        return $ownerIsCanonical;
     }
 
     private static function componentCheckboxHtml(string $labelId): string
@@ -1517,7 +1535,10 @@ JS, [
             $userSessionService->getIsAdmin() &&
             $userSessionService->getIdentity()->getPreference('showFieldHandles')
         );
-        $showActionMenu = !empty($config['actionMenuItems']);
+        $showActionMenu = (
+            !empty($config['actionMenuItems']) &&
+            ($label || $showAttribute || isset($config['labelExtra']))
+        );
         $showLabelExtra = $showAttribute || $showActionMenu || isset($config['labelExtra']);
 
         $instructionsHtml = $instructions
@@ -1529,7 +1550,7 @@ JS, [
 
         $translationDescription = $config['translationDescription'] ?? Craft::t('app', 'This field is translatable.');
         $translationIconHtml = Html::button('', [
-            'class' => ['t9n-indicator'],
+            'class' => ['t9n-indicator', 'prevent-autofocus'],
             'data' => [
                 'icon' => 'language',
             ],
@@ -1607,7 +1628,7 @@ JS, [
                         ($showActionMenu ? static::disclosureMenu($config['actionMenuItems'], [
                             'hiddenLabel' => Craft::t('app', 'Actions'),
                             'buttonAttributes' => [
-                                'class' => ['action-btn', 'small'],
+                                'class' => ['action-btn', 'small', 'prevent-autofocus'],
                             ],
                         ]) : '') .
                         ($showAttribute ? static::renderTemplate('_includes/forms/copytextbtn.twig', [
@@ -3362,9 +3383,19 @@ JS;
             // system icon name?
             if (preg_match('/^[a-z\-]+(\d?)$/', $icon)) {
                 $path = match ($icon) {
-                    'asterisk-slash', 'diamond-slash', 'element-card', 'element-card-slash', 'element-cards', 'graphql',
-                    'grip-dots', 'image-slash', 'list-flip', 'list-tree-flip', 'share-flip' =>
-                    Craft::getAlias("@app/icons/custom-icons/$icon.svg"),
+                    'asterisk-slash',
+                    'diamond-slash',
+                    'element-card',
+                    'gear-slash',
+                    'element-card-slash',
+                    'element-cards',
+                    'graphql',
+                    'grip-dots',
+                    'image-slash',
+                    'list-flip',
+                    'list-tree-flip',
+                    'share-flip',
+                    => Craft::getAlias("@app/icons/custom-icons/$icon.svg"),
                     default => Craft::getAlias("@appicons/$icon.svg"),
                 };
                 if (!file_exists($path)) {

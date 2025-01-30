@@ -107,7 +107,7 @@ class ElementHelper
         $slug = StringHelper::stripHtml($slug);
 
         // Remove inner-word punctuation
-        $slug = preg_replace('/[\'"‘’“”\[\]\(\)\{\}:]/u', '', $slug);
+        $slug = preg_replace('/[\'"‘’“”ʻ\[\]\(\)\{\}:]/u', '', $slug);
 
         // Make it lowercase
         $generalConfig = Craft::$app->getConfig()->getGeneral();

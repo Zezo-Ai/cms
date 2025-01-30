@@ -1072,7 +1072,10 @@ $.extend($.event.special, {
           }
 
           if (!disabled) {
-            $elem.trigger('activate');
+            $elem.trigger({
+              type: 'activate',
+              originalEvent: e,
+            });
           }
         },
         'keydown.garnish-activate': function (e) {
@@ -1092,7 +1095,10 @@ $.extend($.event.special, {
           }
 
           if (!$elem.hasClass('disabled')) {
-            $elem.trigger('activate');
+            $elem.trigger({
+              type: 'activate',
+              originalEvent: e,
+            });
           }
         },
       });

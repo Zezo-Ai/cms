@@ -220,7 +220,7 @@ return array(
   'arrow-left-from-bracket' =>
   array(
     'name' => ' arrow left from bracket ',
-    'terms' => ' leave logout send exit ',
+    'terms' => ' exit leave logout send ',
     'pro' => true,
   ),
   'arrow-pointer' =>
@@ -292,7 +292,7 @@ return array(
   'arrows-rotate-reverse' =>
   array(
     'name' => ' arrows rotate reverse ',
-    'terms' => ' anticlockwise arrow counterclockwise exchange refresh reload renew retry rotate swap clockwise right and left semicircle arrows exchange modify refresh reload renew retry rotate swap withershins modify ',
+    'terms' => ' clockwise right and left semicircle arrows anticlockwise arrow counterclockwise exchange exchange modify modify refresh refresh reload reload renew renew retry retry rotate rotate swap swap withershins ',
     'pro' => true,
   ),
   'asterisk' =>
@@ -376,7 +376,7 @@ return array(
   'bacterium' =>
   array(
     'name' => ' bacterium ',
-    'terms' => ' antibiotic antibody covid 19 health organism sick ',
+    'terms' => ' antibiotic antibody covid 19 germ health organism sick ',
     'pro' => false,
   ),
   'badge' =>
@@ -412,7 +412,7 @@ return array(
   'bag-seedling' =>
   array(
     'name' => ' bag seedling ',
-    'terms' => ' agriculture fertilizer garden grow plant sack seed bag ',
+    'terms' => ' agriculture bag fertilizer garden grow plant sack seed ',
     'pro' => true,
   ),
   'bag-shopping' =>
@@ -598,7 +598,7 @@ return array(
   'bin-recycle' =>
   array(
     'name' => ' bin recycle ',
-    'terms' => ' jug recycle collect plastics ',
+    'terms' => ' collect jug plastics recycle ',
     'pro' => true,
   ),
   'binary' =>
@@ -754,7 +754,7 @@ return array(
   'box-ballot' =>
   array(
     'name' => ' box ballot ',
-    'terms' => ' ballot ballot box with ballot box election politics vote voting ',
+    'terms' => ' ballot ballot box with ballot box election politics survey vote voting ',
     'pro' => true,
   ),
   'brackets-curly' =>
@@ -862,7 +862,7 @@ return array(
   'bulldozer' =>
   array(
     'name' => ' bulldozer ',
-    'terms' => ' earth mover dirt ',
+    'terms' => ' dirt earth mover ',
     'pro' => true,
   ),
   'bullhorn' =>
@@ -1066,7 +1066,7 @@ return array(
   'cannon' =>
   array(
     'name' => ' cannon ',
-    'terms' => ' gun powder projectile artillery cannonball munition ordnance weapon ',
+    'terms' => ' artillery cannonball gun powder munition ordnance projectile weapon ',
     'pro' => true,
   ),
   'capsules' =>
@@ -1642,7 +1642,7 @@ return array(
   'comment' =>
   array(
     'name' => ' comment ',
-    'terms' => ' conversation discussion talking right speech bubble answer bubble chat commenting conversation feedback message note notification sms speech talk texting ',
+    'terms' => ' right speech bubble answer bubble chat commenting conversation conversation discussion feedback message note notification sms speech talk talking texting ',
     'pro' => false,
   ),
   'comment-lines' =>
@@ -1654,7 +1654,7 @@ return array(
   'comments' =>
   array(
     'name' => ' comments ',
-    'terms' => ' conversation discussion talking two speech bubbles answer bubble chat commenting conversation feedback message note notification sms speech talk texting ',
+    'terms' => ' two speech bubbles answer bubble chat commenting conversation conversation discussion feedback message note notification sms speech talk talking texting ',
     'pro' => false,
   ),
   'compact-disc' =>
@@ -1726,7 +1726,7 @@ return array(
   'court-sport' =>
   array(
     'name' => ' court sport ',
-    'terms' => ' basketball court football futbol soccer sport field ',
+    'terms' => ' basketball court field football futbol soccer sport ',
     'pro' => true,
   ),
   'cow' =>
@@ -1948,7 +1948,7 @@ return array(
   'dinosaur' =>
   array(
     'name' => ' dinosaur ',
-    'terms' => ' brachiosaurus dinosaur herbivore jurassic sauropod dino ',
+    'terms' => ' brachiosaurus dino dinosaur herbivore jurassic sauropod ',
     'pro' => true,
   ),
   'diploma' =>
@@ -2044,7 +2044,7 @@ return array(
   'down-left-and-up-right-to-center' =>
   array(
     'name' => ' down left and up right to center ',
-    'terms' => ' scale collapse fullscreen minimize move resize shrink size smaller ',
+    'terms' => ' collapse fullscreen minimize move resize scale shrink size smaller ',
     'pro' => false,
   ),
   'download' =>
@@ -2266,13 +2266,13 @@ return array(
   'excavator' =>
   array(
     'name' => ' excavator ',
-    'terms' => ' dig earth construction dirt ',
+    'terms' => ' construction dig digger dirt earth ',
     'pro' => true,
   ),
   'expand' =>
   array(
     'name' => ' expand ',
-    'terms' => ' maximize resize scale arrows bigger enlarge fullscreen resize size expand viewfinder ',
+    'terms' => ' arrows bigger enlarge expand fullscreen maximize resize resize scale size viewfinder ',
     'pro' => false,
   ),
   'explosion' =>
@@ -3328,7 +3328,7 @@ return array(
   'fort' =>
   array(
     'name' => ' fort ',
-    'terms' => ' turret castle fort fortress garrison palace ',
+    'terms' => ' castle fort fortress garrison palace turret ',
     'pro' => true,
   ),
   'forward' =>
@@ -3586,25 +3586,25 @@ return array(
   'grid' =>
   array(
     'name' => ' grid ',
-    'terms' => ' collection grid app compact filter sort ',
+    'terms' => ' app collection compact filter grid sort ',
     'pro' => true,
   ),
   'grid-2' =>
   array(
     'name' => ' grid 2 ',
-    'terms' => ' collection grid app filter sort ',
+    'terms' => ' app collection filter grid sort ',
     'pro' => true,
   ),
   'grid-4' =>
   array(
     'name' => ' grid 4 ',
-    'terms' => ' collection grid app compact filter sort ',
+    'terms' => ' app collection compact filter grid sort ',
     'pro' => true,
   ),
   'grid-5' =>
   array(
     'name' => ' grid 5 ',
-    'terms' => ' collection grid app compact filter sort ',
+    'terms' => ' app collection compact filter grid sort ',
     'pro' => true,
   ),
   'grill' =>
@@ -3778,7 +3778,7 @@ return array(
   'hat-beach' =>
   array(
     'name' => ' hat beach ',
-    'terms' => ' beach flower shade sun hat ',
+    'terms' => ' beach flower hat shade sun ',
     'pro' => true,
   ),
   'hat-chef' =>
@@ -4426,13 +4426,13 @@ return array(
   'lightbulb' =>
   array(
     'name' => ' lightbulb ',
-    'terms' => ' comic electric idea innovation inspiration light light bulb bulb bulb comic electric energy idea inspiration mechanical ',
+    'terms' => ' bulb bulb comic comic electric electric energy idea idea innovation inspiration inspiration light light bulb mechanical ',
     'pro' => false,
   ),
   'lighthouse' =>
   array(
     'name' => ' lighthouse ',
-    'terms' => ' alert breakwater cove ship tower warning beacon ',
+    'terms' => ' alert beacon breakwater cove ship tower warning ',
     'pro' => true,
   ),
   'lights-holiday' =>
@@ -4510,7 +4510,7 @@ return array(
   'list-ul' =>
   array(
     'name' => ' list ul ',
-    'terms' => ' bullet cheatsheet checklist completed done finished ol summary todo ul ',
+    'terms' => ' bullet cheatsheet checklist completed done finished ol summary survey todo ul ',
     'pro' => false,
   ),
   'lobster' =>
@@ -4762,7 +4762,7 @@ return array(
   'message' =>
   array(
     'name' => ' message ',
-    'terms' => ' conversation discussion talking answer bubble chat commenting conversation feedback message note notification sms speech talk texting ',
+    'terms' => ' answer bubble chat commenting conversation conversation discussion feedback message note notification sms speech talk talking texting ',
     'pro' => false,
   ),
   'message-bot' =>
@@ -4786,7 +4786,7 @@ return array(
   'messages' =>
   array(
     'name' => ' messages ',
-    'terms' => ' conversation discussion talking answer bubble chat commenting conversation feedback message note notification sms speech talk texting ',
+    'terms' => ' answer bubble chat commenting conversation conversation discussion feedback message note notification sms speech talk talking texting ',
     'pro' => true,
   ),
   'meteor' =>
@@ -5074,7 +5074,7 @@ return array(
   'olive' =>
   array(
     'name' => ' olive ',
-    'terms' => ' pit oil olive pimento ',
+    'terms' => ' oil olive pimento pit ',
     'pro' => true,
   ),
   'olive-branch' =>
@@ -5404,7 +5404,7 @@ return array(
   'person-fairy' =>
   array(
     'name' => ' person fairy ',
-    'terms' => ' magic wings elf faerie faery fairy sprite fantasy ',
+    'terms' => ' elf faerie faery fairy fantasy magic sprite wings ',
     'pro' => true,
   ),
   'person-falling' =>
@@ -5764,7 +5764,7 @@ return array(
   'presentation-screen' =>
   array(
     'name' => ' presentation screen ',
-    'terms' => ' keynote lecture panel powerpoint ppt seminar slides speak speaker talk ',
+    'terms' => ' flipchart keynote lecture panel powerpoint ppt seminar slides speak speaker talk ',
     'pro' => true,
   ),
   'pretzel' =>
@@ -5842,7 +5842,7 @@ return array(
   'raccoon' =>
   array(
     'name' => ' raccoon ',
-    'terms' => ' mask paw raccoon tail trash mammal panda ',
+    'terms' => ' mammal mask panda paw raccoon tail trash ',
     'pro' => true,
   ),
   'racquet' =>
@@ -5950,13 +5950,13 @@ return array(
   'reflect-horizontal' =>
   array(
     'name' => ' reflect horizontal ',
-    'terms' => ' exchange flip horizontal inverse invert negative reflect swap tool edit mirror ',
+    'terms' => ' edit exchange flip horizontal inverse invert mirror negative reflect swap tool ',
     'pro' => true,
   ),
   'reflect-vertical' =>
   array(
     'name' => ' reflect vertical ',
-    'terms' => ' exchange flip inverse invert negative reflect swap tool edit mirror vertical ',
+    'terms' => ' edit exchange flip inverse invert mirror negative reflect swap tool vertical ',
     'pro' => true,
   ),
   'refrigerator' =>
@@ -6478,7 +6478,7 @@ return array(
   'sign-post' =>
   array(
     'name' => ' sign post ',
-    'terms' => ' directory map signage wayfinding directions ',
+    'terms' => ' directions directory map signage wayfinding ',
     'pro' => true,
   ),
   'signal' =>
@@ -6994,7 +6994,7 @@ return array(
   'subtitles' =>
   array(
     'name' => ' subtitles ',
-    'terms' => ' caption description film language movie text translation closed captions ',
+    'terms' => ' caption closed captions description film language movie text translation ',
     'pro' => true,
   ),
   'suitcase' =>
@@ -7072,7 +7072,7 @@ return array(
   't-rex' =>
   array(
     'name' => ' t rex ',
-    'terms' => ' carnivore dinosaur tyrannosaurus dino jurassic king ',
+    'terms' => ' carnivore dino dinosaur jurassic king tyrannosaurus ',
     'pro' => true,
   ),
   'table' =>
@@ -7084,13 +7084,13 @@ return array(
   'table-cells' =>
   array(
     'name' => ' table cells ',
-    'terms' => ' excel blocks boxes category grid spreadsheet squares ',
+    'terms' => ' blocks boxes category excel grid spreadsheet squares ',
     'pro' => false,
   ),
   'table-cells-large' =>
   array(
     'name' => ' table cells large ',
-    'terms' => ' excel blocks boxes category grid spreadsheet squares ',
+    'terms' => ' blocks boxes category excel grid spreadsheet squares ',
     'pro' => false,
   ),
   'table-columns' =>
@@ -7264,7 +7264,7 @@ return array(
   'threads' =>
   array(
     'name' => ' threads ',
-    'terms' => '  ',
+    'terms' => ' social network ',
     'pro' => false,
   ),
   'thumbs-down' =>
@@ -7300,7 +7300,7 @@ return array(
   'tickets' =>
   array(
     'name' => ' tickets ',
-    'terms' => ' admission admission tickets movie pass support ticket voucher coupon ',
+    'terms' => ' admission admission tickets coupon movie pass support ticket voucher ',
     'pro' => true,
   ),
   'tiktok' =>
@@ -7414,13 +7414,13 @@ return array(
   'tower-broadcast' =>
   array(
     'name' => ' tower broadcast ',
-    'terms' => ' airwaves antenna communication emergency radio reception waves ',
+    'terms' => ' airwaves antenna communication emergency radio reception signal waves ',
     'pro' => false,
   ),
   'tower-cell' =>
   array(
     'name' => ' tower cell ',
-    'terms' => ' airwaves antenna communication radio reception waves ',
+    'terms' => ' airwaves antenna communication radio reception signal waves ',
     'pro' => false,
   ),
   'tower-control' =>
@@ -7456,7 +7456,7 @@ return array(
   'traffic-light' =>
   array(
     'name' => ' traffic light ',
-    'terms' => ' direction light road signal traffic travel vertical traffic light ',
+    'terms' => ' direction go light road signal slow stop traffic travel vertical traffic light ',
     'pro' => false,
   ),
   'trailer' =>
@@ -7600,7 +7600,7 @@ return array(
   'truck-fire' =>
   array(
     'name' => ' truck fire ',
-    'terms' => ' dalmatian burning emergency engine fight hose ladder rescue arson emt fire flame ',
+    'terms' => ' dalmatian arson burning emergency emt engine fight fire flame hose ladder rescue ',
     'pro' => true,
   ),
   'truck-monster' =>
@@ -7744,7 +7744,7 @@ return array(
   'up-right-and-down-left-from-center' =>
   array(
     'name' => ' up right and down left from center ',
-    'terms' => ' maximize resize scale arrows bigger enlarge expand fullscreen resize size ',
+    'terms' => ' arrows bigger enlarge expand fullscreen maximize resize resize scale size ',
     'pro' => false,
   ),
   'up-right-from-square' =>
@@ -8158,7 +8158,7 @@ return array(
   'wave' =>
   array(
     'name' => ' wave ',
-    'terms' => ' beach flotsam jetsam surf tsunami wave barrel break bro shore water ',
+    'terms' => ' barrel beach break bro flotsam jetsam shore surf tsunami water wave ',
     'pro' => true,
   ),
   'wave-pulse' =>

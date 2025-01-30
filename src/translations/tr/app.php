@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'Satır başlığı',
     'Row {index}' => '{index}. satır',
     'Rule Type' => 'Kural Türü',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'SVG dosyası önerilir. Logo {size} genişliğinde görüntülenecek.',
     'Same as asset filesystem' => 'Kaynak dosya sistemi ile aynı',
     'Same as language' => 'Dil ile aynı',
     'Savable' => 'Kaydedilebilir',

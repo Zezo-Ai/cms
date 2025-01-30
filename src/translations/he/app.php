@@ -1393,7 +1393,7 @@ return [
     'Row heading' => 'כותרת שורה',
     'Row {index}' => 'שורה {index}',
     'Rule Type' => 'סוג כלל',
-    'SVG file recommended. The logo will be displayed at {size} high and variable width.' => 'SVG file recommended. The logo will be displayed at {size} high and variable width.',
+    'SVG file recommended. The logo will be displayed at {size} wide.' => 'מומלץ קובץ SVG. הלוגו יוצג ברוחב {size}.',
     'Same as asset filesystem' => 'זהה למערכת הקבצים של הנכסים',
     'Same as language' => 'כמו השפה',
     'Savable' => 'ניתן לשמירה',
