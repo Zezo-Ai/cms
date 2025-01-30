@@ -42,4 +42,4 @@ jobs:
           coverage: none
 
       - run: composer install --no-progress --ansi
-      - run: bin/rector process --dry-run --ansi
+      - run: vendor/bin/rector process --dry-run --ansi
