@@ -21,9 +21,12 @@ Craft.LinkField = Garnish.Base.extend({
       .find('.text:first');
 
     if (this.$typeSelect.length) {
-      this.$typeSelect.data('fieldtoggle').on('toggleChange', () => {
-        this.updateLabel();
-      });
+      this.$typeSelect
+        .fieldtoggle()
+        .data('fieldtoggle')
+        .on('toggleChange', () => {
+          this.updateLabel();
+        });
     }
 
     this.addListener(this.$container, 'labelChanged', () => {
