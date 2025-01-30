@@ -819,7 +819,16 @@ class Matrix extends Field implements
         }
 
         if ($value instanceof EntryQuery) {
-            $value = $value->getCachedResult() ?? $value->drafts(null)->status(null)->limit(null)->all();
+            $value = $value->getCachedResult() ?? (clone $value)
+                ->drafts(null)
+                ->status(null)
+                ->limit(null)
+                ->andWhere([
+                    'or',
+                    ['elements.draftId' => null],
+                    ['elements.canonicalId' => null],
+                ])
+                ->all();
         }
 
         $view = Craft::$app->getView();
