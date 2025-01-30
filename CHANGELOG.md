@@ -6,6 +6,7 @@
 - Fixed a bug where Matrix fields set to inline-editable blocks view were showing drafts of nested entries.
 - Fixed a bug where element card attributes weren’t saving for field layouts that didn’t have any tabs. ([#16589](https://github.com/craftcms/cms/issues/16589))
 - Fixed an error that occurred when attempting to move entries to a new section, if they didn’t exist in the primary site. ([#16421](https://github.com/craftcms/cms/issues/16421))
+- Fixed a bug where Link fields weren’t responsive for newly-created nested entries. ([#16592](https://github.com/craftcms/cms/issues/16592))
 
 ## 5.6.3 - 2024-01-29
 
