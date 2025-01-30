@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 4
 
+## Unreleased
+
+- Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
+
 ## 4.14.3 - 2025-01-29
 
 - Added `craft\db\ExpressionBuilder`.
