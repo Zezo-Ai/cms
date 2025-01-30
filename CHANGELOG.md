@@ -4,6 +4,7 @@
 
 - Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
 - Fixed a bug where Matrix fields set to inline-editable blocks view were showing drafts of nested entries.
+- Fixed a bug where element card attributes weren’t saving for field layouts that didn’t have any tabs. ([#16589](https://github.com/craftcms/cms/issues/16589))
 
 ## 5.6.3 - 2024-01-29
 
