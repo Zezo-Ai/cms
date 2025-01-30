@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
+- Fixed a bug where Matrix fields set to inline-editable blocks view were showing drafts of nested entries.
 
 ## 5.6.3 - 2024-01-29
 
