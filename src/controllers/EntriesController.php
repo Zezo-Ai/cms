@@ -467,6 +467,7 @@ class EntriesController extends BaseEntriesController
             ->status(null)
             ->drafts(null)
             ->site('*')
+            ->unique()
             ->all();
         if (empty($entries)) {
             throw new BadRequestHttpException('Cannot find the entries to move to the new section.');
