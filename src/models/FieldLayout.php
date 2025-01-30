@@ -586,11 +586,11 @@ class FieldLayout extends Model
             $this->getTabs(),
         ));
 
-        if (empty($tabConfigs)) {
+        $cardViewConfig = $this->getCardView();
+
+        if (empty($tabConfigs) && empty($cardViewConfig)) {
             return null;
         }
-
-        $cardViewConfig = $this->getCardView();
 
         return [
             'tabs' => $tabConfigs,
