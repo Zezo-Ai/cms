@@ -33,15 +33,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      -
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      -
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
-            # PHP 8.2 is required, so Rector's code is PHP 8.2 compatible even after refactoring
-            php-version: 8.2
-            coverage: none
+          # PHP 8.2 is required, so Rector's code is PHP 8.2 compatible even after refactoring
+          php-version: 8.2
+          coverage: none
 
-      -   run: composer install --no-progress --ansi
-      -   run: bin/rector process --dry-run --ansi
+      - run: composer install --no-progress --ansi
+      - run: bin/rector process --dry-run --ansi
