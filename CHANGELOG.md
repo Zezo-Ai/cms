@@ -1,5 +1,10 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
+- Fixed a bug where Matrix fields set to inline-editable blocks view were showing drafts of nested entries.
+
 ## 5.6.3 - 2024-01-29
 
 - Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
