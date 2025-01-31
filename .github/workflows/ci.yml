@@ -18,28 +18,9 @@ jobs:
       php_version: '8.2'
       craft_version: '5'
       node_version: '20'
-      jobs: '["ecs", "prettier", "phpstan", "tests"]'
+      jobs: '["ecs", "prettier", "phpstan", "tests", "rector"]'
       notify_slack: true
       slack_subteam: <!subteam^SGFL9NKNZ>
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
       slack_webhook_url: ${{ secrets.SLACK_CRAFT_WEBHOOK_URL }}
-
-    # this can be moved to .github repo once this is proven works on CI
-  rector:
-    strategy:
-      fail-fast: false
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: shivammathur/setup-php@v2
-        with:
-          # PHP 8.2 is required, so Rector's code is PHP 8.2 compatible even after refactoring
-          php-version: 8.2
-          coverage: none
-
-      - run: composer install --no-progress --ansi
-      - run: vendor/bin/rector process --dry-run --ansi
