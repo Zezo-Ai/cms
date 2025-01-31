@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Php70\Rector\FuncCall\RandomFunctionRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -13,5 +14,9 @@ return RectorConfig::configure()
     ])
     ->withSkip([
         __DIR__ . '/src/icons/index.php',
+
+        RandomFunctionRector::class => [
+            __DIR__ . '/src/helpers/StringHelper.php',
+        ],
     ])
     ->withPhpSets(php70: true);
