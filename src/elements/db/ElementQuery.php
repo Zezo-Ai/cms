@@ -631,7 +631,7 @@ class ElementQuery extends Query implements ElementQueryInterface
      */
     public function __toString()
     {
-        return __CLASS__;
+        return self::class;
     }
 
     /**
