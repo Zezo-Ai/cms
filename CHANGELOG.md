@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed a bug where section-specific GraphQL queries (`<sectionHandle>Entries`) weren’t available if a Matrix or CKEditor field existed with the same handle as the section.
+- Fixed an error that could occur after reordering routes. ([#16610](https://github.com/craftcms/cms/pull/16610))
 
 ## 5.6.4 - 2025-01-30
 

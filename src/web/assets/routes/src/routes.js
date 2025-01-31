@@ -33,7 +33,7 @@ import './routes.scss';
     },
 
     getRoutes: function () {
-      return this.$container.children();
+      return this.$container.children('.route');
     },
 
     updateRouteOrder: function () {
