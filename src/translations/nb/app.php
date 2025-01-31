@@ -1687,7 +1687,7 @@ return [
     'Upgrade to Craft Pro' => 'Oppgrader til Craft Pro',
     'Upload a file' => 'Last opp en fil',
     'Upload a photo' => 'Last opp bilde',
-    'Upload failed for “{filename}”.' => 'Opplastingen for “{filename}” vart mislukka.',
+    'Upload failed for “{filename}”.' => 'Opplastingen for “{filename}” mislyktes.',
     'Upload failed.' => 'Opplasting mislyktes.',
     'Upload files' => 'Last opp filer',
     'Upload icon' => 'Last opp ikon',
