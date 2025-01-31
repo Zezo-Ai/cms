@@ -97,6 +97,7 @@ class Entry extends Query
         $gqlService = Craft::$app->getGql();
 
         foreach (GqlHelper::getSchemaContainedSections() as $section) {
+            $name = "{$section->handle}Entries";
             $typeName = "{$section->handle}SectionEntriesQuery";
             $sectionQueryType = GqlEntityRegistry::getEntity($typeName);
 
@@ -131,7 +132,7 @@ class Entry extends Query
 
                 // Create the section query field
                 $sectionQueryType = [
-                    'name' => "{$section->handle}Entries",
+                    'name' => $name,
                     'args' => $arguments,
                     'description' => sprintf('Entries within the “%s” section.', $section->name),
                     'type' => Type::listOf(GqlHelper::getUnionType("{$section->handle}SectionEntryUnion", $entryTypesInSection)),
@@ -141,7 +142,7 @@ class Entry extends Query
                 ];
             }
 
-            $gqlTypes[$section->handle] = $sectionQueryType;
+            $gqlTypes[$name] = $sectionQueryType;
         }
 
         return $gqlTypes;
@@ -160,6 +161,7 @@ class Entry extends Query
         $gqlService = Craft::$app->getGql();
 
         foreach (GqlHelper::getSchemaContainedNestedEntryFields() as $field) {
+            $name = "{$field->handle}FieldEntries";
             $typeName = "{$field->handle}NestedEntriesQuery";
             $fieldQueryType = GqlEntityRegistry::getEntity($typeName);
 
@@ -195,7 +197,7 @@ class Entry extends Query
 
                 // Create the query field
                 $fieldQueryType = [
-                    'name' => "{$field->handle}FieldEntries",
+                    'name' => $name,
                     'args' => $arguments,
                     'description' => sprintf('Entries within the “%s” %s field.', $field->name, $field::displayName()),
                     'type' => Type::listOf(GqlHelper::getUnionType("{$field->handle}FieldEntryUnion", $entryTypeGqlTypesInField)),
@@ -205,7 +207,7 @@ class Entry extends Query
                 ];
             }
 
-            $gqlTypes[$field->handle] = $fieldQueryType;
+            $gqlTypes[$name] = $fieldQueryType;
         }
 
         return $gqlTypes;

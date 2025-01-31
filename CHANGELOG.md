@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where section-specific GraphQL queries (`<sectionHandle>Entries`) weren’t available if a Matrix or CKEditor field existed with the same handle as the section.
+
 ## 5.6.4 - 2025-01-30
 
 - Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
