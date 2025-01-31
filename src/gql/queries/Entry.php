@@ -82,6 +82,7 @@ class Entry extends Query
 
         // For each `sectionHandle` => [EntryTypeModel]
         foreach ($entryTypeMap as $sectionHandle => $entryTypes) {
+            $name = $sectionHandle . 'Entries';
             $typeName = $sectionHandle . 'SectionEntriesQuery';
 
             // Unless we already have the type
@@ -100,7 +101,7 @@ class Entry extends Query
 
                 // Create the section query field
                 $sectionQueryType = [
-                    'name' => $sectionHandle . 'Entries',
+                    'name' => $name,
                     'args' => $arguments,
                     'description' => 'Entries within the ' . $sectionHandle . ' section.',
                     'type' => Type::listOf(GqlHelper::getUnionType($sectionHandle . 'SectionEntryUnion', $entryTypesInSection)),
@@ -112,7 +113,7 @@ class Entry extends Query
                 ];
             }
 
-            $gqlTypes[$sectionHandle] = $sectionQueryType;
+            $gqlTypes[$name] = $sectionQueryType;
         }
 
         return $gqlTypes;
