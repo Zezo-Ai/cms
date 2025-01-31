@@ -378,7 +378,11 @@ trait NestedElementTrait
             if (!$ownerId) {
                 return null;
             }
-            $this->ownerType = Craft::$app->getElements()->getElementTypeById($ownerId);
+            $ownerType = Craft::$app->getElements()->getElementTypeById($ownerId);
+            if (!$ownerType) {
+                return null;
+            }
+            $this->ownerType = $ownerType;
         }
         return $this->ownerType;
     }
