@@ -1542,7 +1542,7 @@ return [
     'There was an error testing your email settings.' => 'Fout bij het testen van uw e-mail instellingen.',
     'There was an error uploading your photo' => 'Fout bij het uploaden van uw foto',
     'There was an error uploading your photo: {error}' => 'Er is een probleem opgetreden bij het uploaden van uw foto: {error}',
-    'This action may only be performed with an elevated session.' => 'Deze handeling mag alleen uitgevoerd worden als administrator.',
+    'This action may only be performed with an elevated session.' => 'Deze actie kan alleen worden uitgevoerd met een elevated session.',
     'This can be left blank if you just want an unlabeled separator.' => 'Dit kan blanco worden gelaten indien u alleen een niet gelabelde scheider wilt hebben.',
     'This can be set to an environment variable matching one of the option values.' => 'Dit kan worden ingesteld op een omgevingsvariabele met een van de optiewaarden.',
     'This can be set to an environment variable with a boolean value ({examples}).' => 'Dit kan ingesteld worden op een omgevingsvariabele met een booleaanse waarde ({examples}).',
