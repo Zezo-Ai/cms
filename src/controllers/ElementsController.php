@@ -569,7 +569,11 @@ JS, [
         }
 
         $copyFromSiteId = (int)$this->request->getRequiredBodyParam('fromSiteId');
-        $this->requirePermission("editSite:$copyFromSiteId");
+        $site = Craft::$app->getSites()->getSiteById($copyFromSiteId);
+        if (!$site) {
+            throw new BadRequestHttpException("Invalid site ID: $copyFromSiteId");
+        }
+        $this->requirePermission("editSite:$site->uid");
 
         $layoutElementUid = $this->request->getRequiredBodyParam('layoutElementUid');
         $namespace = $this->request->getBodyParam('namespace');
