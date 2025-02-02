@@ -363,9 +363,11 @@ class Updates extends Component
 
         Craft::$app->saveInfo($info);
 
-        // the ProjectConfig->_setInternal() method will take care of checking if the value has changed
-        // and will only perform the update if it has
-        Craft::$app->getProjectConfig()->set(ProjectConfig::PATH_SCHEMA_VERSION, $info->schemaVersion, 'Update Craft schema version');
+        Craft::$app->getProjectConfig()->set(
+            ProjectConfig::PATH_SCHEMA_VERSION,
+            $info->schemaVersion,
+            'Update Craft schema version',
+        );
 
         $this->_isCraftUpdatePending = null;
 

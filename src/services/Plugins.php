@@ -853,12 +853,12 @@ class Plugins extends Component
             $this->_storedPluginInfo[$plugin->id]['version'] = $plugin->getVersion();
             $this->_storedPluginInfo[$plugin->id]['schemaVersion'] = $plugin->schemaVersion;
         }
-        
-        $key = ProjectConfig::PATH_PLUGINS . ".$plugin->id.schemaVersion";
 
-        // the ProjectConfig->_setInternal() method will take care of checking if the value has changed
-        // and will only perform the update if it has
-        Craft::$app->getProjectConfig()->set($key, $plugin->schemaVersion, "Update plugin schema version for “{$plugin->handle}”");
+        Craft::$app->getProjectConfig()->set(
+            sprintf('%s.%s.schemaVersion', ProjectConfig::PATH_PLUGINS, $plugin->id),
+            $plugin->schemaVersion,
+            "Update plugin schema version for “{$plugin->handle}”",
+        );
     }
 
     /**
