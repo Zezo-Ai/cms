@@ -2,14 +2,32 @@
 
 ## Unreleased
 
+- Fixed a bug where section-specific GraphQL queries (`<sectionHandle>Entries`) weren’t available if a Matrix or CKEditor field existed with the same handle as the section.
+- Fixed an error that could occur after reordering routes. ([#16610](https://github.com/craftcms/cms/pull/16610))
+- Fixed an error that occurred when a non-admin user attempted to copy a field value from another site.
+- Fixed a bug where the `migrate/up` and `migrate/all` commands were writing out changes to the project config YAML when there were already pending YAML changes. ([#16086](https://github.com/craftcms/cms/issues/16086))
+
+## 5.6.4 - 2025-01-30
+
+- Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
+- Fixed a bug where Matrix fields set to inline-editable blocks view were showing drafts of nested entries.
+- Fixed a bug where element card attributes weren’t saving for field layouts that didn’t have any tabs. ([#16589](https://github.com/craftcms/cms/issues/16589))
+- Fixed an error that occurred when attempting to move entries to a new section, if they didn’t exist in the primary site. ([#16421](https://github.com/craftcms/cms/issues/16421))
+- Fixed a bug where Link fields weren’t responsive for newly-created nested entries. ([#16592](https://github.com/craftcms/cms/issues/16592))
+- Fixed an error that could occur when executing the `utils/prune-orphaned-entries` command. ([#16598](https://github.com/craftcms/cms/issues/16598))
+
+## 5.6.3 - 2025-01-29
+
+- Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
 - Fixed an error that could occur when eager-loading nested elements’ owners, if any of the queried elements didn’t have an owner ID. ([#16570](https://github.com/craftcms/cms/issues/16570), [#16572](https://github.com/craftcms/cms/issues/16572), [#16576](https://github.com/craftcms/cms/issues/16576))
 - Fixed a bug where collapsed elements within element indexes in structure view weren’t showing their expand/collapse toggles.
 - Fixed a bug where Color fields weren’t getting fully instantiated within slideouts, Live Preview, and after copying the field value from another site. ([#16571](https://github.com/craftcms/cms/pull/16571))
 - Fixed a bug where buttons weren’t getting focus rings.
 - Fixed a bug where light text didn’t meet minimum contrast requirements.
 - Fixed an error that could occur when attempting to edit a recursively-nested entry. ([#16566](https://github.com/craftcms/cms/issues/16566))
+- Fixed a bug where custom options set to Checkboxes and Radio Buttons fields weren’t showing up in field previews. ([#16575](https://github.com/craftcms/cms/pull/16575))
 
-## 5.6.2 - 2024-01-28
+## 5.6.2 - 2025-01-28
 
 - The Login page now displays the Login Page Logo above the login form, rather than within the header. ([#16564](https://github.com/craftcms/cms/pull/16564))
 - The field layout element library HUD is no longer closed automatically when an element is selected. ([#16521](https://github.com/craftcms/cms/discussions/16521))

@@ -175,7 +175,13 @@ class ElementsController extends Controller
      */
     public function actionRedirect(?int $elementId = null, ?string $elementUid = null): Response
     {
-        $element = $this->element = $this->_element($elementId, $elementUid);
+        $element = $this->_element($elementId, $elementUid);
+
+        if ($element instanceof Response) {
+            return $element;
+        }
+
+        $this->element = $element;
         $url = $element->getCpEditUrl();
 
         if (!$url) {
@@ -563,7 +569,11 @@ JS, [
         }
 
         $copyFromSiteId = (int)$this->request->getRequiredBodyParam('fromSiteId');
-        $this->requirePermission("editSite:$copyFromSiteId");
+        $site = Craft::$app->getSites()->getSiteById($copyFromSiteId);
+        if (!$site) {
+            throw new BadRequestHttpException("Invalid site ID: $copyFromSiteId");
+        }
+        $this->requirePermission("editSite:$site->uid");
 
         $layoutElementUid = $this->request->getRequiredBodyParam('layoutElementUid');
         $namespace = $this->request->getBodyParam('namespace');

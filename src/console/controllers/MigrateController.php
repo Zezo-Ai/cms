@@ -185,20 +185,11 @@ class MigrateController extends BaseMigrateController
             $projectConfig->regenerateExternalConfig();
         } elseif ($projectConfig->areChangesPending(force: true)) {
             // allow project config changes, but don't overwrite the pending changes
-            $readOnly = $projectConfig->readOnly;
-            $writeYamlAutomatically = $projectConfig->writeYamlAutomatically;
             $projectConfig->readOnly = false;
             $projectConfig->writeYamlAutomatically = false;
         }
 
-        try {
-            return parent::runAction($id, $params);
-        } finally {
-            if (isset($readOnly, $writeYamlAutomatically)) {
-                $projectConfig->readOnly = $readOnly;
-                $projectConfig->writeYamlAutomatically = $writeYamlAutomatically;
-            }
-        }
+        return parent::runAction($id, $params);
     }
 
     /**
