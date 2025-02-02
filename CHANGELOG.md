@@ -5,6 +5,7 @@
 - Fixed a bug where section-specific GraphQL queries (`<sectionHandle>Entries`) weren’t available if a Matrix or CKEditor field existed with the same handle as the section.
 - Fixed an error that could occur after reordering routes. ([#16610](https://github.com/craftcms/cms/pull/16610))
 - Fixed an error that occurred when a non-admin user attempted to copy a field value from another site.
+- Fixed a bug where the `migrate/up` and `migrate/all` commands were writing out changes to the project config YAML when there were already pending YAML changes. ([#16086](https://github.com/craftcms/cms/issues/16086))
 
 ## 5.6.4 - 2025-01-30
 
