@@ -195,7 +195,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
               await this.markAsDirty();
             },
             onDeleteElements: async () => {
-              await this.markAsDirty();
+              if (!(await this.markAsDirty())) {
+                // save the element anyway in case any conditional fields should be shown/hidden
+                this.elementEditor?.checkForm(true);
+              }
             },
             onBeforeUpdateElements: () => {
               if (this.$createBtn) {
@@ -401,6 +404,9 @@ Craft.NestedElementManager = Garnish.Base.extend(
           if (this.$createBtn) {
             this.$createBtn.focus();
           }
+
+          // save the element in case any conditional fields should be shown/hidden
+          this.elementEditor?.checkForm(true);
         });
       } catch (e) {
         Craft.cp.displayError(e?.response?.data?.message);
@@ -545,7 +551,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
         }
       }
 
-      await this.markAsDirty();
+      if (!(await this.markAsDirty())) {
+        // save the element anyway in case any conditional fields should be shown/hidden
+        this.elementEditor?.checkForm(true);
+      }
     },
 
     async addElementCard(element) {
