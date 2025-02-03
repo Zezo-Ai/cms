@@ -196,6 +196,9 @@ Craft.NestedElementManager = Garnish.Base.extend(
             },
             onDeleteElements: async () => {
               await this.markAsDirty();
+              // ensure conditional fields are loaded after removing an element
+              // see https://github.com/craftcms/cms/issues/16558
+              await this.elementEditor.refreshContent();
             },
             onBeforeUpdateElements: () => {
               if (this.$createBtn) {
@@ -401,6 +404,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
           if (this.$createBtn) {
             this.$createBtn.focus();
           }
+
+          // ensure conditional fields are loaded after removing an element
+          // see https://github.com/craftcms/cms/issues/16558
+          this.elementEditor.refreshContent();
         });
       } catch (e) {
         Craft.cp.displayError(e?.response?.data?.message);
@@ -546,6 +553,9 @@ Craft.NestedElementManager = Garnish.Base.extend(
       }
 
       await this.markAsDirty();
+      // ensure conditional fields are loaded after removing an element
+      // see https://github.com/craftcms/cms/issues/16558
+      await this.elementEditor.refreshContent();
     },
 
     async addElementCard(element) {
