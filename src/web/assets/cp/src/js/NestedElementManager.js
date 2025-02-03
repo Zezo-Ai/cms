@@ -195,10 +195,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
               await this.markAsDirty();
             },
             onDeleteElements: async () => {
-              await this.markAsDirty();
-              // ensure conditional fields are loaded after removing an element
-              // see https://github.com/craftcms/cms/issues/16558
-              await this.elementEditor.refreshContent();
+              if (!(await this.markAsDirty())) {
+                // save the element anyway in case any conditional fields should be shown/hidden
+                this.elementEditor?.checkForm(true);
+              }
             },
             onBeforeUpdateElements: () => {
               if (this.$createBtn) {
@@ -405,9 +405,8 @@ Craft.NestedElementManager = Garnish.Base.extend(
             this.$createBtn.focus();
           }
 
-          // ensure conditional fields are loaded after removing an element
-          // see https://github.com/craftcms/cms/issues/16558
-          this.elementEditor.refreshContent();
+          // save the element in case any conditional fields should be shown/hidden
+          this.elementEditor?.checkForm(true);
         });
       } catch (e) {
         Craft.cp.displayError(e?.response?.data?.message);
@@ -552,10 +551,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
         }
       }
 
-      await this.markAsDirty();
-      // ensure conditional fields are loaded after removing an element
-      // see https://github.com/craftcms/cms/issues/16558
-      await this.elementEditor.refreshContent();
+      if (!(await this.markAsDirty())) {
+        // save the element anyway in case any conditional fields should be shown/hidden
+        this.elementEditor?.checkForm(true);
+      }
     },
 
     async addElementCard(element) {
