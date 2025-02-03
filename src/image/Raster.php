@@ -257,8 +257,14 @@ class Raster extends Image
         $scaleIfSmaller = $scaleIfSmaller ?? Craft::$app->getConfig()->getGeneral()->upscaleImages;
 
         if ($scaleIfSmaller || $this->getWidth() > $targetWidth || $this->getHeight() > $targetHeight) {
-            $factor = max($this->getWidth() / $targetWidth, $this->getHeight() / $targetHeight);
-            $this->resize(round($this->getWidth() / $factor), round($this->getHeight() / $factor));
+            // go with the provided target dimensions if they both check out
+            if ((int)round($targetWidth * $this->getHeight() / $this->getWidth()) !== $targetHeight) {
+                $factor = max($this->getWidth() / $targetWidth, $this->getHeight() / $targetHeight);
+                $targetWidth = round($this->getWidth() / $factor);
+                $targetHeight = round($this->getHeight() / $factor);
+            }
+
+            $this->resize($targetWidth, $targetHeight);
         }
 
         return $this;
