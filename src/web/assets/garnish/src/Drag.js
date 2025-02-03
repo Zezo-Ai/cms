@@ -108,6 +108,9 @@ export default BaseDrag.extend(
 
       this.dragging = true;
       this.onDragStart();
+
+      // Mute activate events
+      Garnish.activateEventsMuted = true;
     },
 
     /**

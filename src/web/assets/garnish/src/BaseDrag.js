@@ -74,6 +74,9 @@ export default Base.extend(
       this.onBeforeDragStart();
       this.dragging = true;
       this.onDragStart();
+
+      // Mute activate events
+      Garnish.activateEventsMuted = true;
     },
 
     /**
@@ -180,6 +183,11 @@ export default Base.extend(
 
       // Clear the scroll animation
       this._cancelWindowScroll();
+
+      // Unmute activate events
+      Garnish.requestAnimationFrame(() => {
+        Garnish.activateEventsMuted = false;
+      });
     },
 
     /**
