@@ -1922,6 +1922,7 @@ Craft.ElementEditor = Garnish.Base.extend(
                 $newElement.appendTo($tabContainer);
               }
               Craft.initUiElements($newElement);
+              Craft.cp.elementThumbLoader.load($newElement);
               changedElements = true;
             }
           } else {
