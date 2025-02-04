@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.4 - 2025-02-04
 
 - Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
 - Fixed a bug where transformed images could be slightly smaller than they should be when using the `fit` transform mode. ([#16622](https://github.com/craftcms/cms/issues/16622))
