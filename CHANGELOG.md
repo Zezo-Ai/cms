@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed a bug where transformed images could be slightly smaller than they should be when using the `fit` transform mode. ([#16622](https://github.com/craftcms/cms/issues/16622))
+- Fixed a bug where tests weren’t outputting exceptions thrown during Craft installation. ([#16624](https://github.com/craftcms/cms/issues/16624))
 - Fixed a bug where section-specific GraphQL queries (`<sectionHandle>Entries`) weren’t available if a Matrix or CKEditor field existed with the same handle as the section.
 - Fixed an error that could occur after reordering routes. ([#16610](https://github.com/craftcms/cms/pull/16610))
 - Fixed an error that occurred when a non-admin user attempted to copy a field value from another site.
