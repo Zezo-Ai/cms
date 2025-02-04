@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.5 - 2025-02-04
 
 - Fixed a bug where transformed images could be slightly smaller than they should be when using the `fit` transform mode. ([#16622](https://github.com/craftcms/cms/issues/16622))
 - Fixed a bug where tests weren’t outputting exceptions thrown during Craft installation. ([#16624](https://github.com/craftcms/cms/issues/16624))
