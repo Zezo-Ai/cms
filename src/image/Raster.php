@@ -253,18 +253,20 @@ class Raster extends Image
     public function scaleToFit(?int $targetWidth, ?int $targetHeight, bool $scaleIfSmaller = null): self
     {
         $this->normalizeDimensions($targetWidth, $targetHeight);
+        $width = $this->getWidth();
+        $height = $this->getHeight();
 
         $scaleIfSmaller = $scaleIfSmaller ?? Craft::$app->getConfig()->getGeneral()->upscaleImages;
 
-        if ($scaleIfSmaller || $this->getWidth() > $targetWidth || $this->getHeight() > $targetHeight) {
+        if ($scaleIfSmaller || $width > $targetWidth || $height > $targetHeight) {
             // go with the provided target dimensions if they both check out
             if (
-                (int)round($targetWidth * $this->getHeight() / $this->getWidth()) !== $targetHeight &&
-                (int)round($targetHeight * $this->getWidth() / $this->getHeight()) !== $targetWidth
+                (int)round($targetWidth * $height / $width) !== $targetHeight &&
+                (int)round($targetHeight * $width / $height) !== $targetWidth
             ) {
-                $factor = max($this->getWidth() / $targetWidth, $this->getHeight() / $targetHeight);
-                $targetWidth = round($this->getWidth() / $factor);
-                $targetHeight = round($this->getHeight() / $factor);
+                $factor = max($width / $targetWidth, $height / $targetHeight);
+                $targetWidth = round($width / $factor);
+                $targetHeight = round($height / $factor);
             }
 
             $this->resize($targetWidth, $targetHeight);
@@ -338,26 +340,28 @@ class Raster extends Image
     public function scaleAndCrop(?int $targetWidth, ?int $targetHeight, bool $scaleIfSmaller = true, array|string $cropPosition = 'center-center'): self
     {
         $this->normalizeDimensions($targetWidth, $targetHeight);
+        $width = $this->getWidth();
+        $height = $this->getHeight();
 
         // If upscaling is fine OR we have to downscale.
-        if ($scaleIfSmaller || ($this->getWidth() > $targetWidth && $this->getHeight() > $targetHeight)) {
+        if ($scaleIfSmaller || ($width > $targetWidth && $height > $targetHeight)) {
             // Scale first.
-            $factor = min($this->getWidth() / $targetWidth, $this->getHeight() / $targetHeight);
-            $newHeight = round($this->getHeight() / $factor);
-            $newWidth = round($this->getWidth() / $factor);
+            $factor = min($width / $targetWidth, $height / $targetHeight);
+            $newHeight = round($height / $factor);
+            $newWidth = round($width / $factor);
 
             $this->resize($newWidth, $newHeight);
         // If we need to upscale AND that's ok
-        } elseif (($targetWidth > $this->getWidth() || $targetHeight > $this->getHeight()) && !$scaleIfSmaller) {
+        } elseif (($targetWidth > $width || $targetHeight > $height) && !$scaleIfSmaller) {
             // Figure the crop size reductions
-            $factor = max($targetWidth / $this->getWidth(), $targetHeight / $this->getHeight());
-            $newHeight = $this->getHeight();
-            $newWidth = $this->getWidth();
+            $factor = max($targetWidth / $width, $targetHeight / $height);
+            $newHeight = $height;
+            $newWidth = $width;
             $targetHeight = round($targetHeight / $factor);
             $targetWidth = round($targetWidth / $factor);
         } else {
-            $newHeight = $this->getHeight();
-            $newWidth = $this->getWidth();
+            $newHeight = $height;
+            $newWidth = $width;
         }
 
         if (is_array($cropPosition)) {
