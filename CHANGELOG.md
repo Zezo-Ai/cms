@@ -4,6 +4,7 @@
 
 - Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
 - Fixed a bug where transformed images could be slightly smaller than they should be when using the `fit` transform mode. ([#16622](https://github.com/craftcms/cms/issues/16622))
+- Fixed a bug where tests weren’t outputting exceptions thrown during Craft installation. ([#16624](https://github.com/craftcms/cms/issues/16624))
 
 ## 4.14.3 - 2025-01-29
 
