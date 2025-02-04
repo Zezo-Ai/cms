@@ -1042,7 +1042,12 @@ class ElementHelper
             return;
         }
 
-        $canonicalElements = array_filter($elements, fn(ElementInterface $element) => $element->getIsCanonical());
+        // filter out drafts and revisions
+        // (don't just exclude derivative elements though! see https://github.com/craftcms/cms/issues/16626)
+        $canonicalElements = array_filter(
+            $elements,
+            fn(ElementInterface $element) => !$element->getIsDraft() && !$element->getIsRevision(),
+        );
 
         if (empty($canonicalElements)) {
             return;
