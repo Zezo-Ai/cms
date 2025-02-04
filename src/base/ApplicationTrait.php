@@ -1574,14 +1574,14 @@ trait ApplicationTrait
             return $this->first(...func_get_args());
         });
 
-        // Load the request before anything else, so everything else can safely check Craft::$app->has('request', true)
-        // to avoid possible recursive fatal errors in the request initialization
-        $request = $this->getRequest();
-        $this->getLog();
-
         // Set the Craft edition
         $edition = App::env('CRAFT_EDITION') ?? $this->getProjectConfig()->get('system.edition');
         $this->edition = $edition ? CmsEdition::fromHandle($edition) : CmsEdition::Solo;
+
+        // Load the request before anything else, so everything else can safely check Craft::$app->has('request', true)
+        // to avoid possible recursive fatal errors in the request initialization
+        $this->getRequest();
+        $this->getLog();
 
         // Set the timezone
         $this->_setTimeZone();

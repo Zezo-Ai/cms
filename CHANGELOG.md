@@ -12,6 +12,7 @@
 - Fixed a bug where field layout conditions weren’t getting applied after nested elements were added or removed. ([#16558](https://github.com/craftcms/cms/issues/16558))
 - Fixed a bug where element thumbs weren’t loading when an element editor’s content was refreshed after closing Live Preview.
 - Fixed a bug where changes to nested entries weren’t always showing when previewing elements. ([#16626](https://github.com/craftcms/cms/issues/16626))
+- Fixed a PHP error that occurred when an invalid token was passed to the `token` query string param. ([#16630](https://github.com/craftcms/cms/issues/16630))
 
 ## 5.6.4 - 2025-01-30
 
