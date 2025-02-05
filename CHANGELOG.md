@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed a bug where Number fields weren’t getting sorted properly in PostgreSQL. ([#15828](https://github.com/craftcms/cms/issues/15828))
+- Fixed a bug where Matrix fields’ “Default View Mode” settings included a “Display in a structured table” option. ([#16631](https://github.com/craftcms/cms/discussions/16631))
 - Fixed a potential phishing attack vector.
 
 ## 5.6.5.1 - 2025-02-04
