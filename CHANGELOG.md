@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fixed a bug where Number fields weren’t getting sorted properly in PostgreSQL. ([#15828](https://github.com/craftcms/cms/issues/15828))
 - Fixed a potential phishing attack vector.
 
 ## 5.6.5.1 - 2025-02-04
