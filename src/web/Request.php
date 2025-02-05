@@ -17,6 +17,7 @@ use craft\helpers\Session as SessionHelper;
 use craft\helpers\StringHelper;
 use craft\models\Site;
 use craft\services\Sites;
+use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\db\Exception as DbException;
 use yii\di\Instance;
@@ -1513,6 +1514,20 @@ class Request extends \yii\web\Request
         // Was a site token provided?
         $site = $this->_validateSiteToken();
         if ($site !== null) {
+            return $site;
+        }
+
+        // Is CRAFT_SITE or X-Craft-Site present?
+        $siteId = App::env('CRAFT_SITE') ?? $this->getHeaders()->get('X-Craft-Site');
+        if ($siteId !== null) {
+            if (is_numeric($siteId)) {
+                $site = $this->sites->getSiteById($siteId, false);
+            } else {
+                $site = $this->sites->getSiteByHandle($siteId, false);
+            }
+            if (!$site && Craft::$app->getIsInstalled() && !Craft::$app->getUpdates()->getIsCraftUpdatePending()) {
+                throw new InvalidArgumentException("Invalid site: $siteId");
+            }
             return $site;
         }
 

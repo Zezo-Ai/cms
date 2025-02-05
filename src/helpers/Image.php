@@ -24,8 +24,18 @@ use yii\base\InvalidArgumentException;
  */
 class Image
 {
+    /** @since 4.14.0 */
+    public const EXIF_IFD0_ROTATE_0 = 1;
+    /** @since 4.14.0 */
+    public const EXIF_IFD0_ROTATE_0_MIRRORED = 2;
     public const EXIF_IFD0_ROTATE_180 = 3;
+    /** @since 4.14.0 */
+    public const EXIF_IFD0_ROTATE_180_MIRRORED = 4;
+    /** @since 4.14.0 */
+    public const EXIF_IFD0_ROTATE_90_MIRRORED = 5;
     public const EXIF_IFD0_ROTATE_90 = 6;
+    /** @since 4.14.0 */
+    public const EXIF_IFD0_ROTATE_270_MIRRORED = 7;
     public const EXIF_IFD0_ROTATE_270 = 8;
 
     /**

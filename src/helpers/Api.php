@@ -187,7 +187,8 @@ abstract class Api
 
         // license info
         if (isset($headers['x-craft-license-info'])) {
-            $oldLicenseInfo = $cache->get('licenseInfo') ?: [];
+            $licenseInfoCacheKey = App::licenseInfoCacheKey();
+            $oldLicenseInfo = $cache->get($licenseInfoCacheKey) ?: [];
             $licenseInfo = [];
             $allCombinedInfo = array_filter(explode(',', reset($headers['x-craft-license-info'])));
             foreach ($allCombinedInfo as $combinedInfo) {
@@ -216,7 +217,7 @@ abstract class Api
                     'timestamp' => $timestamp,
                 ];
             }
-            $cache->set('licenseInfo', $licenseInfo, $duration);
+            $cache->set($licenseInfoCacheKey, $licenseInfo, $duration);
         }
     }
 

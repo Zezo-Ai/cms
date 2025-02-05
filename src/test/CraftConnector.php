@@ -122,4 +122,29 @@ class CraftConnector extends Yii2
         Db::reset();
         Session::reset();
     }
+
+    /**
+     * Closes the db connection after initializing Craft. The Yii2 module will
+     * try to initialize transaction listeners before each test. If we don't
+     * close the connection first, those listeners will never get picked up.
+     * We'll open the connection after all of the transaction listeners are
+     * registered.
+     *
+     * Method has nullable param to support `codeception/module-yii2` both in
+     * the < 1.1.6 and >= 1.1.6 versions. The method signature is now compliant
+     * with the `parent` for both branches.
+     *
+     * @param null|\yii\log\Logger $logger
+     *
+     * @inheritDoc
+     */
+    public function startApp(?\yii\log\Logger $logger = null): void
+    {
+        // Pass through all method arguments as to support
+        // `codeception/module-yii2` < 1.1.6 AND >= 1.1.6 versions, whilst
+        // also keeping PHPStan satisfied for both versions.
+        parent::startApp(...func_get_args());
+
+        \Craft::$app->db->close();
+    }
 }

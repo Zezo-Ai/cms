@@ -10,6 +10,8 @@ namespace craft\db\pgsql;
 use Composer\Util\Platform;
 use Craft;
 use craft\db\Connection;
+use craft\db\ExpressionBuilder;
+use craft\db\ExpressionInterface;
 use craft\db\TableSchema;
 use mikehaertl\shellcommand\Command as ShellCommand;
 use yii\db\Exception;
@@ -49,6 +51,9 @@ class Schema extends \yii\db\pgsql\Schema
     public function createQueryBuilder(): QueryBuilder
     {
         return new QueryBuilder($this->db, [
+            'expressionBuilders' => [
+                ExpressionInterface::class => ExpressionBuilder::class,
+            ],
             'separator' => "\n",
         ]);
     }

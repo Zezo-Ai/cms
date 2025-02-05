@@ -353,6 +353,7 @@ class Extension extends AbstractExtension implements GlobalsInterface
     /**
      * @inheritdoc
      */
+    /** @phpstan-ignore-next-line */
     public function getOperators(): array
     {
         return [
@@ -456,9 +457,11 @@ class Extension extends AbstractExtension implements GlobalsInterface
      *
      * @param mixed $string The multibyte string.
      * @return string The string with the first character converted to upercase.
+     * @deprecated in 4.14.0
      */
     public function ucfirstFilter(mixed $string): string
     {
+        Craft::$app->getDeprecator()->log('ucfirst', 'The `|ucfirst` filter has been deprecated. Use `|capitalize` instead.');
         return StringHelper::upperCaseFirst((string)$string);
     }
 
@@ -1710,21 +1713,23 @@ class Extension extends AbstractExtension implements GlobalsInterface
         $setPasswordRequestPath = $generalConfig->getSetPasswordRequestPath();
 
         if ($isInstalled && !Craft::$app->getUpdates()->getIsCraftUpdatePending()) {
-            /** @noinspection PhpUnhandledExceptionInspection */
-            $currentSite = Craft::$app->getSites()->getCurrentSite();
+            $sitesService = Craft::$app->getSites();
+            $currentSite = $sitesService->getCurrentSite();
+            $primarySite = $sitesService->getPrimarySite();
 
             $currentUser = Craft::$app->getUser()->getIdentity();
             $siteName = Craft::t('site', $currentSite->getName());
             $siteUrl = $currentSite->getBaseUrl();
             $systemName = Craft::$app->getSystemName();
         } else {
-            $currentSite = $currentUser = $siteName = $siteUrl = $systemName = null;
+            $currentSite = $primarySite = $currentUser = $siteName = $siteUrl = $systemName = null;
         }
 
         return [
             'craft' => new CraftVariable(),
             'currentSite' => $currentSite,
             'currentUser' => $currentUser,
+            'primarySite' => $primarySite,
             'siteName' => $siteName,
             'siteUrl' => $siteUrl,
             'systemName' => $systemName,

@@ -604,12 +604,26 @@ class Sections extends Component
             $propagationMethodChanged = $sectionRecord->propagationMethod != $sectionRecord->getOldAttribute('propagationMethod');
 
             if ($data['type'] === Section::TYPE_STRUCTURE) {
+                $structuresService = Craft::$app->getStructures();
+
                 // Save the structure
                 $structureUid = $data['structure']['uid'];
-                $structure = Craft::$app->getStructures()->getStructureByUid($structureUid, true) ?? new Structure(['uid' => $structureUid]);
+                $structure = $structuresService->getStructureByUid($structureUid, true) ?? new Structure(['uid' => $structureUid]);
                 $isNewStructure = empty($structure->id);
                 $structure->maxLevels = $data['structure']['maxLevels'];
-                Craft::$app->getStructures()->saveStructure($structure);
+
+                // check if we need to soft-delete an old structure
+                // see https://github.com/craftcms/cms/issues/16450
+                if (
+                    $isNewStructure &&
+                    ($event->oldValue['type'] ?? null) === Section::TYPE_STRUCTURE &&
+                    ($event->oldValue['structure']['uid'] ?? null) !== $structureUid &&
+                    $sectionRecord->structureId
+                ) {
+                    $structuresService->deleteStructureById($sectionRecord->structureId);
+                }
+
+                $structuresService->saveStructure($structure);
                 $sectionRecord->structureId = $structure->id;
             } else {
                 if ($sectionRecord->structureId) {

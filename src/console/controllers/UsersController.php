@@ -176,7 +176,7 @@ class UsersController extends Controller
 
         $user = new User($attributesFromArgs);
 
-        if (!$user->validate(array_keys($attributesFromArgs))) {
+        if (!empty($attributesFromArgs) && !$user->validate(array_keys($attributesFromArgs))) {
             $this->stderr('Invalid arguments:' . PHP_EOL . '    - ' . implode(PHP_EOL . '    - ', $user->getErrorSummary(true)) . PHP_EOL, Console::FG_RED);
             return ExitCode::USAGE;
         }
@@ -218,7 +218,7 @@ class UsersController extends Controller
 
         $this->stdout('Saving the user ... ');
 
-        if (!Craft::$app->getElements()->saveElement($user)) {
+        if (!Craft::$app->getElements()->saveElement($user, false)) {
             $this->stderr('failed:' . PHP_EOL . '    - ' . implode(PHP_EOL . '    - ', $user->getErrorSummary(true)) . PHP_EOL, Console::FG_RED);
 
             return ExitCode::USAGE;

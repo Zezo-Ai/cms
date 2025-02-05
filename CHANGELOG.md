@@ -1,6 +1,93 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.4 - 2025-02-04
+
+- Fixed an error that occurred when accessing the `edit/<elementId>` route for a draft that no longer existed.
+- Fixed a bug where transformed images could be slightly smaller than they should be when using the `fit` transform mode. ([#16622](https://github.com/craftcms/cms/issues/16622))
+- Fixed a bug where tests weren’t outputting exceptions thrown during Craft installation. ([#16624](https://github.com/craftcms/cms/issues/16624))
+
+## 4.14.3 - 2025-01-29
+
+- Added `craft\db\ExpressionBuilder`.
+- Added `craft\db\ExpressionInterface`.
+- Added compatibility with codeception/module-yii2 1.1.6+. ([#16580](https://github.com/craftcms/cms/pull/16580))
+- Fixed a bug where `craft\db\QueryBatcher::getSlice()` wasn’t using the database connection passed to the class constructor. ([#16579](https://github.com/craftcms/cms/issues/16579))
+- Fixed a bug where collapsed elements within element indexes in structure view weren’t showing their expand/collapse toggles.
+
+## 4.14.2 - 2025-01-28
+
+- Fixed a bug where Entries fields’ entry select modals could show expand/collapse toggles for Structure sections, for elements that didn’t have any selectable descendants. ([#16506](https://github.com/craftcms/cms/issues/16506))
+- Fixed a bug where changes to custom fields within Matrix blocks weren’t getting merged into existing drafts for the same owner element. ([#16519](https://github.com/craftcms/cms/issues/16519))
+- Fixed a bug where native fields (e.g. Title) were showing changed statuses when viewing revisions, if they had been updated since the time the revision was created.
+- Fixed a bug where eager-loading element queries could create an excessive amount of cache invalidation tags.
+- Fixed a bug where it was possible to enable elements for new sites with validation errors. ([#16505](https://github.com/craftcms/cms/issues/16505))
+- Fixed a bug where setting `transaction: true` in the Codeception configuration wasn’t rolling back database DML changes after a test. ([#16546](https://github.com/craftcms/cms/issues/16546))
+- Fixed a bug where ʻokina characters weren’t being removed in auto-generated slugs. ([#16548](https://github.com/craftcms/cms/issues/16548))
+
+## 4.14.1 - 2025-01-22
+
+- Fixed a bug where all multi-byte characters were getting stripped out of search indexes. ([#16457](https://github.com/craftcms/cms/issues/16457))
+
+## 4.14.0.2 - 2025-01-21
+
+- Fixed an error that occurred when creating a new Structure section. ([#16476](https://github.com/craftcms/cms/issues/16476))
+
+## 4.14.0.1 - 2025-01-21
+
+- Fixed an error that occurred when referencing a single section entry by its handle. ([#16474](https://github.com/craftcms/cms/issues/16474))
+
+## 4.14.0 - 2025-01-21
+
+### Content Management
+- The global sidebar no longer shows “Failed” for queue jobs, for users that don’t have access to the Queue Manager. ([#16184](https://github.com/craftcms/cms/issues/16184))
+
+### Administration
+- Added the `elements/delete-all-of-type` command. ([#16423](https://github.com/craftcms/cms/pull/16423))
+- Added the `utils/delete-empty-volume-folders` command. ([#16388](https://github.com/craftcms/cms/issues/16388))
+- The Queue Manager utility now shows jobs’ class names. ([#16228](https://github.com/craftcms/cms/pull/16228)) 
+
+### Development
+- Added the `primarySite` global Twig variable. ([#16370](https://github.com/craftcms/cms/discussions/16370))
+- The `duration` Twig filter now has a `language` argument. ([#16332](https://github.com/craftcms/cms/pull/16332))
+- Added support for specifying the current site via an `X-Craft-Site` header set to a site ID or handle. ([#16367](https://github.com/craftcms/cms/pull/16367))
+- Deprecated the `ucfirst` Twig filter. `capitalize` should be used instead.
+
+### Extensibility
+- Added `craft\helpers\Image::EXIF_IFD0_ROTATE_0_MIRRORED`.
+- Added `craft\helpers\Image::EXIF_IFD0_ROTATE_0`.
+- Added `craft\helpers\Image::EXIF_IFD0_ROTATE_180_MIRRORED`.
+- Added `craft\helpers\Image::EXIF_IFD0_ROTATE_270_MIRRORED`.
+- Added `craft\helpers\Image::EXIF_IFD0_ROTATE_90_MIRRORED`.
+- Added `craft\models\AssetIndexingSession::$forceStop`. ([#16435](https://github.com/craftcms/cms/pull/16435))
+- `GuzzleHttp\Client` is now instantiated via `Craft::createObject()`. ([#16366](https://github.com/craftcms/cms/pull/16366))
+- `craft\helpers\DateTimeHelper::humanDuration()` now has a `$language` argument. ([#16332](https://github.com/craftcms/cms/pull/16332))
+
+### System
+- Database rows with foreign keys referencing nonexistent rows are now deleted via garbage collection.
+- Pages which contain image transform generation URLs now set no-cache headers. ([#16195](https://github.com/craftcms/cms/discussions/16195))
+- Action requests (such as `actions/app/health-check`) now send no-cache headers by default. ([#16364](https://github.com/craftcms/cms/pull/16364))
+- Image cleansing now preserves the original image quality, if known.
+- Fixed a bug where `craft\config\GeneralConfig::safeMode()` set Safe Mode to `false` by default.
+- Fixed a bug where Craft wasn’t auto-rotating or flipping images uploaded with a mirrored EXIF orientation.
+- Fixed a bug where asset indexing could get stuck in an infinite loop if the index data was deleted. ([#16435](https://github.com/craftcms/cms/pull/16435))
+- Updated Twig to 3.15. ([#16207](https://github.com/craftcms/cms/discussions/16207))
+- Fixed an error that could occur when setting `relatedTo*` GraphQL arguments to `null`. ([#16433](https://github.com/craftcms/cms/issues/16433))
+- Fixed a bug where old structure data wasn’t getting soft-deleted when a section was assigned a new structure UUID when applying project config changes. ([#16450](https://github.com/craftcms/cms/issues/16450))
+- Fixed a bug where `craft\events\DefineAssetUrlEvent::$transform` wasn’t always defined for assets’ `EVENT_BEFORE_DEFINE_URL` and `EVENT_DEFINE_URL` events. ([#16464](https://github.com/craftcms/cms/pull/16464))
+
+## 4.13.10 - 2025-01-14
+
+- Fixed a bug where the control panel could display a notice about the Craft CMS license belonging to a different domain, even when accessing the control panel from the correct domain. ([#16396](https://github.com/craftcms/cms/issues/16396))
+- Fixed a bug where Unicode special characters weren’t getting stripped out of search keywords. ([#16430](https://github.com/craftcms/cms/issues/16430))
+- Fixed an error that could occur when setting `relatedTo*` GraphQL arguments to `null`. ([#16431](https://github.com/craftcms/cms/issues/16431))
+
+## 4.13.9 - 2025-01-06
+
+- Fixed a bug where custom fields could cause validation errors when running the `users/create` command.
+- Fixed a bug where deleting a volume folder wasn’t fully deleting asset data in descendant folders.
+- Fixed a bug where `ancestors`, `children`, `descendants`, and `parent` eager-loading wasn’t working on some environments. ([#16381](https://github.com/craftcms/cms/issues/16381), [#16382](https://github.com/craftcms/cms/issues/16382))
+
+## 4.13.8 - 2025-01-02
 
 - Fixed a bug where asset edit page URLs contained spaces if the asset filename contained spaces. ([#15236](https://github.com/craftcms/cms/issues/15236))
 - Fixed a bug where custom fields were getting included in rendered field layout forms, even if their `getInputHtml()` method returned an empty string.

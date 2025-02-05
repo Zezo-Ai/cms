@@ -64,6 +64,7 @@ class QueueManagerAsset extends AssetBundle
                 'Job released.',
                 'Retrying all failed jobs.',
                 'ID',
+                'Class',
                 '{num, number} {num, plural, =1{second} other{seconds}}',
                 'Time to reserve',
                 'Status',

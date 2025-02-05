@@ -9,7 +9,10 @@
 {% endif -%}
 {% for element in elements %}
     {% set totalDescendants = structure
-        ? (element.getDescendants()
+        ? (clone(elementQuery)
+            .structureId(element.structureId)
+            .descendantOf(element)
+            .siteId(element.siteId)
             .status(null)
             .drafts(null)
             .draftOf(false)

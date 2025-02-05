@@ -1013,7 +1013,7 @@ class Plugins extends Component
         $info['hasCpSettings'] = ($plugin !== null && $plugin->hasCpSettings);
         $info['licenseKey'] = $pluginInfo['licenseKey'] ?? null;
 
-        $licenseInfo = Craft::$app->getCache()->get('licenseInfo') ?? [];
+        $licenseInfo = Craft::$app->getCache()->get(App::licenseInfoCacheKey()) ?? [];
         $pluginCacheKey = StringHelper::ensureLeft($handle, 'plugin-');
         $info['licenseId'] = $licenseInfo[$pluginCacheKey]['id'] ?? null;
         $info['licensedEdition'] = $licenseInfo[$pluginCacheKey]['edition'] ?? null;
@@ -1195,10 +1195,11 @@ class Plugins extends Component
 
         // Clear the plugin's cached license key status
         $cache = Craft::$app->getCache();
-        $licenseInfo = $cache->get('licenseInfo') ?? [];
+        $cacheKey = App::licenseInfoCacheKey();
+        $licenseInfo = $cache->get($cacheKey) ?? [];
         if (isset($licenseInfo[$handle])) {
             unset($licenseInfo[$handle]);
-            $cache->set('licenseInfo', $licenseInfo);
+            $cache->set($cacheKey, $licenseInfo);
         }
 
         return true;

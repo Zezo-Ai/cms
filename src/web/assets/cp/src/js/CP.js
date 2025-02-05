@@ -1538,7 +1538,12 @@ Craft.CP = Garnish.Base.extend(
         } else if (
           this.displayedJobInfo.status === Craft.CP.JOB_STATUS_FAILED
         ) {
-          this.jobProgressIcon.showFailMode(Craft.t('app', 'Failed'));
+          if (Craft.canAccessQueueManager) {
+            this.jobProgressIcon.showFailMode(Craft.t('app', 'Failed'));
+          } else {
+            this.jobProgressIcon.$a.remove();
+            this.jobProgressIcon.destroy();
+          }
         }
       } else {
         if (this.jobProgressIcon) {

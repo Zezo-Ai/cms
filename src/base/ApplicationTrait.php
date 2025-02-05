@@ -619,7 +619,7 @@ trait ApplicationTrait
      */
     public function getLicensedEdition(): ?int
     {
-        $licenseInfo = $this->getCache()->get('licenseInfo') ?: [];
+        $licenseInfo = $this->getCache()->get(App::licenseInfoCacheKey()) ?: [];
 
         if (!isset($licenseInfo['craft']['edition'])) {
             return null;
@@ -1570,11 +1570,6 @@ trait ApplicationTrait
 
         // Set the language
         $this->updateTargetLanguage();
-
-        // Prevent browser caching if this is a control panel request
-        if ($this instanceof WebApplication && $request->getIsCpRequest()) {
-            $this->getResponse()->setNoCacheHeaders();
-        }
 
         // Register the variable dumper
         VarDumper::setHandler(function($var) {

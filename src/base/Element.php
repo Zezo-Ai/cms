@@ -13,6 +13,7 @@ use craft\behaviors\CustomFieldBehavior;
 use craft\behaviors\DraftBehavior;
 use craft\behaviors\RevisionBehavior;
 use craft\db\Connection;
+use craft\db\ExcludeDescendantIdsExpression;
 use craft\db\Query;
 use craft\db\Table;
 use craft\elements\actions\Delete;
@@ -1123,6 +1124,7 @@ abstract class Element extends Component implements ElementInterface
             'collapsedElementIds' => Craft::$app->getRequest()->getParam('collapsedElementIds'),
             'showCheckboxes' => $showCheckboxes,
             'tableName' => static::pluralDisplayName(),
+            'elementQuery' => self::elemnetQueryWithAllDescendants($elementQuery),
         ];
 
         $db = Craft::$app->getDb();
@@ -1194,6 +1196,24 @@ abstract class Element extends Component implements ElementInterface
         $template = '_elements/' . $viewState['mode'] . 'view/' . ($includeContainer ? 'container' : 'elements');
 
         return Craft::$app->getView()->renderTemplate($template, $variables);
+    }
+
+    private static function elemnetQueryWithAllDescendants(ElementQueryInterface $elementQuery): ElementQueryInterface
+    {
+        if (is_array($elementQuery->where)) {
+            foreach ($elementQuery->where as $key => $condition) {
+                if ($condition instanceof ExcludeDescendantIdsExpression) {
+                    $elementQuery = clone $elementQuery;
+                    unset($elementQuery->where[$key]);
+                    break;
+                }
+            }
+        } elseif ($elementQuery->where instanceof ExcludeDescendantIdsExpression) {
+            $elementQuery = clone $elementQuery;
+            $elementQuery->where = null;
+        }
+
+        return $elementQuery;
     }
 
     /**
@@ -1469,7 +1489,7 @@ abstract class Element extends Component implements ElementInterface
         foreach ($elementStructureData as $elementStructureDatum) {
             foreach ($descendantStructureData as $descendantStructureDatum) {
                 if (
-                    $descendantStructureDatum['structureId'] === $elementStructureDatum['structureId'] &&
+                    $descendantStructureDatum['structureId'] == $elementStructureDatum['structureId'] &&
                     $descendantStructureDatum['lft'] > $elementStructureDatum['lft'] &&
                     $descendantStructureDatum['rgt'] < $elementStructureDatum['rgt'] &&
                     (!$children || $descendantStructureDatum['level'] == $elementStructureDatum['level'] + 1)
@@ -4009,7 +4029,7 @@ abstract class Element extends Component implements ElementInterface
      */
     private function _outdatedAttributes(): array
     {
-        if (!static::trackChanges() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 
@@ -4283,7 +4303,7 @@ abstract class Element extends Component implements ElementInterface
      */
     private function _outdatedFields(): array
     {
-        if (!static::trackChanges() || !$this->getIsDraft() || $this->getIsCanonical()) {
+        if (!static::trackChanges() || $this->getIsCanonical() || $this->getIsRevision()) {
             return [];
         }
 

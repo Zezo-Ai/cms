@@ -1924,6 +1924,8 @@ JS;
             return null;
         }
 
+        $transform = $transform ?? $this->_transform;
+
         // Give plugins/modules a chance to provide a custom URL
         $event = new DefineAssetUrlEvent([
             'transform' => $transform,
@@ -1961,7 +1963,6 @@ JS;
         }
 
         $volume = $this->getVolume();
-        $transform = $transform ?? $this->_transform;
 
         if (
             $transform && (

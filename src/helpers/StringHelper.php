@@ -1781,7 +1781,7 @@ class StringHelper extends \yii\helpers\StringHelper
         }
 
         // Remove inner-word punctuation.
-        $str = preg_replace('/[\'"‘’“”\[\]\(\)\{\}:]/u', '', $str);
+        $str = preg_replace('/[\'"‘’“”ʻ\[\]\(\)\{\}:]/u', '', $str);
 
         // Split on the words and return
         return static::splitOnWords($str);
@@ -1800,7 +1800,7 @@ class StringHelper extends \yii\helpers\StringHelper
         $handle = static::stripHtml($str);
 
         // Remove inner-word punctuation
-        $handle = preg_replace('/[\'"‘’“”\[\]\(\)\{\}:]/', '', $handle);
+        $handle = preg_replace('/[\'"‘’“”ʻ\[\]\(\)\{\}:]/', '', $handle);
     
         // Make it lowercase
         $handle = static::toLowerCase($handle);
@@ -2038,5 +2038,35 @@ class StringHelper extends \yii\helpers\StringHelper
     public static function indent(string $str, string $indent = '    '): string
     {
         return implode("\n", array_map(fn(string $line) => $indent . $line, static::lines($str)));
+    }
+
+    /**
+     * Returns a regex pattern for invisible characters.
+     *
+     * @return string
+     * @since 4.14.1
+     */
+    public static function invisibleCharsRegex(): string
+    {
+        $invisibleCharCodes = [
+            '00ad', // soft hyphen
+            '0083', // no break
+            '200b', // zero width space
+            '200c', // zero width non-joiner
+            '200d', // zero width joiner
+            '200e', // LTR character
+            '200f', // RTL character
+            '2062', // invisible times
+            '2063', // invisible comma
+            '2064', // invisible plus
+            'feff', //zero width non-break space
+        ];
+
+        array_walk(
+            $invisibleCharCodes,
+            fn(&$charCode) => $charCode = sprintf('\\x{%s}', $charCode)
+        );
+
+        return sprintf('/%s/iu', implode('|', $invisibleCharCodes));
     }
 }
