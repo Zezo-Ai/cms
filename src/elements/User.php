@@ -1236,12 +1236,11 @@ class User extends Element implements IdentityInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function afterRestore(): void
     {
         $this->getAddressManager()->restoreNestedElements($this);
-
         parent::afterRestore();
     }
 
