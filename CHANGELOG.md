@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Fixed a bug where addresses were not restored when a soft-deleted user was restored.
+- Fixed a bug where addresses were not restored when a soft-deleted user was restored. ([#16636](https://github.com/craftcms/cms/pull/16636))
 
 ## 5.6.5.1 - 2025-02-04
 
