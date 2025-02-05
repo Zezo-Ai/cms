@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where addresses were not restored when a soft-deleted user was restored.
+
 ## 5.6.5.1 - 2025-02-04
 
 - Fixed an error that could occur when saving elements with nested elements on multi-site installs. ([#16609](https://github.com/craftcms/cms/issues/16609))

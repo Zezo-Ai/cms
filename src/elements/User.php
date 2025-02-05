@@ -1235,6 +1235,16 @@ class User extends Element implements IdentityInterface
         return $this->_addressManager;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function afterRestore(): void
+    {
+        $this->getAddressManager()->restoreNestedElements($this);
+
+        parent::afterRestore();
+    }
+
     private function createAddressQuery(): AddressQuery
     {
         return Address::find()
