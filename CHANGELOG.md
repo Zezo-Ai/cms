@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fixed a bug where multi-site elements’ search indexes could be updated twice.
 - Fixed a potential phishing attack vector.
 
 ## 4.14.4 - 2025-02-04
