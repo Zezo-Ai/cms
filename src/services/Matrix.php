@@ -693,7 +693,7 @@ class Matrix extends Component
         } else {
             $blocks = $value->getCachedResult();
             if ($blocks !== null) {
-                $saveAll = false;
+                $saveAll = !empty($owner->newSiteIds);
             } else {
                 $blocks = (clone $value)->status(null)->all();
                 $saveAll = true;
