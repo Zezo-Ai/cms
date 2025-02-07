@@ -114,6 +114,9 @@
         }
 
         this.addListener(this.$addEntryBtn, 'activate', async function () {
+          if (this.$addEntryBtn.hasClass('loading')) {
+            return;
+          }
           this.$addEntryBtn.addClass('loading');
           Craft.cp.announce(Craft.t('app', 'Loading'));
           try {

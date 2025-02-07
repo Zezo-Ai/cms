@@ -339,6 +339,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
 
     createElement: async function (attributes) {
       if (this.$createBtn) {
+        if (this.$createBtn.hasClass('loading')) {
+          return;
+        }
+
         this.$createBtn.addClass('loading');
         Craft.cp.announce(Craft.t('app', 'Loading'));
       }
@@ -559,6 +563,10 @@ Craft.NestedElementManager = Garnish.Base.extend(
 
     async addElementCard(element) {
       if (this.$createBtn) {
+        if (this.$createBtn.hasClass('loading')) {
+          return;
+        }
+
         this.$createBtn.addClass('loading');
         Craft.cp.announce(Craft.t('app', 'Loading'));
       }
