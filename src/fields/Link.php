@@ -626,14 +626,6 @@ JS, [
             $view->namespaceInputId($id),
         ]);
 
-        if (!$value) {
-            // Override the initial value being set to null by CustomField::inputHtml()
-            $view->setInitialDeltaValue($this->handle, [
-                'type' => $valueTypeId,
-                'value' => '',
-            ]);
-        }
-
         $typeInputName = "$this->handle[type]";
 
         if (count($linkTypes) === 1) {
