@@ -1057,11 +1057,7 @@ class StringHelper extends \yii\helpers\StringHelper
         // repeat the steps until we've created a string of the right length
         for ($i = 0; $i < $length; $i++) {
             // pick a random number from 1 up to the number of valid chars
-            try {
-                $randomPick = random_int(0, $numValidChars - 1);
-            } catch (\Exception) {
-                $randomPick = rand(0, $numValidChars - 1);
-            }
+            $randomPick = random_int(0, $numValidChars - 1);
 
             // take the random character out of the string of valid chars
             $randomChar = $validChars[$randomPick];
