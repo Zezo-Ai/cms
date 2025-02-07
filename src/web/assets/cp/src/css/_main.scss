@@ -4035,8 +4035,12 @@ table {
 
   &.main {
     .source-path {
-      margin-block: -22px 24px;
+      margin-block: calc(var(--padding) * -1 + 2px) 24px;
       margin-inline: calc(var(--padding) * -1 + 2px);
+
+      & + .elements > .tablepane {
+        margin-block-start: calc(var(--xl) * -1 + 2px);
+      }
     }
 
     .inline-editing {
