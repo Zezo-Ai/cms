@@ -1588,8 +1588,11 @@ JS, [
     {
         $this->requirePostRequest();
 
-        /** @var Element|DraftBehavior|null $element */
         $element = $this->_element();
+
+        if ($element instanceof Response) {
+            return $element;
+        }
 
         if (!$element || !$element->getIsDraft()) {
             throw new BadRequestHttpException('No draft was identified by the request.');
