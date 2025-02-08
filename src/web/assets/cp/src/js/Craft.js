@@ -1157,15 +1157,13 @@ $.extend(Craft, {
     // Make sure oldData and newData are always strings. This is important because further below String.split is called.
     oldData = typeof oldData === 'string' ? oldData : '';
     newData = typeof newData === 'string' ? newData : '';
-    if (!Array.isArray(deltaNames)) {
-      deltaNames = [];
-    }
-    if (!$.isPlainObject(initialDeltaValues)) {
-      initialDeltaValues = {};
-    }
-    if (!Array.isArray(modifiedDeltaNames)) {
-      modifiedDeltaNames = [];
-    }
+    deltaNames = Array.isArray(deltaNames) ? [...deltaNames] : [];
+    initialDeltaValues = $.isPlainObject(initialDeltaValues)
+      ? initialDeltaValues
+      : {};
+    modifiedDeltaNames = Array.isArray(modifiedDeltaNames)
+      ? [...modifiedDeltaNames]
+      : [];
 
     // Sort the delta namespaces from least -> most specific
     deltaNames.sort((a, b) => {
