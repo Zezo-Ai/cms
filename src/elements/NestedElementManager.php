@@ -712,7 +712,7 @@ JS, [
         } else {
             $elements = $value->getCachedResult();
             if ($elements !== null) {
-                $saveAll = false;
+                $saveAll = !empty($owner->newSiteIds);
             } else {
                 $elements = $value->all();
                 $saveAll = true;
