@@ -1071,12 +1071,12 @@ $.extend(Craft, {
     // Make sure oldData and newData are always strings. This is important because further below String.split is called.
     oldData = typeof oldData === 'string' ? oldData : '';
     newData = typeof newData === 'string' ? newData : '';
-    deltaNames = Array.isArray(deltaNames) ? deltaNames : [];
+    deltaNames = Array.isArray(deltaNames) ? [...deltaNames] : [];
     initialDeltaValues = $.isPlainObject(initialDeltaValues)
       ? initialDeltaValues
       : {};
     modifiedDeltaNames = Array.isArray(modifiedDeltaNames)
-      ? modifiedDeltaNames
+      ? [...modifiedDeltaNames]
       : [];
 
     // Sort the delta namespaces from least -> most specific
