@@ -3,10 +3,13 @@
 ## Unreleased
 
 - Fixed a bug where multi-site elements’ search indexes could be updated twice.
+- Fixed a bug where some Matrix blocks weren’t getting propagated to newly-added sites of their owners, if any blocks had been modified. ([#16640](https://github.com/craftcms/cms/issues/16640))
 - Fixed a bug where Number fields weren’t getting sorted properly in PostgreSQL. ([#15828](https://github.com/craftcms/cms/issues/15828))
 - Fixed a bug where Matrix fields’ “Default View Mode” settings included a “Display in a structured table” option. ([#16631](https://github.com/craftcms/cms/discussions/16631))
 - Fixed a bug where user addresses weren’t getting restored when soft-deleted users were restored. ([#16636](https://github.com/craftcms/cms/pull/16636))
+- Fixed a bug where pressing the “New entry” button multiple times quickly would create multiple nested entries, circumventing the “Max Entries” settings. ([#16642](https://github.com/craftcms/cms/issues/16642))
 - Fixed a potential phishing attack vector.
+- Fixed a styling issue.
 
 ## 5.6.5.1 - 2025-02-04
 

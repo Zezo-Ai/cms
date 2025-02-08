@@ -3517,11 +3517,14 @@ JS;
             Html::beginTag('div', [
                 'class' => 'content-notice',
             ]) .
-            Html::tag('div', '', [
+            Html::beginTag('div', [
                 'class' => ['content-notice-icon'],
                 'aria' => ['hidden' => 'true'],
-                'data' => ['icon' => 'lightbulb'],
             ]) .
+            Html::tag('div', Cp::iconSvg('gear-slash'), [
+                'class' => 'cp-icon',
+            ]) .
+            Html::endTag('div') .
             Html::tag('p', Craft::t(
                 'app',
                 'Changes to these settings aren’t permitted in this environment.',
