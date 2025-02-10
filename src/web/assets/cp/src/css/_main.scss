@@ -1073,8 +1073,6 @@ button {
 
     .cp-icon {
       --icon-size: calc(20rem / 16);
-      position: relative;
-      inset-inline-start: 1px;
     }
 
     &::after {
