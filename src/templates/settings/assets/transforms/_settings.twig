@@ -17,6 +17,9 @@
   },
 ] %}
 
+{% set defaultPositionLabel = "Default Focal Point"|t('app') %}
+{% set letterboxPositionLabel = "Image Position"|t('app') %}
+
 {% import '_includes/forms.twig' as forms %}
 
 
@@ -86,9 +89,10 @@
             }) }}
         </div>
 
-        <div id="letterbox-position-container"{% if transform.mode != 'letterbox' %} class="hidden"{% endif %}>
+        <div id="position-container"{% if transform.mode not in ['crop', 'letterbox'] %} class="hidden"{% endif %}>
+            {% set positionLabel = transform.mode == 'letterbox' ? letterboxPositionLabel : defaultPositionLabel %}
             {{ forms.selectField({
-                label: "Image Position"|t('app'),
+                label: positionLabel,
                 id: 'position',
                 name: 'position',
                 options: {
@@ -102,27 +106,7 @@
                     'bottom-center': "Bottom-Center"|t('app'),
                     'bottom-right': "Bottom-Right"|t('app')
                 },
-                value: transform.mode != 'letterbox' ? transform.position : 'center-center'
-            }) }}
-        </div>
-
-        <div id="position-container"{% if transform.mode in ['stretch', 'letterbox'] %} class="hidden"{% endif %}>
-            {{ forms.selectField({
-                label: "Default Focal Point"|t('app'),
-                id: 'position',
-                name: 'position',
-                options: {
-                    'top-left': "Top-Left"|t('app'),
-                    'top-center': "Top-Center"|t('app'),
-                    'top-right': "Top-Right"|t('app'),
-                    'center-left': "Center-Left"|t('app'),
-                    'center-center': "Center-Center"|t('app'),
-                    'center-right': "Center-Right"|t('app'),
-                    'bottom-left': "Bottom-Left"|t('app'),
-                    'bottom-center': "Bottom-Center"|t('app'),
-                    'bottom-right': "Bottom-Right"|t('app')
-                },
-                value: transform.mode in ['crop', 'fit'] ? transform.position : 'center-center'
+                value: transform.mode in ['crop', 'letterbox'] ? transform.position : 'center-center'
             }) }}
         </div>
 
@@ -238,20 +222,20 @@
     $('#mode input').change(function() {
         const value = $(this).val();
 
-        // Crop mode requires a default focal point:
-        if (value == 'crop') {
+        // Letterbox mode requires a position:
+        if (value == 'letterbox') {
+            $('#fill-color').removeClass('hidden');
+            $('#position-container label[for="position"]').text(`{{ letterboxPositionLabel }}`);
+        } else {
+            $('#fill-color').addClass('hidden');
+            $('#position-container label[for="position"]').text(`{{ defaultPositionLabel }}`);
+        }
+
+        // Crop and letterbox modes requires a position:
+        if (value == 'crop' || value == 'letterbox') {
             $('#position-container').removeClass('hidden');
         } else {
             $('#position-container').addClass('hidden');
-        }
-
-        // Letterbox mode requires a position, as well:
-        if (value == 'letterbox') {
-            $('#fill-color').removeClass('hidden')
-            $('#letterbox-position-container').removeClass('hidden')
-        } else {
-            $('#fill-color').addClass('hidden')
-            $('#letterbox-position-container').addClass('hidden')
         }
     });
 
