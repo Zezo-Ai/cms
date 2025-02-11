@@ -20,7 +20,7 @@
 - Fixed a bug where Link fields’ “URL Suffix” and “Target” advanced fields were getting enabled even if they had been disabled in Craft 5.5. ([#16663](https://github.com/craftcms/cms/issues/16663))
 - Fixed an error that occurred when executing the `users/remove-2fa` command.
 - Fixed a potential phishing attack vector.
-- Fixed a styling issue.
+- Fixed styling issues. ([#16683](https://github.com/craftcms/cms/issues/16683))
 
 ## 5.6.5.1 - 2025-02-04
 

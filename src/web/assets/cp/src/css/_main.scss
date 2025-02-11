@@ -6368,6 +6368,10 @@ $min2ColWidth: 400px;
       body.rtl & {
         transition: inset-inline-start linear 250ms;
       }
+
+      & > fieldset:first-child {
+        margin-block-start: 24px !important;
+      }
     }
   }
 
