@@ -27,7 +27,7 @@ $gridColor: var(--gray-100);
   box-shadow: none;
   min-height: 500px;
 
-  .errors > & {
+  .errors > .layoutdesigner > & {
     border: 1px solid var(--error-color) !important;
   }
 
