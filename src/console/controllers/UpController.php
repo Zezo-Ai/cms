@@ -58,7 +58,7 @@ class UpController extends Controller
     public function actionIndex(): int
     {
         try {
-            $pendingChanges = Craft::$app->getProjectConfig()->areChangesPending();
+            $pendingChanges = Craft::$app->getProjectConfig()->areChangesPending(force: true);
 
             // Craft + plugin migrations
             $res = $this->run('migrate/all', [

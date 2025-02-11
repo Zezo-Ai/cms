@@ -261,7 +261,7 @@ class AppController extends Controller
 
         $projectConfigService = Craft::$app->getProjectConfig();
         if ($applyProjectConfigChanges) {
-            $applyProjectConfigChanges = $projectConfigService->areChangesPending();
+            $applyProjectConfigChanges = $projectConfigService->areChangesPending(force: true);
         }
 
         if (!$runMigrations && !$applyProjectConfigChanges) {
