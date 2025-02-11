@@ -248,10 +248,13 @@ class CustomField extends BaseField
      */
     protected function containerAttributes(?ElementInterface $element = null, bool $static = false): array
     {
+        /** @var FieldInterface $field */
+        $field = $this->_field;
+
         return ArrayHelper::merge(parent::containerAttributes($element, $static), [
             'id' => "{$this->_field->handle}-field",
             'data' => [
-                'type' => $this->_field !== null ? get_class($this->_field) : self::class,
+                'type' => get_class($field),
             ],
         ]);
     }
