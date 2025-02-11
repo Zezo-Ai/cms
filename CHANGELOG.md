@@ -7,6 +7,8 @@
 - Fixed a bug where some Matrix blocks weren’t getting propagated to newly-added sites of their owners, if any blocks had been modified. ([#16640](https://github.com/craftcms/cms/issues/16640))
 - Fixed an error that could occur when deleting a draft.
 - Fixed an error that could occur when saving a Structure section entry, if it had an Assets field with a dynamic subpath that referenced `level`. ([#16661](https://github.com/craftcms/cms/pull/16661))
+- Fixed a bug where “Fit” image transforms were showing the “Default Focal Point” setting. ([#16665](https://github.com/craftcms/cms/pull/16665))
+- Fixed a bug where the “Image Position” setting wasn’t saving for “Letterbox” image transforms. ([#16648](https://github.com/craftcms/cms/issues/16648))
 - Fixed a potential phishing attack vector.
 
 ## 4.14.4 - 2025-02-04
