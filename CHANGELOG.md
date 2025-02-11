@@ -15,6 +15,7 @@
 - Fixed a bug where pressing the “New entry” button multiple times quickly would create multiple nested entries, circumventing the “Max Entries” settings. ([#16642](https://github.com/craftcms/cms/issues/16642))
 - Fixed a bug where Link fields without values were always getting marked as dirty when making another change to the element. ([#16649](https://github.com/craftcms/cms/pull/16649))
 - Fixed an error that could occur when programmatically duplicating a nested element for a new site. ([#16659](https://github.com/craftcms/cms/issues/16659))
+- Fixed a bug where Link fields’ “URL Suffix” and “Target” advanced fields were getting enabled even if they had been disabled in Craft 5.5. ([#16663](https://github.com/craftcms/cms/issues/16663))
 - Fixed a potential phishing attack vector.
 - Fixed a styling issue.
 
