@@ -58,6 +58,7 @@ class ProjectConfig extends Component
      * The cache key that is used to store the modified time of the project config files, at the time they were last applied or ignored.
      *
      * @since 3.5.0
+     * @deprecated in 5.6.6
      */
     public const IGNORE_CACHE_KEY = 'projectConfig:ignore';
     /**
@@ -621,7 +622,6 @@ class ProjectConfig extends Component
         $this->_applyingExternalChanges = true;
         $cache = Craft::$app->getCache();
         $cache->delete(self::CACHE_KEY);
-        $cache->delete(self::IGNORE_CACHE_KEY);
 
         $changes = $this->_getPendingChanges();
 
@@ -702,9 +702,15 @@ class ProjectConfig extends Component
             return false;
         }
 
-        // If the file modification date hasn't changed, then no need to check the contents
-        if (!$this->_areConfigFilesModified($force)) {
-            return false;
+        if (!$force) {
+            // If the file modification date hasn't changed, then no need to check the contents
+            $cachedModifiedTime = Craft::$app->getCache()->get(self::CACHE_KEY);
+            if (
+                $cachedModifiedTime &&
+                $cachedModifiedTime === $this->_getConfigFileModifiedTime()
+            ) {
+                return false;
+            }
         }
 
         if ($path !== null) {
@@ -760,15 +766,10 @@ class ProjectConfig extends Component
      * Ignores any pending changes in the project config files.
      *
      * @since 3.5.0
+     * @deprecated in 5.6.6
      */
     public function ignorePendingChanges(): void
     {
-        Craft::$app->getCache()->set(
-            self::IGNORE_CACHE_KEY,
-            $this->_getConfigFileModifiedTime(),
-            self::CACHE_DURATION,
-            $this->getCacheDependency()
-        );
     }
 
     /**
@@ -778,11 +779,11 @@ class ProjectConfig extends Component
      */
     public function updateParsedConfigTimes(): bool
     {
-        $time = $this->_getConfigFileModifiedTime();
-        return !empty(Craft::$app->getCache()->multiSet([
-            self::CACHE_KEY => $time,
-            self::IGNORE_CACHE_KEY => $time,
-        ], self::CACHE_DURATION));
+        return Craft::$app->getCache()->set(
+            self::CACHE_KEY,
+            $this->_getConfigFileModifiedTime(),
+            self::CACHE_DURATION,
+        );
     }
 
     /**
@@ -1494,22 +1495,6 @@ class ProjectConfig extends Component
         uasort($changedItems, $sorter);
 
         return compact('newItems', 'removedItems', 'changedItems');
-    }
-
-    /**
-     * Return true if the config files have been modified since last we checked.
-     *
-     * @param bool $force Whether to check for changes even if it doesn’t look like anything has changed since
-     * the last time [[ignorePendingChanges()]] has been called.
-     * @return bool
-     */
-    private function _areConfigFilesModified(bool $force): bool
-    {
-        $cachedModifiedTime = Craft::$app->getCache()->get($force ? self::CACHE_KEY : self::IGNORE_CACHE_KEY);
-        return (
-            !$cachedModifiedTime ||
-            $this->_getConfigFileModifiedTime() !== $cachedModifiedTime
-        );
     }
 
     /**

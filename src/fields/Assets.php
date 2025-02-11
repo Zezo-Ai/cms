@@ -924,7 +924,7 @@ class Assets extends BaseRelationField
             // Prepare the path by parsing tokens and normalizing slashes.
             try {
                 if ($element?->duplicateOf) {
-                    $element = $element->duplicateOf;
+                    $element = $element->duplicateOf->getCanonical();
                 }
                 $renderedSubpath = Craft::$app->getView()->renderObjectTemplate($subpath, $element);
             } catch (InvalidConfigException|RuntimeError $e) {
