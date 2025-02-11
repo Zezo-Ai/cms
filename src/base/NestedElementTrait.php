@@ -105,18 +105,26 @@ trait NestedElementTrait
     public bool $updateSearchIndexForOwner = false;
 
     /**
-     * @var ElementInterface|false The primary owner element, or false if [[primaryOwnerId]] is invalid
+     * @var ElementInterface|false|null The primary owner element, or false if [[primaryOwnerId]] is invalid
      * @see getPrimaryOwner()
      * @see setPrimaryOwner()
      */
-    private ElementInterface|false $_primaryOwner;
+    private ElementInterface|false|null $_primaryOwner = null;
 
     /**
-     * @var ElementInterface|false The owner element, or false if [[ownerId]] is invalid
+     * @var ElementInterface|false|null The owner element, or false if [[ownerId]] is invalid
      * @see getOwner()
      * @see setOwner()
      */
-    private ElementInterface|false $_owner;
+    private ElementInterface|false|null $_owner = null;
+
+    public function __clone(): void
+    {
+        parent::__clone();
+
+        $this->_primaryOwner = null;
+        $this->_owner = null;
+    }
 
     /**
      * @inheritdoc
