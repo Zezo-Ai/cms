@@ -507,7 +507,7 @@ class UsersController extends Controller
      * @return int
      * @since 5.5.0
      */
-    private function remove2fa(string $user): int
+    public function remove2fa(string $user): int
     {
         try {
             $user = $this->_user($user);
