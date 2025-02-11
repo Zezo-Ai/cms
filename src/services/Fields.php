@@ -302,8 +302,8 @@ class Fields extends Component
         }
 
         // Make sure the current field class is in there if it's supposed to be
-        if ($includeCurrent && !in_array(get_class($field), $types, true)) {
-            $types[] = get_class($field);
+        if ($includeCurrent && !in_array($field !== null ? get_class($field) : self::class, $types, true)) {
+            $types[] = $field !== null ? get_class($field) : self::class;
         }
 
         // Fire a 'defineCompatibleFieldTypes' event

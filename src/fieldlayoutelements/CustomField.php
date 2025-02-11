@@ -251,7 +251,7 @@ class CustomField extends BaseField
         return ArrayHelper::merge(parent::containerAttributes($element, $static), [
             'id' => "{$this->_field->handle}-field",
             'data' => [
-                'type' => get_class($this->_field),
+                'type' => $this->_field !== null ? get_class($this->_field) : self::class,
             ],
         ]);
     }
