@@ -96,6 +96,11 @@ class Conditions extends Component
                     $newClass = ArrayHelper::remove($newConfig, 'class');
                 }
 
+                // Make sure the condition is being passed to the condition rule when it's being constructed
+                if (isset($config['condition'])) {
+                    $newConfig['condition'] = $config['condition'];
+                }
+
                 // Is the type changing?
                 if ($class !== null && $newClass !== $class) {
                     // Remove any config attributes that aren't defined by the same class between both types
