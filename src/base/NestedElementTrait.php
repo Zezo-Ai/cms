@@ -190,6 +190,7 @@ trait NestedElementTrait
                 ]);
             }
 
+            /** @phpstan-ignore-next-line */
             if (!isset($this->_primaryOwner) || $this->_primaryOwner === false) {
                 // Either we didn't try, or the primary owner couldn't be eager-loaded for some reason
                 $ownerType = $this->ownerType();
@@ -266,6 +267,7 @@ trait NestedElementTrait
                 ]);
             }
 
+            /** @phpstan-ignore-next-line */
             if (!isset($this->_owner) || $this->_owner === false) {
                 // Either we didn't try, or the owner couldn't be eager-loaded for some reason
                 $ownerType = $this->ownerType();
