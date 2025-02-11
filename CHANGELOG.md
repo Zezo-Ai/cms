@@ -10,7 +10,7 @@
 - Fixed a bug where “Fit” image transforms were showing the “Default Focal Point” setting. ([#16665](https://github.com/craftcms/cms/pull/16665))
 - Fixed a bug where the “Image Position” setting wasn’t saving for “Letterbox” image transforms. ([#16648](https://github.com/craftcms/cms/issues/16648))
 - Fixed a bug where the `up` command, the `app/migrate` action, and the Project Config utility weren’t aware of pending project config changes if a database backup was restored but caches weren’t cleared. ([#16668](https://github.com/craftcms/cms/issues/16668))
-- Fixed a bug where the creation of a condition rule wouldn’t have the condition set. ([#16676](https://github.com/craftcms/cms/pull/16676))
+- Fixed a bug where condition rules weren’t always getting created with their condition set. ([#16676](https://github.com/craftcms/cms/pull/16676))
 - Fixed a potential phishing attack vector.
 
 ## 4.14.4 - 2025-02-04
