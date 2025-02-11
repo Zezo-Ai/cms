@@ -1010,7 +1010,7 @@ button {
       position: relative;
       inset-inline-start: 1px;
       color: var(--blue-800) !important;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     &::after {
@@ -1073,8 +1073,6 @@ button {
 
     .cp-icon {
       --icon-size: calc(20rem / 16);
-      position: relative;
-      inset-inline-start: 1px;
     }
 
     &::after {
