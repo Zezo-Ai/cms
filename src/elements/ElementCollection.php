@@ -300,7 +300,6 @@ class ElementCollection extends Collection
             return parent::unique($key, $strict);
         }
 
-        /** @phpstan-ignore-next-line */
         return $this->keyBy('id')->values();
     }
 

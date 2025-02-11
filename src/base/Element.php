@@ -5398,7 +5398,6 @@ JS, [
                 }
 
                 // No takers. Just store it in the internal array then.
-                /** @phpstan-ignore-next-line */
                 $this->_eagerLoadedElements[$handle] = ElementCollection::make($elements);
         }
     }
