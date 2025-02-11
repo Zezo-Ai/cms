@@ -4606,6 +4606,7 @@ const FilterHud = Garnish.HUD.extend({
     Craft.cp.announce(Craft.t('app', 'Loading'));
     Craft.sendActionRequest('POST', 'element-indexes/filter-hud', {
       data: {
+        context: this.elementIndex.settings.context,
         elementType: this.elementIndex.elementType,
         source: this.sourceKey,
         condition: this.elementIndex.settings.condition,
