@@ -302,6 +302,7 @@ class Fields extends Component
         }
 
         // Make sure the current field class is in there if it's supposed to be
+        /** @var FieldInterface $field */
         if ($includeCurrent && !in_array(get_class($field), $types, true)) {
             $types[] = get_class($field);
         }
