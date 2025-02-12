@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.5 - 2025-02-11
 
 - Fixed a bug where multi-site elements’ search indexes could be updated twice.
 - Fixed a bug where the `utils/delete-empty-volume-folders` command was deleting folders that had no assets directly, but had subfolders. ([#16388](https://github.com/craftcms/cms/issues/16388))
