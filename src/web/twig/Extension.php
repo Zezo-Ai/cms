@@ -8,7 +8,6 @@
 namespace craft\web\twig;
 
 use CommerceGuys\Addressing\Formatter\FormatterInterface;
-use Countable;
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\FieldLayoutProviderInterface;
@@ -320,9 +319,6 @@ class Extension extends AbstractExtension implements GlobalsInterface
                 return is_callable($obj);
             }),
             new TwigTest('countable', function($obj): bool {
-                if (!function_exists('is_countable')) {
-                    return is_array($obj) || $obj instanceof Countable;
-                }
                 return is_countable($obj);
             }),
             new TwigTest('float', function($obj): bool {
@@ -1266,7 +1262,7 @@ class Extension extends AbstractExtension implements GlobalsInterface
     public function indexOfFilter(mixed $haystack, mixed $needle, ?int $default = -1): ?int
     {
         if (is_string($haystack)) {
-            $index = strpos($haystack, $needle);
+            $index = strpos($haystack, (string) $needle);
         } elseif (is_array($haystack)) {
             $index = array_search($needle, $haystack, false);
         } elseif (is_object($haystack) && $haystack instanceof IteratorAggregate) {

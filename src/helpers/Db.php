@@ -42,7 +42,7 @@ class Db
     public const SIMPLE_TYPE_TEXTUAL = 'textual';
 
     /**
-     * @var array
+     * @var string[]
      */
     private static array $_operators = ['not ', '!=', '<=', '>=', '<', '>', '='];
 
