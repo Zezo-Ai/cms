@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.6 - 2025-02-11
 
 - Fixed a bug where multi-site elements’ search indexes could be updated twice.
 - Fixed a bug where some nested Matrix entries weren’t getting propagated to newly-added sites of their owners, if any blocks had been modified. ([#16640](https://github.com/craftcms/cms/issues/16640))
