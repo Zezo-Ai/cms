@@ -2034,6 +2034,8 @@ EOD;
                 ->ancestorOf($this->getCanonicalId())
                 ->ancestorDist(1)
                 ->status(null)
+                ->site('*')
+                ->unique()
                 ->scalar();
 
             if ($parentId == $canonicalParentId) {
