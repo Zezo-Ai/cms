@@ -48,6 +48,7 @@ class ReplaceFile extends ElementAction
             settings.fileInput = \$fileInput;
             settings.paramName = 'replaceFile';
             settings.replace = true;
+            settings.events = {};
 
             const fileuploaddone = settings.events?.fileuploaddone;
             settings.events = Object.assign({}, settings.events || {}, {
