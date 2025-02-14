@@ -216,7 +216,7 @@ class m230617_070415_entrify_matrix_blocks extends Migration
                 // the DB user probably didn't have permission
                 // see https://github.com/craftcms/cms/issues/15063#issuecomment-2194059768
                 $disabledFkChecks = false;
-            };
+            }
 
             // entrify the Matrix blocks
             $typeIdSql = 'CASE';
