@@ -19,4 +19,4 @@ return RectorConfig::configure()
         // autoload may need to be bootstrapped to early load some child classes
         RemoveExtraParametersRector::class,
     ])
-    ->withPhpSets(php72: true);
+    ->withPhpSets(php73: true);

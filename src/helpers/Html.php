@@ -970,7 +970,7 @@ class Html extends \yii\helpers\Html
      * Replaces textareas with markers
      *
      * @param string $html
-     * @return array
+     * @return array<string, string>
      */
     private static function _escapeTextareas(string &$html): array
     {
@@ -1013,8 +1013,7 @@ class Html extends \yii\helpers\Html
      * Replaces markers with textareas.
      *
      * @param string $html
-     * @param array $markers
-     * @return string
+     * @param array<string, string> $markers
      */
     private static function _restoreTextareas(string $html, array $markers): string
     {
