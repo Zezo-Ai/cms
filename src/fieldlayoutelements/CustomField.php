@@ -356,9 +356,7 @@ class CustomField extends BaseField
             ($element->id ?? false) &&
             !$static
         );
-        $html = $view->namespaceInputs(function() use ($element, $static) {
-            return (string)parent::formHtml($element, $static);
-        }, 'fields');
+        $html = $view->namespaceInputs(fn() => (string)parent::formHtml($element, $static), 'fields');
         $view->setIsDeltaRegistrationActive($isDeltaRegistrationActive);
 
         return $html;

@@ -135,9 +135,7 @@ class Addresses extends Field implements
                 $ids = is_string($ids) ? StringHelper::split($ids) : [$ids];
             }
 
-            $ids = array_map(function($id) {
-                return $id instanceof Address ? $id->id : (int)$id;
-            }, $ids);
+            $ids = array_map(fn($id) => $id instanceof Address ? $id->id : (int)$id, $ids);
 
             $existsQuery->andWhere(["addresses_$ns.id" => $ids]);
         }

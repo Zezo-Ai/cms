@@ -813,9 +813,7 @@ class Assets extends Component
         }
 
         // Check whether a filename we'd want to use does not exist
-        $canUse = static function($filenameToTest) use ($potentialConflicts, $volume, $folder) {
-            return !isset($potentialConflicts[mb_strtolower($filenameToTest)]) && !$volume->fileExists($folder->path . $filenameToTest);
-        };
+        $canUse = static fn($filenameToTest) => !isset($potentialConflicts[mb_strtolower($filenameToTest)]) && !$volume->fileExists($folder->path . $filenameToTest);
 
         if ($canUse($originalFilename)) {
             return $originalFilename;

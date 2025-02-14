@@ -69,7 +69,7 @@ class ElementCondition extends BaseCondition implements ElementConditionInterfac
      */
     public function __construct(?string $elementType = null, array $config = [])
     {
-        $elementType = $elementType ?? $config['elementType'] ?? $config['attributes']['elementType'] ?? null;
+        $elementType ??= $config['elementType'] ?? $config['attributes']['elementType'] ?? null;
         unset($config['elementType'], $config['attributes']['elementType']);
 
         if (

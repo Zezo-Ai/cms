@@ -282,9 +282,7 @@ class TemplateCaches extends Component
      */
     private function _parseSelfClosingTags(array $tags): array
     {
-        return array_map(function($tag) {
-            return Html::parseTagAttributes($tag);
-        }, $tags);
+        return array_map(fn($tag) => Html::parseTagAttributes($tag), $tags);
     }
 
     private function _parseExternalResourceTags(array $tags, string $urlAttribute): array

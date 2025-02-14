@@ -334,7 +334,7 @@ class Users extends Component
 
         // Make sure it’s not expired
         if ($user->verificationCodeIssuedDate < $minCodeIssueDate) {
-            $userRecord = $userRecord ?? $this->_getUserRecordById($user->id);
+            $userRecord ??= $this->_getUserRecordById($user->id);
             $userRecord->verificationCode = $user->verificationCode = null;
             $userRecord->verificationCodeIssuedDate = $user->verificationCodeIssuedDate = null;
             $userRecord->save();

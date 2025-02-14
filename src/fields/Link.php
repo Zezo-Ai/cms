@@ -364,9 +364,7 @@ class Link extends Field implements InlineEditableFieldInterface, RelationalFiel
         $remainingTypes = Collection::make();
         if ($selectedTypes->count() < count(self::types())) {
             $remainingTypes = Collection::make(self::types())
-                ->filter(function($value, $key) use ($selectedTypes) {
-                    return !isset($selectedTypes[$key]);
-                })
+                ->filter(fn($value, $key) => !isset($selectedTypes[$key]))
                 // and sort them by label, with URL at the top
                 ->sort(function(string $a, string $b) {
                     /** @var class-string<BaseLinkType> $a */

@@ -344,9 +344,7 @@ class Entries extends Component
             return [];
         }
 
-        return ArrayHelper::where($this->getAllSections(), function(Section $section) use ($user) {
-            return $user->can("viewEntries:$section->uid");
-        }, true, true, false);
+        return ArrayHelper::where($this->getAllSections(), fn(Section $section) => $user->can("viewEntries:$section->uid"), true, true, false);
     }
 
     /**
@@ -945,10 +943,9 @@ class Entries extends Component
             throw new Exception('No site settings exist for section ' . $section->id);
         }
 
-        $sites = ArrayHelper::where(Craft::$app->getSites()->getAllSites(), function(Site $site) use ($siteSettings) {
+        $sites = ArrayHelper::where(Craft::$app->getSites()->getAllSites(), fn(Site $site) =>
             // Only include it if it's one of this section's sites
-            return isset($siteSettings[$site->uid]);
-        }, true, true, false);
+            isset($siteSettings[$site->uid]), true, true, false);
 
         $siteIds = array_map(fn(Site $site) => $site->id, $sites);
 

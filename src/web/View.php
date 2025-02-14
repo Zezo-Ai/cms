@@ -1072,9 +1072,7 @@ class View extends \yii\web\View
      */
     public function registerJsWithVars(callable $jsFn, array $vars, int $position = self::POS_READY, ?string $key = null): void
     {
-        $jsVars = array_map(function($variable) {
-            return Json::encode($variable);
-        }, $vars);
+        $jsVars = array_map(fn($variable) => Json::encode($variable), $vars);
         $js = call_user_func($jsFn, ...array_values($jsVars));
         $this->registerJs($js, $position, $key);
     }
@@ -1460,9 +1458,7 @@ class View extends \yii\web\View
      */
     public function registerScriptWithVars(callable $scriptFn, array $vars, int $position = self::POS_END, array $options = [], ?string $key = null): void
     {
-        $jsVars = array_map(function($variable) {
-            return Json::encode($variable);
-        }, $vars);
+        $jsVars = array_map(fn($variable) => Json::encode($variable), $vars);
 
         $script = call_user_func($scriptFn, ...array_values($jsVars));
         $this->registerScript($script, $position, $options);

@@ -240,7 +240,7 @@ class AssetIndexer extends Component
             $record = AssetIndexingSessionRecord::findOne($session->id);
         }
 
-        $record = $record ?? new AssetIndexingSessionRecord();
+        $record ??= new AssetIndexingSessionRecord();
 
         $record->indexedVolumes = $session->indexedVolumes;
         $record->totalEntries = $session->totalEntries;
@@ -488,9 +488,7 @@ class AssetIndexer extends Component
             if ($session->listEmptyFolders && $hasAssets > 0) {
                 // if the folder contains as many assets as are listed in the $missingFiles
                 // allow this folder to be offered for deletion (with the assets in it)
-                if ($hasAssets == count(array_filter($missingFiles, function($file) use ($path) {
-                    return StringHelper::startsWith($file['path'], $path);
-                }))) {
+                if ($hasAssets == count(array_filter($missingFiles, fn($file) => StringHelper::startsWith($file['path'], $path)))) {
                     $missing['folders'][$folderId] = $volumeName . '/' . $path;
                 }
             }

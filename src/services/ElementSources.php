@@ -62,12 +62,8 @@ class ElementSources extends Component
      */
     public static function filterExtraHeadings(array $sources): array
     {
-        return array_values(array_filter($sources, function($source, $i) use ($sources) {
-            return (
-                $source['type'] !== self::TYPE_HEADING ||
-                (isset($sources[$i + 1]) && $sources[$i + 1]['type'] !== self::TYPE_HEADING)
-            );
-        }, ARRAY_FILTER_USE_BOTH));
+        return array_values(array_filter($sources, fn($source, $i) => $source['type'] !== self::TYPE_HEADING ||
+        (isset($sources[$i + 1]) && $sources[$i + 1]['type'] !== self::TYPE_HEADING), ARRAY_FILTER_USE_BOTH));
     }
 
     /**

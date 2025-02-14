@@ -1652,9 +1652,7 @@ class Elements extends Component
 
         if ($siteIds !== null) {
             // Typecast to integers
-            $siteIds = array_map(function($siteId) {
-                return (int)$siteId;
-            }, (array)$siteIds);
+            $siteIds = array_map(fn($siteId) => (int)$siteId, (array)$siteIds);
         }
 
         $this->ensureBulkOp(function() use ($query, $siteIds, $continueOnError) {
@@ -3512,7 +3510,7 @@ class Elements extends Component
         }
 
         // Get the sites supported by this element
-        $supportedSites = $supportedSites ?? ArrayHelper::index(ElementHelper::supportedSitesForElement($element), 'siteId');
+        $supportedSites ??= ArrayHelper::index(ElementHelper::supportedSitesForElement($element), 'siteId');
 
         // Make sure the element actually supports the site it's being saved in
         if (!isset($supportedSites[$element->siteId])) {
@@ -4085,9 +4083,7 @@ class Elements extends Component
         }
 
         // Copy the dirty attributes (except title, slug and uri, which may be translatable)
-        $siteElement->setDirtyAttributes(array_filter($element->getDirtyAttributes(), function(string $attribute): bool {
-            return $attribute !== 'title' && $attribute !== 'slug';
-        }));
+        $siteElement->setDirtyAttributes(array_filter($element->getDirtyAttributes(), fn(string $attribute): bool => $attribute !== 'title' && $attribute !== 'slug'));
 
         if ($saveContent) {
             // Copy any non-translatable field values

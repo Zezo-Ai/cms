@@ -691,9 +691,7 @@ class UsersController extends Controller
             $this->_randomlyDelayResponse(microtime(true) - $time);
 
             if (!empty($errors)) {
-                $list = implode("\n", array_map(function(string $error) {
-                    return sprintf('- %s', $error);
-                }, $errors));
+                $list = implode("\n", array_map(fn(string $error) => sprintf('- %s', $error), $errors));
                 Craft::warning(sprintf("Password reset email not sent:\n%s", $list), __METHOD__);
                 $errors = [];
             }
@@ -1531,7 +1529,7 @@ JS);
                 }
             }
 
-            $user = $user ?? new User();
+            $user ??= new User();
         }
 
         $isCurrentUser = $user->getIsCurrent();

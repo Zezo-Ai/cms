@@ -198,7 +198,7 @@ class UrlHelperTest extends TestCase
      */
     public function testUrlFunction(string $expected, string $path = '', ?array $params = null, ?string $scheme = null, ?bool $showScriptName = null): void
     {
-        $scheme = $scheme ?? 'https';
+        $scheme ??= 'https';
         $expected = $this->_prepExpectedUrl($expected, $scheme);
         self::assertSame($expected, UrlHelper::url($path, $params, $scheme, $showScriptName));
     }
@@ -238,7 +238,7 @@ class UrlHelperTest extends TestCase
      */
     public function testSiteUrl(string $expected, string $path, array|string|null $params = null, ?string $scheme = null, ?int $siteId = null): void
     {
-        $scheme = $scheme ?? 'https';
+        $scheme ??= 'https';
         $expected = $this->_prepExpectedUrl($expected, $scheme);
         self::assertSame($expected, UrlHelper::siteUrl($path, $params, $scheme, $siteId));
     }

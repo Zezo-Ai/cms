@@ -2252,7 +2252,7 @@ abstract class Element extends Component implements ElementInterface
      * @var array<string,int>|null
      * @see validate()
      */
-    private ?array $_attributeNames;
+    private ?array $_attributeNames = null;
 
     /**
      * @var int|null
@@ -6053,9 +6053,7 @@ JS,
         $formatter = Craft::$app->getFormatter();
 
         return array_merge([
-            Craft::t('app', 'ID') => function() {
-                return $this->id ?? false;
-            },
+            Craft::t('app', 'ID') => fn() => $this->id ?? false,
             Craft::t('app', 'Status') => function() {
                 if (!static::hasStatuses()) {
                     return false;

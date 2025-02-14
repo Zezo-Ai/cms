@@ -125,9 +125,7 @@ class Json extends \yii\helpers\Json
             }
 
             if ($indent !== '    ') {
-                $json = preg_replace_callback('/^ {4,}/m', function(array $match) use ($indent) {
-                    return strtr($match[0], ['    ' => $indent]);
-                }, $json);
+                $json = preg_replace_callback('/^ {4,}/m', fn(array $match) => strtr($match[0], ['    ' => $indent]), $json);
             }
         }
 

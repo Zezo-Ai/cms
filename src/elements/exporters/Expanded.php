@@ -84,9 +84,7 @@ class Expanded extends ElementExporter
             }
 
             // sort the $elementArr so the keys are in the same order as the values in the $attributes table
-            uksort($elementArr, function($a, $b) use ($attributes) {
-                return $attributes[$a] <=> $attributes[$b];
-            });
+            uksort($elementArr, fn($a, $b) => $attributes[$a] <=> $attributes[$b]);
 
             if ($fieldLayout !== null) {
                 foreach ($fieldLayout->getCustomFields() as $field) {

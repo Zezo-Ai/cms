@@ -246,13 +246,11 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
      */
     public function status($id): int
     {
-        $payload = $this->db->usePrimary(function() use ($id) {
-            return $this->_createJobQuery()
-                ->select(['fail', 'timeUpdated'])
-                // No need to use andWhere() here since we're fetching by ID
-                ->where(['id' => $id])
-                ->one($this->db);
-        });
+        $payload = $this->db->usePrimary(fn() => $this->_createJobQuery()
+            ->select(['fail', 'timeUpdated'])
+            // No need to use andWhere() here since we're fetching by ID
+            ->where(['id' => $id])
+            ->one($this->db));
 
         return $this->_status($payload);
     }
@@ -403,9 +401,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createWaitingJobQuery()->exists($this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createWaitingJobQuery()->exists($this->db));
     }
 
     /**
@@ -416,9 +412,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createReservedJobQuery()->exists($this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createReservedJobQuery()->exists($this->db));
     }
 
     /**
@@ -431,9 +425,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createWaitingJobQuery()->count('*', $this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createWaitingJobQuery()->count('*', $this->db));
     }
 
     /**
@@ -446,9 +438,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createDelayedJobQuery()->count('*', $this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createDelayedJobQuery()->count('*', $this->db));
     }
 
     /**
@@ -461,9 +451,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createReservedJobQuery()->count('*', $this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createReservedJobQuery()->count('*', $this->db));
     }
 
     /**
@@ -476,9 +464,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
         // Move expired messages into waiting list
         $this->_moveExpired();
 
-        return $this->db->usePrimary(function() {
-            return $this->_createFailedJobQuery()->count('*', $this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createFailedJobQuery()->count('*', $this->db));
     }
 
     /**
@@ -486,12 +472,10 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
      */
     public function getJobDetails(string $id): array
     {
-        $result = $this->db->usePrimary(function() use ($id) {
-            return (new Query())
-                ->from($this->tableName)
-                ->where(['id' => $id])
-                ->one($this->db);
-        });
+        $result = $this->db->usePrimary(fn() => (new Query())
+            ->from($this->tableName)
+            ->where(['id' => $id])
+            ->one($this->db));
 
         if ($result === false) {
             throw new InvalidArgumentException("Invalid job ID: $id");
@@ -522,10 +506,8 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
      */
     public function getTotalJobs(): int
     {
-        return $this->db->usePrimary(function() {
-            return $this->_createJobQuery()
-                ->count('*', $this->db);
-        });
+        return $this->db->usePrimary(fn() => $this->_createJobQuery()
+            ->count('*', $this->db));
     }
 
     /**
@@ -555,9 +537,7 @@ class Queue extends \yii\queue\cli\Queue implements QueueInterface
             ->addOrderBy(['priority' => SORT_ASC, 'id' => SORT_ASC])
             ->limit($limit);
 
-        $results = $this->db->usePrimary(function() use ($query) {
-            return $query->all($this->db);
-        });
+        $results = $this->db->usePrimary(fn() => $query->all($this->db));
 
         $info = [];
 
@@ -803,22 +783,20 @@ EOD;
         if ($this->_reserveTime !== $timestamp) {
             $this->_reserveTime = $timestamp;
 
-            $expiredIds = $this->db->usePrimary(function() {
-                return (new Query())
-                    ->select(['id'])
-                    ->from([$this->tableName])
-                    ->where([
-                        'and',
-                        [
-                            'channel' => $this->channel(),
-                            'fail' => false,
-                        ],
-                        '[[timeUpdated]] < :time - [[ttr]]',
-                    ], [
-                        ':time' => $this->_reserveTime,
-                    ])
-                    ->column($this->db);
-            });
+            $expiredIds = $this->db->usePrimary(fn() => (new Query())
+                ->select(['id'])
+                ->from([$this->tableName])
+                ->where([
+                    'and',
+                    [
+                        'channel' => $this->channel(),
+                        'fail' => false,
+                    ],
+                    '[[timeUpdated]] < :time - [[ttr]]',
+                ], [
+                    ':time' => $this->_reserveTime,
+                ])
+                ->column($this->db));
 
             if (!empty($expiredIds)) {
                 Db::update($this->tableName, [
