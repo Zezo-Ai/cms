@@ -3234,17 +3234,12 @@ JS;
                 throw new FileException(Craft::t('app', 'Could not open file for streaming at {path}', ['path' => $tempPath]));
             }
 
-            if ($this->folderId) {
-                // Delete the old file
-                $oldVolume->deleteFile($oldPath);
-            }
-
             // Upload the file to the new location
             try {
                 $newVolume->writeFileFromStream($newPath, $stream, [
                     Fs::CONFIG_MIMETYPE => FileHelper::getMimeType($tempPath),
                 ]);
-            } catch (VolumeException $exception) {
+            } catch (VolumeException|FsException $exception) {
                 Craft::$app->getErrorHandler()->logException($exception);
                 throw $exception;
             } finally {
@@ -3252,6 +3247,12 @@ JS;
                 if (is_resource($stream)) {
                     fclose($stream);
                 }
+            }
+
+            // if we got this far without an exception, it's okay to delete the file from the old volume
+            if ($this->folderId) {
+                // Delete the old file
+                $oldVolume->deleteFile($oldPath);
             }
         }
 
