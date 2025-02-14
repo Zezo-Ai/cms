@@ -6,6 +6,7 @@
 - Fixed an error that could occur during garbage collection if the database user didn’t have permission to disable foreign key constraints. ([#16700](https://github.com/craftcms/cms/issues/16700))
 - Fixed a bug where datepickers could have scrollbars. ([#16697](https://github.com/craftcms/cms/issues/16697))
 - Fixed a bug where asset files could be prematurely deleted when moved to a different volume, if an error occurred. ([#16686](https://github.com/craftcms/cms/issues/16686))
+- Fixed an error that could occur if a field’s input HTML contained `<style>` tags. ([nystudio107/craft-retour#329](https://github.com/nystudio107/craft-retour/issues/329))
 
 ## 5.6.6 - 2025-02-11
 

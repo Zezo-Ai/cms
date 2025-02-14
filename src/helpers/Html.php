@@ -114,7 +114,7 @@ class Html extends \yii\helpers\Html
             return $html;
         }
 
-        $crawler = new Crawler($html);
+        $crawler = new Crawler("<html><body>$html</body></html>");
 
         $inputContainers = $crawler->filter('.field > .input');
         foreach ($inputContainers as $inputContainer) {

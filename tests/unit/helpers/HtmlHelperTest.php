@@ -388,6 +388,11 @@ class HtmlHelperTest extends TestCase
                 '<input type="text" name="foo" disabled>',
                 fn() => '<input type="text" name="foo">',
             ],
+            // https://github.com/nystudio107/craft-retour/issues/329
+            [
+                '<style>foo { color: red; }</style><input type="text" name="foo" disabled>',
+                '<style>foo { color: red; }</style><input type="text" name="foo">',
+            ],
         ];
     }
 
