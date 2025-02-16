@@ -7,6 +7,7 @@
 - Fixed a bug where datepickers could have scrollbars. ([#16697](https://github.com/craftcms/cms/issues/16697))
 - Fixed a bug where asset files could be prematurely deleted when moved to a different volume, if an error occurred. ([#16686](https://github.com/craftcms/cms/issues/16686))
 - Fixed a bug where clearing out a Structure section’s Parent field wasn’t persisting if editing the entry for a newly-added site. ([#16691](https://github.com/craftcms/cms/issues/16691))
+- Fixed a bug where SVG asset transforms could get two `preserveAspectRatio` attributes. ([#16709](https://github.com/craftcms/cms/issues/16709))
 - Fixed a styling issue. ([#16699](https://github.com/craftcms/cms/issues/16699))
 - Fixed an error that could occur if a field’s input HTML contained `<style>` tags. ([nystudio107/craft-retour#329](https://github.com/nystudio107/craft-retour/issues/329))
 
