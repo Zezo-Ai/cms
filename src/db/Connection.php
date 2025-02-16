@@ -328,9 +328,7 @@ class Connection extends \yii\db\Connection
             );
 
             // Sort them by file modified time descending (newest first).
-            usort($files, static function($a, $b) {
-                return filemtime($b) <=> filemtime($a);
-            });
+            usort($files, static fn($a, $b) => filemtime($b) <=> filemtime($a));
 
             if (count($files) >= $generalConfig->maxBackups) {
                 $backupsToDelete = array_slice($files, $generalConfig->maxBackups);
@@ -596,9 +594,7 @@ class Connection extends \yii\db\Connection
 
             // Redact the PGPASSWORD
             if ($this->getIsPgsql()) {
-                $execCommand = preg_replace_callback('/(PGPASSWORD=")([^"]+)"/i', function($match) {
-                    return $match[1] . str_repeat('•', strlen($match[2])) . '"';
-                }, $execCommand);
+                $execCommand = preg_replace_callback('/(PGPASSWORD=")([^"]+)"/i', fn($match) => $match[1] . str_repeat('•', strlen($match[2])) . '"', $execCommand);
             }
 
             throw new ShellCommandException($execCommand, $command->getExitCode(), $command->getStdErr());

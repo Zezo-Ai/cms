@@ -159,7 +159,7 @@ class Schema extends \yii\db\pgsql\Schema
             ->addArg('--file=', '{file}')
             ->addArg('--schema=', '{schema}');
 
-        $ignoreTables = $ignoreTables ?? Craft::$app->getDb()->getIgnoredBackupTables();
+        $ignoreTables ??= Craft::$app->getDb()->getIgnoredBackupTables();
         $format = $this->getBackupFormat();
         $commandFromConfig = Craft::$app->getConfig()->getGeneral()->backupCommand;
 

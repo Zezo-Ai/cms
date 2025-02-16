@@ -514,9 +514,7 @@ class ElementQueryConditionBuilder extends Component
                     if (!$transformableAssetProperty) {
                         /** @var InlineFragmentNode|FragmentDefinitionNode|null $wrappingFragment */
                         if ($wrappingFragment) {
-                            $plan->when = function(Element $element) use ($wrappingFragment) {
-                                return $element->getGqlTypeName() === $wrappingFragment->typeCondition->name->value;
-                            };
+                            $plan->when = fn(Element $element) => $element->getGqlTypeName() === $wrappingFragment->typeCondition->name->value;
                         }
                         $plan->criteria = array_merge_recursive($plan->criteria, $this->_argumentManager->prepareArguments($arguments));
                     }

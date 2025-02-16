@@ -226,17 +226,11 @@ return [
             return Craft::createObject($config);
         },
 
-        'formatter' => function() {
-            return Craft::$app->getFormattingLocale()->getFormatter();
-        },
+        'formatter' => fn() => Craft::$app->getFormattingLocale()->getFormatter(),
 
-        'formattingLocale' => function() {
-            return craft\helpers\App::createFormattingLocale();
-        },
+        'formattingLocale' => fn() => craft\helpers\App::createFormattingLocale(),
 
-        'locale' => function() {
-            return Craft::$app->getI18n()->getLocaleById(Craft::$app->language);
-        },
+        'locale' => fn() => Craft::$app->getI18n()->getLocaleById(Craft::$app->language),
 
         'mailer' => function() {
             $config = craft\helpers\App::mailerConfig();

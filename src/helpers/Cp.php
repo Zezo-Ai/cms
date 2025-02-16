@@ -291,9 +291,7 @@ class Cp
                 break;
         }
 
-        $childTagHtml = array_map(function(array $childTagInfo): string {
-            return self::alertTagHtml($childTagInfo);
-        }, $tagInfo['children'] ?? []);
+        $childTagHtml = array_map(fn(array $childTagInfo): string => self::alertTagHtml($childTagInfo), $tagInfo['children'] ?? []);
 
         return trim(static::renderTemplate('_layouts/components/tag.twig', [
             'type' => $tagInfo['type'],
@@ -1459,7 +1457,7 @@ JS, [
     public static function fieldHtml(string|callable $input, array $config = []): string
     {
         $attribute = $config['attribute'] ?? $config['id'] ?? null;
-        $id = $config['id'] = $config['id'] ?? 'field' . mt_rand();
+        $id = $config['id'] ??= 'field' . mt_rand();
         $labelId = $config['labelId'] ?? "$id-label";
         $instructionsId = $config['instructionsId'] ?? "$id-instructions";
         $tipId = $config['tipId'] ?? "$id-tip";
@@ -1712,11 +1710,11 @@ JS, [
      */
     public static function checkboxFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'checkbox' . mt_rand();
+        $config['id'] ??= 'checkbox' . mt_rand();
 
         $config['fieldClass'] = Html::explodeClass($config['fieldClass'] ?? []);
         $config['fieldClass'][] = 'checkboxfield';
-        $config['instructionsPosition'] = $config['instructionsPosition'] ?? 'after';
+        $config['instructionsPosition'] ??= 'after';
 
         // Don't pass along `label` since it's ambiguous
         unset($config['label']);
@@ -1734,7 +1732,7 @@ JS, [
      */
     public static function checkboxSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'checkboxselect' . mt_rand();
+        $config['id'] ??= 'checkboxselect' . mt_rand();
         $config['fieldset'] = true;
         return static::fieldHtml('template:_includes/forms/checkboxSelect.twig', $config);
     }
@@ -1760,7 +1758,7 @@ JS, [
      */
     public static function checkboxGroupFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'checkboxgroup' . mt_rand();
+        $config['id'] ??= 'checkboxgroup' . mt_rand();
         return static::fieldHtml('template:_includes/forms/checkboxGroup.twig', $config);
     }
 
@@ -1787,7 +1785,7 @@ JS, [
      */
     public static function colorFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'color' . mt_rand();
+        $config['id'] ??= 'color' . mt_rand();
         $config['fieldset'] = true;
         return static::fieldHtml('template:_includes/forms/color.twig', $config);
     }
@@ -1801,7 +1799,7 @@ JS, [
      */
     public static function colorSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'colorselect' . mt_rand();
+        $config['id'] ??= 'colorselect' . mt_rand();
         return static::fieldHtml('template:_includes/forms/colorSelect.twig', $config);
     }
 
@@ -1826,7 +1824,7 @@ JS, [
      */
     public static function iconPickerFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'iconpicker' . mt_rand();
+        $config['id'] ??= 'iconpicker' . mt_rand();
         return static::fieldHtml('template:_includes/forms/iconPicker.twig', $config);
     }
 
@@ -1840,7 +1838,7 @@ JS, [
      */
     public static function editableTableFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'editabletable' . mt_rand();
+        $config['id'] ??= 'editabletable' . mt_rand();
         return static::fieldHtml('template:_includes/forms/editableTable.twig', $config);
     }
 
@@ -1867,13 +1865,13 @@ JS, [
      */
     public static function lightswitchFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'lightswitch' . mt_rand();
+        $config['id'] ??= 'lightswitch' . mt_rand();
 
         $config['fieldClass'] = Html::explodeClass($config['fieldClass'] ?? []);
         $config['fieldClass'][] = 'lightswitch-field';
 
         // Don't pass along `label` since it's ambiguous
-        $config['fieldLabel'] = $config['fieldLabel'] ?? $config['label'] ?? null;
+        $config['fieldLabel'] ??= $config['label'] ?? null;
         unset($config['label']);
 
         return static::fieldHtml('template:_includes/forms/lightswitch.twig', $config);
@@ -1902,7 +1900,7 @@ JS, [
      */
     public static function rangeFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'range' . mt_rand();
+        $config['id'] ??= 'range' . mt_rand();
         return static::fieldHtml('template:_includes/forms/range.twig', $config);
     }
 
@@ -1929,7 +1927,7 @@ JS, [
      */
     public static function moneyFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'money' . mt_rand();
+        $config['id'] ??= 'money' . mt_rand();
         return static::fieldHtml('template:_includes/forms/money.twig', $config);
     }
 
@@ -1955,7 +1953,7 @@ JS, [
      */
     public static function selectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'select' . mt_rand();
+        $config['id'] ??= 'select' . mt_rand();
         return static::fieldHtml('template:_includes/forms/select.twig', $config);
     }
 
@@ -1980,7 +1978,7 @@ JS, [
      */
     public static function customSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'customselect' . mt_rand();
+        $config['id'] ??= 'customselect' . mt_rand();
         return static::fieldHtml('template:_includes/forms/customSelect.twig', $config);
     }
 
@@ -2006,7 +2004,7 @@ JS, [
      */
     public static function selectizeFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'selectize' . mt_rand();
+        $config['id'] ??= 'selectize' . mt_rand();
         return static::fieldHtml('template:_includes/forms/selectize.twig', $config);
     }
 
@@ -2032,7 +2030,7 @@ JS, [
      */
     public static function multiSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'multiselect' . mt_rand();
+        $config['id'] ??= 'multiselect' . mt_rand();
         return static::fieldHtml('template:_includes/forms/multiselect.twig', $config);
     }
 
@@ -2059,7 +2057,7 @@ JS, [
      */
     public static function textFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'text' . mt_rand();
+        $config['id'] ??= 'text' . mt_rand();
         return static::fieldHtml('template:_includes/forms/text.twig', $config);
     }
 
@@ -2086,7 +2084,7 @@ JS, [
      */
     public static function textareaFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'textarea' . mt_rand();
+        $config['id'] ??= 'textarea' . mt_rand();
         return static::fieldHtml('template:_includes/forms/textarea.twig', $config);
     }
 
@@ -2113,7 +2111,7 @@ JS, [
      */
     public static function dateFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'date' . mt_rand();
+        $config['id'] ??= 'date' . mt_rand();
         return static::fieldHtml('template:_includes/forms/date.twig', $config);
     }
 
@@ -2140,7 +2138,7 @@ JS, [
      */
     public static function timeFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'time' . mt_rand();
+        $config['id'] ??= 'time' . mt_rand();
         return static::fieldHtml('template:_includes/forms/time.twig', $config);
     }
 
@@ -2184,7 +2182,7 @@ JS, [
      */
     public static function elementSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'elementselect' . mt_rand();
+        $config['id'] ??= 'elementselect' . mt_rand();
         return static::fieldHtml('template:_includes/forms/elementSelect.twig', $config);
     }
 
@@ -2209,7 +2207,7 @@ JS, [
      */
     public static function entryTypeSelectFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'entrytypeselect' . mt_rand();
+        $config['id'] ??= 'entrytypeselect' . mt_rand();
         return static::fieldHtml('template:_includes/forms/entryTypeSelect.twig', $config);
     }
 
@@ -2223,7 +2221,7 @@ JS, [
      */
     public static function autosuggestFieldHtml(array $config): string
     {
-        $config['id'] = $config['id'] ?? 'autosuggest' . mt_rand();
+        $config['id'] ??= 'autosuggest' . mt_rand();
 
         // Suggest an environment variable / alias?
         if ($config['suggestEnvVars'] ?? false) {
@@ -2583,9 +2581,7 @@ JS, [
 
         // make sure we don't have any cardViewValues that are no longer allowed to show in cards
         $cardViewValues = $fieldLayout->getCardView();
-        $cardViewValues = array_filter($cardViewValues, function($value) use ($selectedOptions) {
-            return isset($selectedOptions[$value]);
-        });
+        $cardViewValues = array_filter($cardViewValues, fn($value) => isset($selectedOptions[$value]));
 
         // sort all selected options by the cardView order
         $selectedOptions = array_replace(

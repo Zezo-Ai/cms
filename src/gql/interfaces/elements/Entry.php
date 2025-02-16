@@ -213,9 +213,7 @@ class Entry extends Structure
                     ...$allFieldArguments,
                 ],
                 'description' => 'Returns the previous element relative to this one, from a given set of criteria.',
-                'complexity' => function($childrenComplexity, $args) {
-                    return $childrenComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1 * (int)!empty($args);
-                },
+                'complexity' => fn($childrenComplexity, $args) => $childrenComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1 * (int)!empty($args),
             ],
             'next' => [
                 'name' => 'next',
@@ -225,9 +223,7 @@ class Entry extends Structure
                     ...$allFieldArguments,
                 ],
                 'description' => 'Returns the next element relative to this one, from a given set of criteria.',
-                'complexity' => function($childrenComplexity, $args) {
-                    return $childrenComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1 * (int)!empty($args);
-                },
+                'complexity' => fn($childrenComplexity, $args) => $childrenComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1 * (int)!empty($args),
             ],
             'enabledForSite' => [
                 'name' => 'enabledForSite',

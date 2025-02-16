@@ -866,9 +866,7 @@ class FieldLayout extends Model
         $cardViewValues = $this->getCardView();
 
         // make sure we don't have any cardViewValues that are no longer allowed to show in cards
-        $cardViewValues = array_filter($cardViewValues, function($value) use ($elements) {
-            return isset($elements[$value]);
-        });
+        $cardViewValues = array_filter($cardViewValues, fn($value) => isset($elements[$value]));
 
         // return elements in the order specified in the config
         return array_replace(
@@ -1009,9 +1007,7 @@ class FieldLayout extends Model
                         $layoutElements[] = [$layoutElement, $isConditional, true];
                         $hasVisibleFields = true;
                     } else {
-                        $html = $view->namespaceInputs(function() use ($layoutElement, $element, $static) {
-                            return $layoutElement->formHtml($element, $static) ?? '';
-                        }, $namespace);
+                        $html = $view->namespaceInputs(fn() => $layoutElement->formHtml($element, $static) ?? '', $namespace);
 
                         if ($html) {
                             $errorKey = null;

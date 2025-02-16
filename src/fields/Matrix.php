@@ -163,9 +163,7 @@ class Matrix extends Field implements
                 $ids = is_string($ids) ? StringHelper::split($ids) : [$ids];
             }
 
-            $ids = array_map(function($id) {
-                return $id instanceof Entry ? $id->id : (int)$id;
-            }, $ids);
+            $ids = array_map(fn($id) => $id instanceof Entry ? $id->id : (int)$id, $ids);
 
             $existsQuery->andWhere(["entries_$ns.id" => $ids]);
         }

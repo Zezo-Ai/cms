@@ -240,9 +240,7 @@ class Assets extends BaseRelationField
         $rules = parent::defineRules();
 
         $rules[] = [
-            ['allowedKinds'], 'required', 'when' => function(self $field): bool {
-                return (bool)$field->restrictFiles;
-            },
+            ['allowedKinds'], 'required', 'when' => fn(self $field): bool => (bool)$field->restrictFiles,
         ];
 
         $rules[] = [['previewMode'], 'in', 'range' => [self::PREVIEW_MODE_FULL, self::PREVIEW_MODE_THUMBS], 'skipOnEmpty' => false];
@@ -782,9 +780,7 @@ class Assets extends BaseRelationField
                 $baseUploadFolder = $this->restrictLocation ? $this->_uploadFolder($element, false, false) : null;
                 $folders = $this->_folderWithAncestors($uploadFolder, $baseUploadFolder);
                 $variables['defaultSource'] = $this->_sourceKeyByFolder($folders[0]);
-                $variables['defaultSourcePath'] = array_map(function(VolumeFolder $folder) {
-                    return $folder->getSourcePathInfo();
-                }, $folders);
+                $variables['defaultSourcePath'] = array_map(fn(VolumeFolder $folder) => $folder->getSourcePathInfo(), $folders);
             }
         }
 
@@ -941,15 +937,11 @@ class Assets extends BaseRelationField
             }
 
             // Sanitize the subpath
-            $segments = array_filter(explode('/', $renderedSubpath), function(string $segment): bool {
-                return $segment !== ':ignore:';
-            });
+            $segments = array_filter(explode('/', $renderedSubpath), fn(string $segment): bool => $segment !== ':ignore:');
             $generalConfig = Craft::$app->getConfig()->getGeneral();
-            $segments = array_map(function(string $segment) use ($generalConfig): string {
-                return FileHelper::sanitizeFilename($segment, [
-                    'asciiOnly' => $generalConfig->convertFilenamesToAscii,
-                ]);
-            }, $segments);
+            $segments = array_map(fn(string $segment): string => FileHelper::sanitizeFilename($segment, [
+                'asciiOnly' => $generalConfig->convertFilenamesToAscii,
+            ]), $segments);
             $subpath = implode('/', $segments);
         }
 

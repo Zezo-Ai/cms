@@ -59,7 +59,7 @@ class VolumeFolder extends Model
      * @see getFs()
      * @see setFs()
      */
-    private ?FsInterface $_fs;
+    private ?FsInterface $_fs = null;
 
     /**
      * @var VolumeFolder[]|null

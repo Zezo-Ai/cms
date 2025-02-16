@@ -602,7 +602,7 @@ class ElementQuery extends Query implements ElementQueryInterface
         $this->elementType = $elementType;
 
         // Use ** as a placeholder for "all the default columns"
-        $config['select'] = $config['select'] ?? ['**' => '**'];
+        $config['select'] ??= ['**' => '**'];
 
         // Set a placeholder for the default `orderBy` param
         if (!isset($this->orderBy)) {

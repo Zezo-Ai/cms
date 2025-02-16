@@ -128,7 +128,7 @@ class UrlHelper
 
         // Combine them
         $params = array_merge($baseParams, $params);
-        $fragment = $fragment ?? $baseFragment;
+        $fragment ??= $baseFragment;
 
         // Append to the base URL and return
         if (($query = static::buildQuery($params)) !== '') {
@@ -642,7 +642,7 @@ class UrlHelper
 
         // Combine them
         $params = array_merge($baseParams, $params);
-        $fragment = $fragment ?? $baseFragment;
+        $fragment ??= $baseFragment;
 
         $generalConfig = Craft::$app->getConfig()->getGeneral();
         $request = Craft::$app->getRequest();

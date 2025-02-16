@@ -143,9 +143,7 @@ class ArgumentManager extends Component
         if (isset($arguments['relatedToAll'])) {
             Craft::$app->getDeprecator()->log('graphql.arguments.relatedToAll', 'The `relatedToAll` argument has been deprecated. Use the `relatedTo` argument with the `["and", ...ids]` syntax instead.');
             $ids = (array)$arguments['relatedToAll'];
-            $ids = array_map(function($value) {
-                return ['element' => $value];
-            }, $ids);
+            $ids = array_map(fn($value) => ['element' => $value], $ids);
             $arguments['relatedTo'] = array_merge(['and'], $ids);
             unset($arguments['relatedToAll']);
         }

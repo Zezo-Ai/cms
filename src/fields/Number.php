@@ -183,9 +183,7 @@ class Number extends Field implements InlineEditableFieldInterface, SortableFiel
 
         $rules[] = [['previewFormat'], 'in', 'range' => [self::FORMAT_DECIMAL, self::FORMAT_CURRENCY, self::FORMAT_NONE]];
         $rules[] = [
-            ['previewCurrency'], 'required', 'when' => function(): bool {
-                return $this->previewFormat === self::FORMAT_CURRENCY;
-            },
+            ['previewCurrency'], 'required', 'when' => fn(): bool => $this->previewFormat === self::FORMAT_CURRENCY,
         ];
         $rules[] = [['previewCurrency'], 'string', 'min' => 3, 'max' => 3, 'encoding' => '8bit'];
 

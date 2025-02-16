@@ -242,9 +242,7 @@ class UsersController extends Controller
 
         $this->stdout('done' . PHP_EOL, Console::FG_GREEN);
 
-        $groupIds = array_merge($this->groupIds, array_map(function($handle) {
-            return Craft::$app->getUserGroups()->getGroupByHandle($handle)->id ?? null;
-        }, $this->groups));
+        $groupIds = array_merge($this->groupIds, array_map(fn($handle) => Craft::$app->getUserGroups()->getGroupByHandle($handle)->id ?? null, $this->groups));
 
         if (!$groupIds) {
             return ExitCode::OK;

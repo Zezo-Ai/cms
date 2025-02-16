@@ -211,7 +211,7 @@ class Schema extends \yii\db\mysql\Schema
 
         $serverVersion = App::normalizeVersion(Craft::$app->getDb()->getServerVersion());
         $isMySQL8 = version_compare($serverVersion, '8', '>=');
-        $ignoreTables = $ignoreTables ?? Craft::$app->getDb()->getIgnoredBackupTables();
+        $ignoreTables ??= Craft::$app->getDb()->getIgnoredBackupTables();
         $commandFromConfig = Craft::$app->getConfig()->getGeneral()->backupCommand;
 
         // https://bugs.mysql.com/bug.php?id=109685

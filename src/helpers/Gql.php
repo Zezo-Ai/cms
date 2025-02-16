@@ -446,9 +446,7 @@ class Gql
 
         $sites = Craft::$app->getSites()->getAllSites(true);
 
-        return array_filter($sites, static function(Site $site) use ($allowedSiteUids) {
-            return in_array($site->uid, $allowedSiteUids, true);
-        });
+        return array_filter($sites, static fn(Site $site) => in_array($site->uid, $allowedSiteUids, true));
     }
 
     /**
@@ -463,9 +461,7 @@ class Gql
         }
 
         if ($value instanceof ListValueNode) {
-            return array_map(function($node) {
-                return self::_convertArgumentValue($node);
-            }, iterator_to_array($value->values));
+            return array_map(fn($node) => self::_convertArgumentValue($node), iterator_to_array($value->values));
         }
 
         return $value->value;
@@ -507,9 +503,7 @@ class Gql
      */
     public static function eagerLoadComplexity(): callable
     {
-        return static function($childComplexity) {
-            return $childComplexity + GqlService::GRAPHQL_COMPLEXITY_EAGER_LOAD;
-        };
+        return static fn($childComplexity) => $childComplexity + GqlService::GRAPHQL_COMPLEXITY_EAGER_LOAD;
     }
 
     /**
@@ -520,9 +514,7 @@ class Gql
      */
     public static function singleQueryComplexity(): callable
     {
-        return static function($childComplexity) {
-            return $childComplexity + GqlService::GRAPHQL_COMPLEXITY_QUERY;
-        };
+        return static fn($childComplexity) => $childComplexity + GqlService::GRAPHQL_COMPLEXITY_QUERY;
     }
 
     /**
@@ -563,9 +555,7 @@ class Gql
      */
     public static function nPlus1Complexity(): callable
     {
-        return static function($childComplexity) {
-            return $childComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1;
-        };
+        return static fn($childComplexity) => $childComplexity + GqlService::GRAPHQL_COMPLEXITY_NPLUS1;
     }
 
     /**

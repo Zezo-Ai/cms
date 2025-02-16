@@ -2280,8 +2280,8 @@ JS, [
         bool $checkForProvisionalDraft = false,
         bool $strictSite = true,
     ): ElementInterface|Response|null {
-        $elementId = $elementId ?? $this->_elementId;
-        $elementUid = $elementUid ?? $this->_elementUid;
+        $elementId ??= $this->_elementId;
+        $elementUid ??= $this->_elementUid;
 
         $elementsService = Craft::$app->getElements();
         $user = static::currentUser();

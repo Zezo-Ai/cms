@@ -95,15 +95,13 @@ class Revisions extends Component
 
         try {
             if (!$force || !$num) {
-                $lastRevisionInfo = Craft::$app->getDb()->usePrimary(function() use ($canonical) {
-                    return (new Query())
-                        ->select(['e.id', 'r.num', 'e.dateCreated'])
-                        ->from(['e' => Table::ELEMENTS])
-                        ->innerJoin(['r' => Table::REVISIONS], '[[r.id]] = [[e.revisionId]]')
-                        ->where(['r.canonicalId' => $canonical->id])
-                        ->orderBy(['r.num' => SORT_DESC])
-                        ->one();
-                });
+                $lastRevisionInfo = Craft::$app->getDb()->usePrimary(fn() => (new Query())
+                    ->select(['e.id', 'r.num', 'e.dateCreated'])
+                    ->from(['e' => Table::ELEMENTS])
+                    ->innerJoin(['r' => Table::REVISIONS], '[[r.id]] = [[e.revisionId]]')
+                    ->where(['r.canonicalId' => $canonical->id])
+                    ->orderBy(['r.num' => SORT_DESC])
+                    ->one());
 
                 if (
                     !$force &&

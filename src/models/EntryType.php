@@ -149,7 +149,7 @@ class EntryType extends Model implements
      * @var ?self The original entry type without an overridden name and handle
      * @since 5.6.0
      */
-    public ?self $original;
+    public ?self $original = null;
 
     /**
      * @inheritdoc

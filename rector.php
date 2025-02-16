@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
+use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -18,5 +19,10 @@ return RectorConfig::configure()
         // somehow craft\web AssetManager refer with Yii parent AssetManager class
         // autoload may need to be bootstrapped to early load some child classes
         RemoveExtraParametersRector::class,
+
+        // macro usage, make phpstan notice
+        ClosureToArrowFunctionRector::class => [
+            __DIR__ . '/src/base/ApplicationTrait.php',
+        ],
     ])
-    ->withPhpSets(php73: true);
+    ->withPhpSets(php74: true);

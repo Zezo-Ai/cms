@@ -268,7 +268,7 @@ class EntrifyController extends Controller
                     foreach ($fields as [$path, $config]) {
                         $this->do(sprintf('Converting %s', ($config['name'] ?? null) ? "“{$config['name']}”" : 'Categories filed'), function() use ($section, $projectConfigService, $path, $config) {
                             $config['type'] = Entries::class;
-                            $config['settings']['maintainHierarchy'] = $config['settings']['maintainHierarchy'] ?? true;
+                            $config['settings']['maintainHierarchy'] ??= true;
                             $config['settings']['sources'] = ["section:$section->uid"];
                             unset(
                                 $config['settings']['source'],
