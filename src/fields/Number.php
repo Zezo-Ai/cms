@@ -193,29 +193,22 @@ class Number extends Field implements PreviewableFieldInterface, SortableFieldIn
 
     /**
      * @param mixed $value
-     * @return int|float|string|null
+     * @return int|float|null
      */
-    private function _normalizeNumber(mixed $value): float|int|string|null
+    private function _normalizeNumber(mixed $value): float|int|null
     {
         // Was this submitted with a locale ID?
         if (isset($value['locale'], $value['value'])) {
             $value = Localization::normalizeNumber($value['value'], $value['locale']);
         }
 
-        if ($value === '') {
-            return null;
+        if (is_int($value) || is_float($value) || (is_string($value) && $value !== '')) {
+            $float = (float)$value;
+            $int = (int)$float;
+            return $int == $float ? $int : $float;
         }
 
-        if (is_string($value) && is_numeric($value)) {
-            if ((int)$value == $value) {
-                return (int)$value;
-            }
-            if ((float)$value == $value) {
-                return (float)$value;
-            }
-        }
-
-        return $value;
+        return null;
     }
 
     /**
