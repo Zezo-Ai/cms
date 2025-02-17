@@ -74,7 +74,7 @@
     "yiisoft/yii2-symfonymailer": "^4.0.0"
   },
   "require-dev": {
-    "codeception/codeception": "^5.0.11",
+    "codeception/codeception": "^5.2.0",
     "codeception/lib-innerbrowser": "4.0.1",
     "codeception/module-asserts": "^3.0.0",
     "codeception/module-datafactory": "^3.0.0",
