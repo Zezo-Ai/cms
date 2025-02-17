@@ -231,27 +231,37 @@ class Number extends Field implements InlineEditableFieldInterface, SortableFiel
 
     /**
      * @param mixed $value
-     * @return int|float|string|null
+     * @return int|float|null
      */
-    private function _normalizeNumber(mixed $value): float|int|string|null
+    private function _normalizeNumber(mixed $value): float|int|null
     {
         // Was this submitted with a locale ID?
         if (isset($value['locale'], $value['value'])) {
             $value = Localization::normalizeNumber($value['value'], $value['locale']);
         }
 
-        if ($value === '') {
+        if (is_int($value) || is_float($value) || (is_string($value) && $value !== '')) {
+            $float = (float)$value;
+            $int = (int)$float;
+            return $int == $float ? $int : $float;
+        }
+
+        return null;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function serializeValue(mixed $value, ?ElementInterface $element): mixed
+    {
+        if ($value === null) {
             return null;
         }
 
-        if (is_numeric($value)) {
-            // ensure we only store the selected number of decimals and that the result is the same as in v4
-            // https://github.com/craftcms/cms/issues/16181
-            $value = round((float)$value, $this->decimals);
-            return $this->decimals === 0 ? (int)$value : $value;
-        }
-
-        return $value;
+        // ensure we only store the selected number of decimals and that the result is the same as in v4
+        // https://github.com/craftcms/cms/issues/16181
+        $value = round((float)$value, $this->decimals);
+        return $this->decimals === 0 ? (int)$value : $value;
     }
 
     /**
