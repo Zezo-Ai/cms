@@ -6614,6 +6614,7 @@ body.reduce-focus-visibility {
 .input.errors > .border-box,
 .input.errors > .passwordwrapper,
 .input.errors > .autosuggest-container .text,
+.input.errors > .datetimewrapper .text,
 .text.error {
   border: 1px solid var(--error-color) !important;
 }
