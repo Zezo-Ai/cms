@@ -11,6 +11,7 @@
 - Fixed a bug where Number fields weren’t handling semi-numeric strings properly. ([craftcms/feed-me#1575](https://github.com/craftcms/feed-me/issues/1575))
 - Fixed an error that could occur if a field’s input HTML contained `<style>` tags. ([nystudio107/craft-retour#329](https://github.com/nystudio107/craft-retour/issues/329))
 - Fixed a bug where slideouts weren’t fully initializing/deinitializing their UI for users who preferred reduced motion. ([#16707](https://github.com/craftcms/cms/pull/16707))
+- Fixed a bug where GraphQL types for entry types were being named using sections’ and fields’ handle overrides. ([#16713](https://github.com/craftcms/cms/issues/16713))
 - Fixed styling issues. ([#16699](https://github.com/craftcms/cms/issues/16699), [#16712](https://github.com/craftcms/cms/issues/16712))
 
 ## 5.6.6 - 2025-02-11

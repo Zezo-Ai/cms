@@ -740,6 +740,9 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
      */
     public static function gqlTypeName(EntryType $entryType): string
     {
+        // Don't use override data
+        $entryType = $entryType->original ?? $entryType;
+
         return sprintf('%s_Entry', $entryType->handle);
     }
 
