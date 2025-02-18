@@ -549,7 +549,7 @@ abstract class Field extends SavableComponent implements FieldInterface, Iconic,
                 ];
                 $view->registerJsWithVars(fn($id, $params) => <<<JS
 (() => {
-  $('#' + $id).on('click', () => {
+  $('#' + $id).on('activate', () => {
     new Craft.CpScreenSlideout('fields/edit-field', {
       params: $params,
     });
@@ -571,7 +571,7 @@ JS, [
                 ];
                 $view->registerJsWithVars(fn($id, $attribute) => <<<JS
 (() => {
-  $('#' + $id).on('click', () => {
+  $('#' + $id).on('activate', () => {
     Craft.ui.createCopyTextPrompt({
       label: Craft.t('app', 'Field Handle'),
       value: $attribute,
