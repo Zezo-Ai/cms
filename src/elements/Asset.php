@@ -3556,7 +3556,10 @@ JS;
             }
 
             // if we got this far without an exception, it's okay to delete the file from the old volume
-            if ($this->folderId) {
+            if (
+                $oldFolder &&
+                ($oldFolder->id !== $newFolder->id || $oldPath !== $newPath)
+            ) {
                 // Delete the old file
                 $oldVolume->deleteFile($oldPath);
             }
