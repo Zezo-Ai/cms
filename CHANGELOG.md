@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.7 - 2025-02-19
 
 - Added `craft\base\Element::ancestors()`.
 - Added `craft\base\Element::descendants()`.
