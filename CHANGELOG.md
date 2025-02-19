@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.8 - 2025-02-19
 
 - Added `craft\base\Element::ancestors()`.
 - Added `craft\base\Element::descendants()`.
