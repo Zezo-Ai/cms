@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed an error that could occur if a Matrix field was saved from a console request. ([#16724](https://github.com/craftcms/cms/pull/16724))
+
 ## 5.6.7 - 2025-02-18
 
 - Fixed a bug where multiple “New file uploaded.” notifications could be shown at once. ([#16688](https://github.com/craftcms/cms/issues/16688))
