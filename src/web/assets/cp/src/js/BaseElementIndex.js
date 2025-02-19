@@ -4057,6 +4057,7 @@ const ViewMenu = Garnish.Base.extend({
 
     this.menu.on('show', () => {
       this.$trigger.addClass('active');
+      this.updateSortField();
     });
 
     this.menu.on('hide', () => {

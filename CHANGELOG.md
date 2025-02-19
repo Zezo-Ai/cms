@@ -8,6 +8,7 @@
 - Fixed a bug where category and entry edit pages didn’t include breadcrumbs for any disabled ancestor elements.
 - Fixed a bug where the “Delete (with descendants)” bulk element action wasn’t deleting disabled descendants.
 - Fixed an error that could occur if a Matrix field was saved from a console request. ([#16724](https://github.com/craftcms/cms/pull/16724))
+- Fixed a bug where the Sort field within element index View menus wasn’t updating after the sort attribute/direction was changed by pressing on a table header.
 
 ## 5.6.7 - 2025-02-18
 
