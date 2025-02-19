@@ -159,6 +159,7 @@ JS, [static::class]);
                         'descendants',
                         [
                             'orderBy' => ['structureelements.lft' => SORT_DESC],
+                            'status' => null,
                         ],
                     ],
                 ])
