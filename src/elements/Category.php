@@ -21,6 +21,7 @@ use craft\elements\conditions\categories\CategoryCondition;
 use craft\elements\conditions\ElementConditionInterface;
 use craft\elements\db\CategoryQuery;
 use craft\elements\db\ElementQuery;
+use craft\elements\db\ElementQueryInterface;
 use craft\helpers\Cp;
 use craft\helpers\Db;
 use craft\helpers\UrlHelper;
@@ -609,7 +610,12 @@ class Category extends Element
         $elementsService = Craft::$app->getElements();
         $user = Craft::$app->getUser()->getIdentity();
 
-        foreach ($this->getCanonical()->getAncestors()->all() as $ancestor) {
+        $ancestors = $this->getCanonical()->getAncestors();
+        if ($ancestors instanceof ElementQueryInterface) {
+            $ancestors->status(null);
+        }
+
+        foreach ($ancestors->all() as $ancestor) {
             if ($elementsService->canView($ancestor, $user)) {
                 $crumbs[] = [
                     'label' => $ancestor->title,

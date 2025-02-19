@@ -1542,7 +1542,12 @@ class Entry extends Element implements ExpirableElementInterface
                 $elementsService = Craft::$app->getElements();
                 $user = Craft::$app->getUser()->getIdentity();
 
-                foreach ($this->getCanonical()->getAncestors()->all() as $ancestor) {
+                $ancestors = $this->getCanonical()->getAncestors();
+                if ($ancestors instanceof ElementQueryInterface) {
+                    $ancestors->status(null);
+                }
+
+                foreach ($ancestors->all() as $ancestor) {
                     if ($elementsService->canView($ancestor, $user)) {
                         $crumbs[] = [
                             'label' => $ancestor->title,

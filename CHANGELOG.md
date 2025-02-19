@@ -5,6 +5,7 @@
 - Added `craft\base\Element::ancestors()`.
 - Added `craft\base\Element::descendants()`.
 - Fixed an error that occurred when deleting a category or Structure section entry if its ancestors were eager-loaded. ([#16722](https://github.com/craftcms/cms/issues/16722))
+- Fixed a bug where category and entry edit pages didn’t include breadcrumbs for any disabled ancestor elements.
 
 ## 4.14.6 - 2025-02-18
 
