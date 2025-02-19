@@ -21,6 +21,7 @@ use craft\elements\conditions\categories\CategoryCondition;
 use craft\elements\conditions\ElementConditionInterface;
 use craft\elements\db\CategoryQuery;
 use craft\elements\db\ElementQuery;
+use craft\elements\db\ElementQueryInterface;
 use craft\helpers\Cp;
 use craft\helpers\Db;
 use craft\helpers\Html;
@@ -482,7 +483,12 @@ class Category extends Element
         $elementsService = Craft::$app->getElements();
         $user = Craft::$app->getUser()->getIdentity();
 
-        foreach ($this->getAncestors()->all() as $ancestor) {
+        $ancestors = $this->getAncestors();
+        if ($ancestors instanceof ElementQueryInterface) {
+            $ancestors->status(null);
+        }
+
+        foreach ($ancestors->all() as $ancestor) {
             if ($elementsService->canView($ancestor, $user)) {
                 $crumbs[] = ['html' => Cp::elementChipHtml($ancestor)];
             }
@@ -911,7 +917,8 @@ class Category extends Element
 
         if ($this->structureId) {
             // Remember the parent ID, in case the category needs to be restored later
-            $parentId = $this->getAncestors(1)
+            $parentId = $this->ancestors()
+                ->ancestorDist(1)
                 ->status(null)
                 ->select(['elements.id'])
                 ->scalar();
@@ -964,7 +971,7 @@ class Category extends Element
             // Make sure that each of the category's ancestors are related wherever the category is related
             $newRelationValues = [];
 
-            $ancestorIds = $this->getAncestors()
+            $ancestorIds = $this->ancestors()
                 ->status(null)
                 ->ids();
 

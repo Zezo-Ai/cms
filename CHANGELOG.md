@@ -1,5 +1,13 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Added `craft\base\Element::ancestors()`.
+- Added `craft\base\Element::descendants()`.
+- Fixed an error that occurred when deleting a category or Structure section entry if its ancestors were eager-loaded. ([#16722](https://github.com/craftcms/cms/issues/16722))
+- Fixed a bug where category and entry edit pages didn’t include breadcrumbs for any disabled ancestor elements.
+- Fixed a bug where the “Delete (with descendants)” bulk element action wasn’t deleting disabled descendants.
+
 ## 5.6.7 - 2025-02-18
 
 - Fixed a bug where multiple “New file uploaded.” notifications could be shown at once. ([#16688](https://github.com/craftcms/cms/issues/16688))

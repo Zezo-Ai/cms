@@ -169,7 +169,10 @@ class Structures extends Component
                 )
             ) {
                 // Merge in any missing ancestors
-                $ancestorQuery = $element->getAncestors()
+                $ancestorQuery = $element::find()
+                    ->structureId($element->structureId)
+                    ->ancestorOf($element)
+                    ->siteId($element->siteId)
                     ->status(null);
 
                 if ($prevElement) {

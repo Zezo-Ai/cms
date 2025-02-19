@@ -1239,7 +1239,12 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
             $elementsService = Craft::$app->getElements();
             $user = Craft::$app->getUser()->getIdentity();
 
-            foreach ($this->getAncestors()->all() as $ancestor) {
+            $ancestors = $this->getAncestors();
+            if ($ancestors instanceof ElementQueryInterface) {
+                $ancestors->status(null);
+            }
+
+            foreach ($ancestors->all() as $ancestor) {
                 if ($elementsService->canView($ancestor, $user)) {
                     $crumbs[] = ['html' => Cp::elementChipHtml($ancestor)];
                 }
@@ -2763,7 +2768,8 @@ JS;
 
         if ($this->structureId) {
             // Remember the parent ID, in case the entry needs to be restored later
-            $parentId = $this->getAncestors(1)
+            $parentId = $this->ancestors()
+                ->ancestorDist(1)
                 ->status(null)
                 ->select(['elements.id'])
                 ->scalar();

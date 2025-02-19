@@ -4548,11 +4548,21 @@ JS, [
             return $ancestors->filter(fn(ElementInterface $element) => $element->level >= $this->level - $dist);
         }
 
+        return $this->ancestors()->ancestorDist($dist);
+    }
+
+    /**
+     * Returns an element query for fetching the element’s ancestors.
+     *
+     * @return ElementQueryInterface
+     * @since 5.6.8
+     */
+    protected function ancestors(): ElementQueryInterface
+    {
         return static::find()
             ->structureId($this->structureId)
             ->ancestorOf($this)
-            ->siteId($this->siteId)
-            ->ancestorDist($dist);
+            ->siteId($this->siteId);
     }
 
     /**
@@ -4568,11 +4578,21 @@ JS, [
             return $descendants->filter(fn(ElementInterface $element) => $element->level <= $this->level + $dist);
         }
 
+        return $this->descendants()->descendantDist($dist);
+    }
+
+    /**
+     * Returns an element query for fetching the element’s descendants.
+     *
+     * @return ElementQueryInterface
+     * @since 5.6.8
+     */
+    protected function descendants(): ElementQueryInterface
+    {
         return static::find()
             ->structureId($this->structureId)
             ->descendantOf($this)
-            ->siteId($this->siteId)
-            ->descendantDist($dist);
+            ->siteId($this->siteId);
     }
 
     /**
