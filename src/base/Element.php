@@ -3771,11 +3771,21 @@ abstract class Element extends Component implements ElementInterface
             return $ancestors->filter(fn(self $element) => $element->level >= $this->level - $dist);
         }
 
+        return $this->ancestors()->ancestorDist($dist);
+    }
+
+    /**
+     * Returns an element query for fetching the element’s ancestors.
+     *
+     * @return ElementQueryInterface
+     * @since 4.14.7
+     */
+    protected function ancestors(): ElementQueryInterface
+    {
         return static::find()
             ->structureId($this->structureId)
             ->ancestorOf($this)
-            ->siteId($this->siteId)
-            ->ancestorDist($dist);
+            ->siteId($this->siteId);
     }
 
     /**
@@ -3791,11 +3801,21 @@ abstract class Element extends Component implements ElementInterface
             return $descendants->filter(fn(self $element) => $element->level <= $this->level + $dist);
         }
 
+        return $this->descendants()->descendantDist($dist);
+    }
+
+    /**
+     * Returns an element query for fetching the element’s descendants.
+     *
+     * @return ElementQueryInterface
+     * @since 4.14.7
+     */
+    protected function descendants(): ElementQueryInterface
+    {
         return static::find()
             ->structureId($this->structureId)
             ->descendantOf($this)
-            ->siteId($this->siteId)
-            ->descendantDist($dist);
+            ->siteId($this->siteId);
     }
 
     /**

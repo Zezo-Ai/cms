@@ -1,5 +1,11 @@
 # Release Notes for Craft CMS 4
 
+## Unreleased
+
+- Added `craft\base\Element::ancestors()`.
+- Added `craft\base\Element::descendants()`.
+- Fixed an error that occurred when deleting a category or Structure section entry if its ancestors were eager-loaded. ([#16722](https://github.com/craftcms/cms/issues/16722))
+
 ## 4.14.6 - 2025-02-18
 
 - Fixed a bug where multiple “New file uploaded.” notifications could be shown at once. ([#16688](https://github.com/craftcms/cms/issues/16688))

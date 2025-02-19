@@ -2090,7 +2090,8 @@ EOD;
 
         if ($this->structureId) {
             // Remember the parent ID, in case the entry needs to be restored later
-            $parentId = $this->getAncestors(1)
+            $parentId = $this->ancestors()
+                ->ancestorDist(1)
                 ->status(null)
                 ->select(['elements.id'])
                 ->scalar();

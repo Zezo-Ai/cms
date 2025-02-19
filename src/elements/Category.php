@@ -884,7 +884,8 @@ class Category extends Element
 
         if ($this->structureId) {
             // Remember the parent ID, in case the category needs to be restored later
-            $parentId = $this->getAncestors(1)
+            $parentId = $this->ancestors()
+                ->ancestorDist(1)
                 ->status(null)
                 ->select(['elements.id'])
                 ->scalar();
@@ -937,7 +938,7 @@ class Category extends Element
             // Make sure that each of the category's ancestors are related wherever the category is related
             $newRelationValues = [];
 
-            $ancestorIds = $this->getAncestors()
+            $ancestorIds = $this->ancestors()
                 ->status(null)
                 ->ids();
 
