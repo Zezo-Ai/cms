@@ -107,6 +107,7 @@ export default BaseDrag.extend(
       );
 
       this.dragging = true;
+      this.setScrollContainer();
       this.onDragStart();
 
       // Mute activate events
