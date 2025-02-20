@@ -1124,7 +1124,7 @@ abstract class Element extends Component implements ElementInterface
             'collapsedElementIds' => Craft::$app->getRequest()->getParam('collapsedElementIds'),
             'showCheckboxes' => $showCheckboxes,
             'tableName' => static::pluralDisplayName(),
-            'elementQuery' => self::elemnetQueryWithAllDescendants($elementQuery),
+            'elementQuery' => self::elementQueryWithAllDescendants($elementQuery),
         ];
 
         $db = Craft::$app->getDb();
@@ -1198,7 +1198,7 @@ abstract class Element extends Component implements ElementInterface
         return Craft::$app->getView()->renderTemplate($template, $variables);
     }
 
-    private static function elemnetQueryWithAllDescendants(ElementQueryInterface $elementQuery): ElementQueryInterface
+    private static function elementQueryWithAllDescendants(ElementQueryInterface $elementQuery): ElementQueryInterface
     {
         if (is_array($elementQuery->where)) {
             foreach ($elementQuery->where as $key => $condition) {
