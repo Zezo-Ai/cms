@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.9 - 2025-02-20
 
 - Fixed a bug where scrollable panes weren’t automatically scrolling when dragging objects near their edges. ([#16738](https://github.com/craftcms/cms/issues/16738))
 - Fixed a bug where “Applying new propagation method to [Field Name] entries” jobs weren’t getting queued when deploying changes to Matrix fields’ Propagation Method settings. ([#16740](https://github.com/craftcms/cms/issues/16740))
