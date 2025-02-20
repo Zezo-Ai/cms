@@ -474,6 +474,7 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
       hudClass: 'hud fld-library-hud',
       listenToMainResize: false,
       showOnInit: false,
+      orientations: ['right', 'bottom', 'left'],
     });
     hud.on('show', () => {
       this.designer.$libraryContainer.appendTo(hud.$main);

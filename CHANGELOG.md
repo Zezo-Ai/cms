@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed a bug where scrollable panes weren’t automatically scrolling when dragging objects near their edges. ([#16738](https://github.com/craftcms/cms/issues/16738))
+- Fixed a bug where field layout designers’ library HUDs could open above the “Add” button, hiding the tab contents. ([#16747](https://github.com/craftcms/cms/discussions/16747))
 
 ## 5.6.8 - 2025-02-19
 
