@@ -1346,9 +1346,6 @@ class Fields extends Component
         $oldSettings = $fieldRecord->getOldAttribute('settings');
         $oldField = !$isNewField ? $this->getFieldById($fieldRecord->id) : null;
 
-        // For control panel save requests, make sure we have all the custom data already saved on the object.
-        $field = $this->_savingFields[$fieldUid] ?? $oldField;
-
         // Fire a 'beforeApplyFieldSave' event
         if ($this->hasEventHandlers(self::EVENT_BEFORE_APPLY_FIELD_SAVE)) {
             $this->trigger(self::EVENT_BEFORE_APPLY_FIELD_SAVE, new ApplyFieldSaveEvent([
@@ -1404,12 +1401,11 @@ class Fields extends Component
         // Tell the current CustomFieldBehavior class about the field
         CustomFieldBehavior::$fieldHandles[$fieldRecord->handle] = true;
 
-        if ($isNewField || $field === null) {
-            // Try fetching the field again, if it didn’t exist to begin with
-            $field ??= $this->getFieldById($fieldRecord->id);
-            $field->id = $fieldRecord->id;
-        } else {
-            // Save the old field handle and settings on the model in case the field type needs to do something with it.
+        // Now get the field with its new settings intact
+        $field = $this->getFieldById($fieldRecord->id);
+
+        if (!$isNewField) {
+            // Set the old field handle and settings on the model in case the field type needs to do something with it
             $field->oldHandle = $fieldRecord->getOldHandle();
             $field->oldSettings = is_string($oldSettings) ? Json::decode($oldSettings) : null;
         }
