@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.9.1 - 2025-02-20
 
 - Fixed a bug where newly-created custom fields wouldn’t have their full settings intact for `afterSave()`.
 
