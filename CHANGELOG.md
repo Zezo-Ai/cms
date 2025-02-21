@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 4
 
+## 4.14.8.1 - 2025-02-20
+
+- Fixed a bug where newly-created custom fields wouldn’t have their full settings intact for `afterSave()`.
+
 ## 4.14.8 - 2025-02-20
 
 - Fixed a bug where scrollable panes weren’t automatically scrolling when dragging objects near their edges. ([#16738](https://github.com/craftcms/cms/issues/16738))
