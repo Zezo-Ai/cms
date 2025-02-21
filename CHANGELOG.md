@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where newly-created custom fields wouldn’t have their full settings intact for `afterSave()`.
+
 ## 5.6.9 - 2025-02-20
 
 - Fixed a bug where scrollable panes weren’t automatically scrolling when dragging objects near their edges. ([#16738](https://github.com/craftcms/cms/issues/16738))
