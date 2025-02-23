@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 4
 
+## Unreleased
+
+- Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
+
 ## 4.14.8.1 - 2025-02-20
 
 - Fixed a bug where newly-created custom fields wouldn’t have their full settings intact for `afterSave()`.
