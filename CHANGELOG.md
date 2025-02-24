@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
+- Fixed an error that could occur when applying field config changes if the field class didn’t exist.
 
 ## 4.14.8.1 - 2025-02-20
 

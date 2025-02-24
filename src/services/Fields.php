@@ -1606,7 +1606,7 @@ class Fields extends Component
             $oldColumnSuffix = !$isNewField ? $fieldRecord->getOldColumnSuffix() : null;
             $newColumns = [];
 
-            if ($class::hasContentColumn()) {
+            if (class_exists($class) && $class::hasContentColumn()) {
                 $columnType = $data['contentColumnType'];
 
                 if (is_array($columnType)) {
@@ -1629,7 +1629,7 @@ class Fields extends Component
             $db->getSchema()->refresh();
 
             // don't drop the field content column if the field is missing
-            if (!$isNewField && $class !== MissingField::class) {
+            if (!$isNewField && class_exists($class) && $class !== MissingField::class) {
                 $this->_dropOldFieldColumns($oldHandle, $oldColumnSuffix, $newColumns);
 
                 if ($data['handle'] !== $oldHandle || ($data['columnSuffix'] ?? null) !== $oldColumnSuffix) {
