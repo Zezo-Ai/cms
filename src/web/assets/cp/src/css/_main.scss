@@ -1979,6 +1979,10 @@ ul.icons {
     border: none;
     background: transparent;
     box-shadow: none;
+
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+    }
   }
 
   &.chromeless {
