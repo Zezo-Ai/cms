@@ -3731,6 +3731,7 @@ table {
     display: flex;
     flex: 0 0 128px;
     width: 128px;
+    aspect-ratio: 1/1;
     overflow: hidden;
     align-self: start;
     border-radius: var(--small-border-radius);
