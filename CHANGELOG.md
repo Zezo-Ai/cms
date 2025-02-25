@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## 5.6.10.1 - 2025-02-25
+
+- Fixed a bug where field layout designers’ library HUDs weren’t scrollable.
+
 ## 5.6.10 - 2025-02-25
 
 - Added `craft\base\ElementTrait::$isNewSite`.
