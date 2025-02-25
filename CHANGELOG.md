@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.10 - 2025-02-25
 
 - Added `craft\base\ElementTrait::$isNewSite`.
 - Added `craft\queue\jobs\PropagateElements::$isNewSite`.
