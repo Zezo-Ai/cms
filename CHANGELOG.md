@@ -4,7 +4,7 @@
 
 - Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
 - Fixed a bug where database backups weren’t always using the correct charset. ([#16753](https://github.com/craftcms/cms/issues/16753))
-- Fixed a styling issue. ([#16755](https://github.com/craftcms/cms/issues/16755))
+- Fixed styling issues. ([#16755](https://github.com/craftcms/cms/issues/16755), [#16756](https://github.com/craftcms/cms/issues/16756))
 
 ## 5.6.9.1 - 2025-02-20
 
