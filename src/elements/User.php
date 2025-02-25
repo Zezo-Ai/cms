@@ -1634,7 +1634,7 @@ XML;
     }
 
     /**
-     * Sets the entry’s author.
+     * Sets the user’s photo.
      *
      * @param Asset|null $photo
      */
