@@ -2653,6 +2653,8 @@ abstract class Element extends Component implements ElementInterface
             $names['hardDelete'],
             $names['mergingCanonicalChanges'],
             $names['newSiteIds'],
+            $names['isNewForSite'],
+            $names['isNewSite'],
             $names['previewing'],
             $names['propagateAll'],
             $names['propagating'],
