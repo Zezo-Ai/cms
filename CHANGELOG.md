@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 4
 
-## Unreleased
+## 4.14.9 - 2025-02-25
 
 - Added `craft\base\ElementTrait::$isNewSite`.
 - Added `craft\queue\jobs\PropagateElements::$isNewSite`.
