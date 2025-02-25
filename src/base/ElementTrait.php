@@ -203,6 +203,12 @@ trait ElementTrait
     public bool $isNewForSite = false;
 
     /**
+     * @var bool Whether this is for a newly-created site.
+     * @since 5.6.10
+     */
+    public bool $isNewSite = false;
+
+    /**
      * @var bool Whether the element is being resaved by a ResaveElement job or a `resave` console command.
      * @since 3.1.22
      */

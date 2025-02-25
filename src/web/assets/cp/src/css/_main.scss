@@ -3420,11 +3420,13 @@ table {
 .chip,
 .card {
   color: var(--custom-text-color, var(--text-color));
-  background-color: var(--custom-bg-color, var(--gray-050));
+
+  &:not(.chromeless, .hairline) {
+    background-color: var(--custom-bg-color, var(--gray-050));
+  }
 
   &.hairline {
     border: 1px solid var(--medium-hairline-color);
-    background-color: transparent;
   }
 }
 
@@ -3437,23 +3439,33 @@ table {
   user-select: none;
   font-weight: normal;
   padding-block: 0;
-  padding-inline: var(--s);
   max-width: 100%;
   gap: var(--xs);
   border-radius: var(--large-border-radius);
 
+  &:not(.chromeless) {
+    padding-inline: var(--s);
+  }
+
   &.small {
     flex-direction: row;
-    min-height: calc(26rem / 16 + 8px);
 
     --thumb-size: calc(30rem / 16);
 
     & > .thumb {
-      margin-inline: -2px 2px;
+      margin-inline-end: 2px;
       margin-block: 0;
 
       &.cp-icon {
         --thumb-size: 1rem; // 16px
+      }
+    }
+
+    &:not(.chromeless) {
+      min-height: calc(26rem / 16 + 8px);
+
+      & > .thumb {
+        margin-inline-start: -2px;
       }
     }
   }
@@ -3464,10 +3476,13 @@ table {
     --thumb-size: 120px;
     min-width: calc(var(--s) * 2 + var(--thumb-size));
     width: 100%;
-    padding-block: var(--xs);
 
     .chip-content {
       width: 100%;
+    }
+
+    &:not(.chromeless) {
+      padding-block: var(--xs);
     }
   }
 
@@ -3735,6 +3750,7 @@ table {
     display: flex;
     flex: 0 0 128px;
     width: 128px;
+    aspect-ratio: 1/1;
     overflow: hidden;
     align-self: start;
     border-radius: var(--small-border-radius);
