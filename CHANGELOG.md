@@ -4,6 +4,7 @@
 
 - Added `craft\base\ElementTrait::$isNewSite`.
 - Added `craft\queue\jobs\PropagateElements::$isNewSite`.
+- Field layout designers’ library HUDs are now limited to 600 pixels high. ([#16772](https://github.com/craftcms/cms/issues/16772))
 - Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
 - Fixed a bug where `ancestors` and `parent` eager-loading wasn’t working on some environments. ([#16381](https://github.com/craftcms/cms/issues/16381), [#16382](https://github.com/craftcms/cms/issues/16382), [#16341](https://github.com/craftcms/cms/issues/16341))
 - Fixed a bug where asset, category, and tag relations weren’t propagating to newly-created sites for global sets. ([#16752](https://github.com/craftcms/cms/issues/16752))

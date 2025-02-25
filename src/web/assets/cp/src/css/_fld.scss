@@ -60,8 +60,12 @@ $gridColor: var(--gray-100);
   width: $tabWidth - 1;
   max-width: 100%;
 
-  .main {
-    padding: $tabPadding;
+  .body {
+    max-height: 600px;
+
+    .main {
+      padding: $tabPadding;
+    }
   }
 }
 
