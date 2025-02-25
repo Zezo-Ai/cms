@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
+- Fixed a bug where database backups weren’t always using the correct charset. ([#16753](https://github.com/craftcms/cms/issues/16753))
 
 ## 5.6.9.1 - 2025-02-20
 
@@ -404,7 +405,7 @@
 - Fixed an error that occurred when adding “Full Name” to user cards. ([#16358](https://github.com/craftcms/cms/issues/16358))
 - Fixed an error that could occur if `craft\base\NestedElementTrait::getOwner()` or `getPrimaryOwner()` were called on a nested element whose owner didn’t exist in the same site. ([#16359](https://github.com/craftcms/cms/issues/16359))
 - Fixed a styling issue. ([#16342](https://github.com/craftcms/cms/issues/16342))
-- Fixed an RCE vulnerability.
+- Fixed an RCE vulnerability. ([CVE-2025-23209](https://www.cve.org/CVERecord?id=CVE-2025-23209))
 
 ## 5.5.7 - 2024-12-17
 
