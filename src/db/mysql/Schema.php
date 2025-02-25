@@ -204,7 +204,7 @@ class Schema extends \yii\db\mysql\Schema
             ->addArg('--dump-date')
             ->addArg('--no-autocommit')
             ->addArg('--routines')
-            ->addArg('--default-character-set=', Craft::$app->getConfig()->getDb()->charset)
+            ->addArg('--default-character-set=', Craft::$app->getConfig()->getDb()->getCharset())
             ->addArg('--set-charset')
             ->addArg('--triggers')
             ->addArg('--no-tablespaces');
