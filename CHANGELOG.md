@@ -4,6 +4,7 @@
 
 - Fixed an error that could occur when saving elements, if any dependencies defined global functions whose names conflicted with Yii’s built-in validator names, such as `string()`.
 - Fixed an error that could occur when applying field config changes if the field class didn’t exist.
+- Fixed a bug where `ancestors` and `parent` eager-loading wasn’t working on some environments. ([#16381](https://github.com/craftcms/cms/issues/16381), [#16382](https://github.com/craftcms/cms/issues/16382), [#16341](https://github.com/craftcms/cms/issues/16341))
 
 ## 4.14.8.1 - 2025-02-20
 
