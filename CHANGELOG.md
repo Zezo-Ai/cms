@@ -134,7 +134,7 @@
 
 - Fixed a bug where custom fields could cause validation errors when running the `users/create` command.
 - Fixed a bug where deleting a volume folder wasn’t fully deleting asset data in descendant folders.
-- Fixed a bug where `ancestors`, `children`, `descendants`, and `parent` eager-loading wasn’t working on some environments. ([#16381](https://github.com/craftcms/cms/issues/16381), [#16382](https://github.com/craftcms/cms/issues/16382))
+- Fixed a bug where `children` and `descendants` eager-loading wasn’t working on some environments. ([#16381](https://github.com/craftcms/cms/issues/16381), [#16382](https://github.com/craftcms/cms/issues/16382))
 
 ## 4.13.8 - 2025-01-02
 
