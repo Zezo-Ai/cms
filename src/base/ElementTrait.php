@@ -204,7 +204,7 @@ trait ElementTrait
 
     /**
      * @var bool Whether this is for a newly-created site.
-     * @since 4.14.9
+     * @since 5.6.10
      */
     public bool $isNewSite = false;
 

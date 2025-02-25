@@ -43,7 +43,7 @@ class PropagateElements extends BaseBatchedElementJob
 
     /**
      * @var bool Whether this is for a newly-added site.
-     * @since 4.14.9
+     * @since 5.6.10
      */
     public bool $isNewSite = false;
 
