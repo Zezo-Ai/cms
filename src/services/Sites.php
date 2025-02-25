@@ -820,10 +820,10 @@ class Sites extends Component
             // (skip entries because they only support specific sites)
             // (skip Matrix blocks because they will be re-saved when their owners are re-saved).
             $elementTypes = [
+                GlobalSet::class,
                 Asset::class,
                 Category::class,
                 Tag::class,
-                GlobalSet::class,
             ];
 
             foreach ($elementTypes as $elementType) {
@@ -833,6 +833,7 @@ class Sites extends Component
                         'siteId' => $oldPrimarySiteId,
                     ],
                     'siteId' => $site->id,
+                    'isNewSite' => true,
                 ]));
             }
         }

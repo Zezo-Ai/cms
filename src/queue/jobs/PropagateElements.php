@@ -42,6 +42,12 @@ class PropagateElements extends BaseBatchedJob
     public array|int|null $siteId = null;
 
     /**
+     * @var bool Whether this is for a newly-added site.
+     * @since 4.14.9
+     */
+    public bool $isNewSite = false;
+
+    /**
      * @inheritdoc
      */
     public function init(): void
@@ -81,6 +87,7 @@ class PropagateElements extends BaseBatchedJob
         /** @var ElementInterface $item */
         $item->setScenario(Element::SCENARIO_ESSENTIALS);
         $item->newSiteIds = [];
+        $item->isNewSite = $this->isNewSite;
         $supportedSiteIds = array_map(fn($siteInfo) => $siteInfo['siteId'], ElementHelper::supportedSitesForElement($item));
         $elementSiteIds = $this->siteId !== null ? array_intersect($this->siteId, $supportedSiteIds) : $supportedSiteIds;
         $elementsService = Craft::$app->getElements();
