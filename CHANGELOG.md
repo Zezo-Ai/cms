@@ -1,5 +1,10 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- The Fields/UI Elements toggle and “Ne field” button are now always visible within field layout designers’ library HUDs.
+- (Really) fixed a bug where field layout designers’ library HUDs weren’t scrollable. ([#16775](https://github.com/craftcms/cms/issues/16775))
+
 ## 5.6.10.1 - 2025-02-25
 
 - Fixed a bug where field layout designers’ library HUDs weren’t scrollable.

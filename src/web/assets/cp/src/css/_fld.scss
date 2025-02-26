@@ -60,12 +60,9 @@ $gridColor: var(--gray-100);
   width: $tabWidth - 1;
   max-width: 100%;
 
-  .main-container {
-    max-height: 600px;
-
-    .main {
-      padding: $tabPadding;
-    }
+  .main {
+    height: 100%;
+    padding: $tabPadding;
   }
 }
 
@@ -76,18 +73,25 @@ $gridColor: var(--gray-100);
 .fld-library {
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   .btngroup {
     margin-block-end: $tabPadding;
   }
 
-  .fld-field-library {
-    margin: -3px;
-    padding: 3px;
+  .fld-field-library,
+  .fld-ui-library {
+    margin-block: -3px;
+    margin-inline: #{-$tabPadding};
+    padding-block: 3px;
+    padding-inline: #{$tabPadding};
     flex: 1;
     min-height: 0;
+    max-height: 550px;
     overflow: auto;
+  }
 
+  .fld-field-library {
     .fld-field-group {
       margin-block-start: $tabPadding;
 
