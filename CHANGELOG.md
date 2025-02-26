@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 5
 
+## Unreleased
+
+- Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
+
 ## 5.6.10.2 - 2025-02-26
 
 - The Fields/UI Elements toggle and “Ne field” button are now always visible within field layout designers’ library HUDs.
