@@ -5476,7 +5476,8 @@ table.data tbody tr:not(.disabled).active-drop-target {
 
   .pane &,
   .slideout &,
-  #content & {
+  #content &,
+  .lp-content & {
     border: 1px solid var(--hairline-color);
     background: var(--secondary-pane-bg);
     box-shadow: none;
