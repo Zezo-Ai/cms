@@ -111,7 +111,9 @@ class ImageTransformer extends Component implements ImageTransformerInterface, E
                 ]), 2048);
 
                 // Prevent the page from being cached
-                Craft::$app->getResponse()->setNoCacheHeaders();
+                if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
+                    Craft::$app->getResponse()->setNoCacheHeaders();
+                }
 
                 // Return the temporary transform URL
                 return UrlHelper::actionUrl('assets/generate-transform', [

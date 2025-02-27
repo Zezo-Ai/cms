@@ -1,5 +1,9 @@
 # Release Notes for Craft CMS 4
 
+## Unreleased
+
+- Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
+
 ## 4.14.9 - 2025-02-25
 
 - Added `craft\base\ElementTrait::$isNewSite`.
