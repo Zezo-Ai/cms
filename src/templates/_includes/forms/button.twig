@@ -10,7 +10,6 @@
     id: id ?? false,
     class: (class ?? [])|explodeClass|merge([
         'btn',
-        'btngroup-btn-first',
         not (label or labelHtml) ? 'btn-empty' : null,
     ]|filter),
     data: {
