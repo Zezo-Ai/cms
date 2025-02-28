@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Tightened up relation preview styling in element indexes and cards. ([#16771](https://github.com/craftcms/cms/issues/16771))
 - Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
 - Fixed a bug where lazy eager-loading was invoked even if the source element was queried alone.
