@@ -6051,7 +6051,7 @@ $min2ColWidth: 400px;
 
             @media screen and (min-width: $min2ColWidth) {
               margin-inline: calc(var(--s) * -1) 0;
-              padding-inline-start: var(--m);
+              padding-inline-start: var(--s);
             }
 
             &:placeholder-shown + div[data-icon] {
