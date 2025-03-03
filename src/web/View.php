@@ -330,7 +330,7 @@ class View extends \yii\web\View
     private array $_html = [];
 
     /**
-     * @var array the registered imports for JavaScript es modules
+     * @var array the registered imports for JavaScript as modules
      * @see registerJsImport()
      */
     private array $_jsImports = [];
