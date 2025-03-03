@@ -3743,7 +3743,12 @@ class Elements extends Component
                             if (($saveContent || in_array($field->handle, $dirtyFields)) && $field::dbType() !== null) {
                                 $serializedValue = $field->serializeValue($element->getFieldValue($field->handle), $element);
                                 if ($serializedValue !== null) {
-                                    $content[$field->layoutElement->uid] = $serializedValue;
+                                    if ($element->isNewForSite && empty($serializedValue)) {
+                                        // don't store empty values if element is new for site
+                                        // https://github.com/craftcms/cms/issues/16797
+                                    } else {
+                                        $content[$field->layoutElement->uid] = $serializedValue;
+                                    }
                                 } elseif (!$saveContent) {
                                     // if serialized value is null, and we're not saving all the content,
                                     // we need to register the fact that the new value is empty
