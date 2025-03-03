@@ -1859,7 +1859,11 @@ class ElementQuery extends Query implements ElementQueryInterface
 
     private function eagerLoad(bool $count = false, array $criteria = []): ElementCollection|int|null
     {
-        if (!$this->eagerly || !isset($this->eagerLoadSourceElement->elementQueryResult, $this->eagerLoadHandle)) {
+        if (
+            !$this->eagerly ||
+            !isset($this->eagerLoadSourceElement->elementQueryResult, $this->eagerLoadHandle) ||
+            count($this->eagerLoadSourceElement->elementQueryResult) < 2
+        ) {
             return null;
         }
 
