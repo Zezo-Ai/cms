@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
+- Fixed an error that could occur when saving a Commerce variant. ([#16789](https://github.com/craftcms/cms/pull/16789))
 
 ## 5.6.10.2 - 2025-02-26
 
