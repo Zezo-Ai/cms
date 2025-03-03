@@ -6,6 +6,7 @@ use Craft;
 use craft\base\conditions\BaseTextConditionRule;
 use craft\base\ElementInterface;
 use craft\elements\db\ElementQueryInterface;
+use craft\helpers\ElementHelper;
 
 /**
  * Slug condition rule.
@@ -45,5 +46,17 @@ class SlugConditionRule extends BaseTextConditionRule implements ElementConditio
     public function matchElement(ElementInterface $element): bool
     {
         return $this->matchValue($element->slug);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function matchValue(mixed $value): bool
+    {
+        return match ($this->operator) {
+            self::OPERATOR_EMPTY => !$value || ElementHelper::isTempSlug($value),
+            self::OPERATOR_NOT_EMPTY => (bool)$value && !ElementHelper::isTempSlug($value),
+            default => parent::matchValue($value),
+        };
     }
 }
