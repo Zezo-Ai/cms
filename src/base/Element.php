@@ -61,7 +61,6 @@ use craft\helpers\Cp;
 use craft\helpers\Db;
 use craft\helpers\ElementHelper;
 use craft\helpers\Html;
-use craft\helpers\Json;
 use craft\helpers\StringHelper;
 use craft\helpers\Template;
 use craft\helpers\UrlHelper;
@@ -4978,24 +4977,7 @@ abstract class Element extends Component implements ElementInterface
         $slug = isset($this->slug) && !ElementHelper::isTempSlug($this->slug) ? $this->slug : null;
 
         if (!$slug && !$static) {
-            $view = Craft::$app->getView();
-            $site = $this->getSite();
-            $charMapJs = Json::encode($site->language !== Craft::$app->language
-                ? StringHelper::asciiCharMap(true, $site->language)
-                : null
-            );
-
-            Craft::$app->getView()->registerJsWithVars(
-                fn($titleSelector, $slugSelector) => <<<JS
-new Craft.SlugGenerator($titleSelector, $slugSelector, {
-    charMap: $charMapJs,
-})
-JS,
-                [
-                    sprintf('#%s', $view->namespaceInputId('title')),
-                    sprintf('#%s', $view->namespaceInputId('slug')),
-                ]
-            );
+            ElementHelper::initSlugGeneration($this);
         }
 
         return Cp::textFieldHtml([

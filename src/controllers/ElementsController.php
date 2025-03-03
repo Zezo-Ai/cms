@@ -1394,7 +1394,9 @@ JS, [
                 $element = $this->element = $draft;
             }
 
+            $oldTypeId = method_exists($element, 'getTypeId') ? $element->getTypeId() : false;
             $this->_applyParamsToElement($element);
+            $newTypeId = method_exists($element, 'getTypeId') ? $element->getTypeId() : false;
 
             // Make sure nothing just changed that would prevent the user from saving
             if (!$this->_canSave($element, $user)) {
@@ -1430,6 +1432,13 @@ JS, [
             ];
 
             if ($this->request->getIsCpRequest()) {
+                if ($element->getIsFresh() && $oldTypeId !== $newTypeId) {
+                    $slug = isset($element->slug) && !ElementHelper::isTempSlug($element->slug) ? $element->slug : null;
+                    if (!$slug) {
+                        ElementHelper::initSlugGeneration($element);
+                    }
+                }
+
                 [$docTitle, $title] = $this->_editElementTitles($element);
                 $previewTargets = $element->getPreviewTargets();
                 $data += $this->_fieldLayoutData($element);
