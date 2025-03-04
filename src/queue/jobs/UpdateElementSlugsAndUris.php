@@ -16,7 +16,6 @@ use craft\helpers\Db;
 use craft\i18n\Translation;
 use craft\queue\BaseJob;
 use craft\queue\QueueInterface;
-use Throwable;
 use yii\queue\Queue;
 
 /**
@@ -110,11 +109,9 @@ class UpdateElementSlugsAndUris extends BaseJob
 
         foreach (Db::each($query) as $element) {
             /** @var ElementInterface $element */
-            try {
-                $this->setProgress($queue, $this->_totalProcessed++ / $this->_totalToProcess);
-            } catch (Throwable $e) {
-                // carry on
-            }
+            // _totalToProcess can be 0 somehow (https://github.com/craftcms/cms/issues/16787)
+            $this->setProgress($queue, $this->_totalProcessed / max($this->_totalToProcess, $this->_totalProcessed + 1));
+            $this->_totalProcessed++;
 
             $oldSlug = $element->slug;
             $oldUri = $element->uri;
