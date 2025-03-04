@@ -37,6 +37,7 @@ use craft\services\ElementSources;
 use craft\services\Gql as GqlService;
 use craft\web\UploadedFile;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Support\Collection;
 use Twig\Error\RuntimeError;
 use yii\base\InvalidConfigException;
 
@@ -931,7 +932,9 @@ class Assets extends BaseRelationField
             if (
                 $renderedSubpath === '' ||
                 trim($renderedSubpath, '/') != $renderedSubpath ||
-                str_contains($renderedSubpath, '//')
+                str_contains($renderedSubpath, '//') ||
+                Collection::make(explode('/', $renderedSubpath))
+                    ->contains(fn(string $segment) => ElementHelper::isTempSlug($segment))
             ) {
                 throw new InvalidSubpathException($subpath);
             }
