@@ -489,6 +489,7 @@ Craft.NestedElementManager = Garnish.Base.extend(
           if (
             typeof this.elementEditor !== 'undefined' &&
             Garnish.hasAttr($element, 'data-owner-is-canonical') &&
+            !Garnish.hasAttr($element, 'data-is-unpublished-draft') &&
             !this.elementEditor.settings.isUnpublishedDraft
           ) {
             await slideout.elementEditor.checkForm(true, true);
