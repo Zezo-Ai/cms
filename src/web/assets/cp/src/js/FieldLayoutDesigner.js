@@ -608,7 +608,7 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
     this.slideout = await Craft.FieldLayoutDesigner.createSlideout(
       data,
       null,
-      (trigger = this.$actionBtn)
+      this.$actionBtn
     );
 
     this.slideout.$container.on('submit', (ev) => {
@@ -1074,7 +1074,7 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
     this.slideout = await Craft.FieldLayoutDesigner.createSlideout(
       data,
       null,
-      ($trigger = this.$actionBtn)
+      this.$actionBtn
     );
 
     this.slideout.$container.on('submit', (ev) => {
