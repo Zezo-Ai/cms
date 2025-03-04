@@ -3741,7 +3741,13 @@ class Elements extends Component
                     if ($fieldLayout) {
                         foreach ($fieldLayout->getCustomFields() as $field) {
                             if (($saveContent || in_array($field->handle, $dirtyFields)) && $field::dbType() !== null) {
-                                $serializedValue = $field->serializeValue($element->getFieldValue($field->handle), $element);
+                                $value = $element->getFieldValue($field->handle);
+                                if ($element->isNewForSite && $field->isValueEmpty($value, $element)) {
+                                    // don't store empty values if element is new for site
+                                    // https://github.com/craftcms/cms/issues/16797
+                                    continue;
+                                }
+                                $serializedValue = $field->serializeValue($value, $element);
                                 if ($serializedValue !== null) {
                                     $content[$field->layoutElement->uid] = $serializedValue;
                                 } elseif (!$saveContent) {
