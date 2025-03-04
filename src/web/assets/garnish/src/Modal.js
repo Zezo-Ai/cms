@@ -214,7 +214,21 @@ export default Base.extend(
         this.removeListener(Garnish.$win, 'resize');
       }
 
-      this.$triggerElement.focus();
+      let $focusTarget = this.$triggerElement;
+
+      // Check for visibility of trigger
+      if (this.$triggerElement.is(':hidden')) {
+        if (this.$triggerElement.closest('.menu--disclosure')) {
+          const menuId = this.$triggerElement
+            .closest('.menu--disclosure')
+            .attr('id');
+          $focusTarget = $(`[aria-controls="${menuId}"]`);
+        }
+      }
+
+      if ($focusTarget?.length) {
+        $focusTarget.focus();
+      }
 
       this.visible = false;
       Garnish.Modal.visibleModal = null;
