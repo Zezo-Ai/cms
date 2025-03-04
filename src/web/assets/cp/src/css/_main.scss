@@ -6084,9 +6084,13 @@ $min2ColWidth: 400px;
       & > ul.errors {
         margin: 0;
         padding-block: 0 6px;
-        padding-inline: 0;
+        padding-inline: 10px;
         width: 100%;
         list-style-type: none;
+
+        @media screen and (min-width: $min2ColWidth) {
+          padding-inline: var(--m);
+        }
       }
 
       & > .clear-btn {
