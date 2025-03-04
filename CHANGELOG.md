@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added `craft\base\conditions\BaseTextConditionRule`.
+- Added `craft\base\conditions\BaseTextConditionRule::isEmpty()`.
 - Added `craft\htmlpurifier\RelAttrLinkTypeDef`.
 - The default HTML Purifier config now allows `rel` attributes to be set to any value. ([#16798](https://github.com/craftcms/cms/pull/16798))
 - Tightened up relation preview styling in element indexes and cards. ([#16771](https://github.com/craftcms/cms/issues/16771))
