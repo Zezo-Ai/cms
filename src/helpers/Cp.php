@@ -933,6 +933,7 @@ class Cp
                     'owner-id' => $element instanceof NestedElementInterface ? $element->getOwnerId() : null,
                     'owner-is-canonical' => self::elementOwnerIsCanonical($element),
                     'site-id' => $element->siteId,
+                    'is-unpublished-draft' => $element->getIsUnpublishedDraft(),
                     'status' => $element->getStatus(),
                     'label' => (string)$element,
                     'url' => $element->getUrl(),

@@ -2,11 +2,24 @@
 
 ## Unreleased
 
+- Added `craft\base\conditions\BaseTextConditionRule::isEmpty()`.
+- Added `craft\htmlpurifier\RelAttrLinkTypeDef`.
+- The default HTML Purifier config now allows `rel` attributes to be set to any value. ([#16798](https://github.com/craftcms/cms/pull/16798))
 - Tightened up relation preview styling in element indexes and cards. ([#16771](https://github.com/craftcms/cms/issues/16771))
 - Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
+- Fixed a bug where Assets fields with `{slug}` in the subpath could create folders named after temporary slugs. ([#16799](https://github.com/craftcms/cms/issues/16799))
+- Fixed a bug where date and time inputs without values were showing clear buttons. ([#16804](https://github.com/craftcms/cms/issues/16804))
+- Fixed an error that could occur when executing “Updating element slugs and URIs” queue jobs. ([#16787](https://github.com/craftcms/cms/issues/16787))
+- Fixed a bug where automatic slug generation wasn’t working after changing entry types. ([#16816](https://github.com/craftcms/cms/pull/16816))
+- Fixed a bug where “Slug” condition rules weren’t considering temporary slugs to be empty. ([#16817](https://github.com/craftcms/cms/pull/16817))
 - Fixed a bug where lazy eager-loading was invoked even if the source element was queried alone.
 - Fixed a bug where element selection condition rules weren’t remembering their element ID value if they were created before Craft 5.6.
+- Fixed an error that could occur when saving a Commerce variant. ([#16789](https://github.com/craftcms/cms/pull/16789))
+- Fixed a bug where two entries could be created simultaneously when creating a new entry via the “New entry” menu on the Entries index page. ([#16487](https://github.com/craftcms/cms/issues/16487))
+- Fixed an error that could occur if a field was removed from a field layout, if another field had been conditional based on it. ([#16801](https://github.com/craftcms/cms/issues/16801))
+- Fixed an error that occurred when attempting to save a nested entry via a slideout, which had been duplicated from another entry and wasn’t yet fully saved. ([#16807](https://github.com/craftcms/cms/issues/16807))
+- Fixed a styling issue. ([#16791](https://github.com/craftcms/cms/issues/16791))
 
 ## 5.6.10.2 - 2025-02-26
 

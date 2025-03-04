@@ -320,8 +320,17 @@ trait NestedElementTrait
             return null;
         }
 
-        $field = $this->getOwner()?->getFieldLayout()->getFieldById($this->fieldId)
-            ?? Craft::$app->getFields()->getFieldById($this->fieldId);
+        $field = null;
+
+        try {
+            $field = $this->getOwner()?->getFieldLayout()->getFieldById($this->fieldId);
+        } catch (InvalidConfigException $e) {
+            // carry on as we might still be able to get the field by ID
+        }
+
+        if (!$field) {
+            $field = Craft::$app->getFields()->getFieldById($this->fieldId);
+        }
 
         if (!$field instanceof ElementContainerFieldInterface) {
             throw new InvalidConfigException("Invalid field ID: $this->fieldId");

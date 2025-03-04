@@ -3150,7 +3150,7 @@ $.extend($.fn, {
   datetime: function () {
     return this.each(function () {
       let $wrapper = $(this);
-      let $inputs = $wrapper.find('input:not([name$="[timezone]"])');
+      let $inputs = $wrapper.find('input.text');
       let checkValue = () => {
         let hasValue = false;
         for (let i = 0; i < $inputs.length; i++) {
