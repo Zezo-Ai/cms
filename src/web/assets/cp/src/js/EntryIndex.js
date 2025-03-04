@@ -200,7 +200,8 @@ Craft.EntryIndex = Craft.BaseElementIndex.extend({
                 section: section.name,
               }),
             }).appendTo($li);
-            this.addListener($a, 'activate', () => {
+            this.addListener($a, 'activate', (ev) => {
+              ev.originalEvent.preventDefault();
               $menuBtn.data('trigger').hide();
               this._createEntry(section.id);
             });
