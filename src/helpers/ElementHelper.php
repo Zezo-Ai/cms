@@ -118,34 +118,6 @@ class ElementHelper
     }
 
     /**
-     * Initializes element slug generator.
-     *
-     * @param ElementInterface $element
-     * @return void
-     */
-    public static function initSlugGeneration(ElementInterface $element): void
-    {
-        $view = Craft::$app->getView();
-        $site = $element->getSite();
-        $charMapJs = Json::encode($site->language !== Craft::$app->language
-            ? StringHelper::asciiCharMap(true, $site->language)
-            : null
-        );
-
-        Craft::$app->getView()->registerJsWithVars(
-            fn($titleSelector, $slugSelector) => <<<JS
-new Craft.SlugGenerator($titleSelector, $slugSelector, {
-charMap: $charMapJs,
-})
-JS,
-            [
-                sprintf('#%s', $view->namespaceInputId('title')),
-                sprintf('#%s', $view->namespaceInputId('slug')),
-            ]
-        );
-    }
-
-    /**
      * Sets the URI on an element using a given URL format, tweaking its slug if necessary to ensure it's unique.
      *
      * @param ElementInterface $element

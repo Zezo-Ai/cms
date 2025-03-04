@@ -4976,10 +4976,6 @@ abstract class Element extends Component implements ElementInterface
     {
         $slug = isset($this->slug) && !ElementHelper::isTempSlug($this->slug) ? $this->slug : null;
 
-        if (!$slug && !$static) {
-            ElementHelper::initSlugGeneration($this);
-        }
-
         return Cp::textFieldHtml([
             'status' => $this->getAttributeStatus('slug'),
             'label' => Craft::t('app', 'Slug'),
