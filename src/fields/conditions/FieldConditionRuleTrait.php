@@ -192,12 +192,16 @@ trait FieldConditionRuleTrait
      */
     public function getExclusiveQueryParams(): array
     {
-        $params = [];
-
-        foreach ($this->fieldInstances() as $field) {
-            $params[] = $field->handle;
+        try {
+            $instances = $this->fieldInstances();
+        } catch (InvalidConfigException) {
+            return [];
         }
 
+        $params = [];
+        foreach ($instances as $field) {
+            $params[] = $field->handle;
+        }
         return array_values(array_unique($params));
     }
 
