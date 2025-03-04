@@ -2,13 +2,19 @@
 
 ## Unreleased
 
+- Added `craft\htmlpurifier\RelAttrLinkTypeDef`.
+- The default HTML Purifier config now allows `rel` attributes to be set to any value. ([#16798](https://github.com/craftcms/cms/pull/16798))
+- Tightened up relation preview styling in element indexes and cards. ([#16771](https://github.com/craftcms/cms/issues/16771))
 - Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
+- Fixed a bug where Assets fields with `{slug}` in the subpath could create folders named after temporary slugs. ([#16799](https://github.com/craftcms/cms/issues/16799))
 - Fixed a bug where lazy eager-loading was invoked even if the source element was queried alone.
+- Fixed a bug where element selection condition rules weren’t remembering their element ID value if they were created before Craft 5.6.
+- Fixed an error that could occur when saving a Commerce variant. ([#16789](https://github.com/craftcms/cms/pull/16789))
 
 ## 5.6.10.2 - 2025-02-26
 
-- The Fields/UI Elements toggle and “Ne field” button are now always visible within field layout designers’ library HUDs.
+- The Fields/UI Elements toggle and “New field” button are now always visible within field layout designers’ library HUDs.
 - (Really) fixed a bug where field layout designers’ library HUDs weren’t scrollable. ([#16775](https://github.com/craftcms/cms/issues/16775))
 - Fixed a styling issue. ([#16777](https://github.com/craftcms/cms/issues/16777))
 

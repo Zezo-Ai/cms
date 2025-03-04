@@ -75,6 +75,9 @@
                             showLabel: showHeaderColumn,
                             showProvisionalDraftLabel: true,
                             showStatus: showHeaderColumn and not hasStatusCol,
+                            attributes: {
+                                class: ['chromeless'],
+                            }
                         }) %}
                         {% if not showHeaderColumn %}
                             {% set chip = chip|attr({class: 'hide-label'}) %}
