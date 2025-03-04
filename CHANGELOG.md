@@ -8,6 +8,7 @@
 - Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
 - Fixed a bug where Assets fields with `{slug}` in the subpath could create folders named after temporary slugs. ([#16799](https://github.com/craftcms/cms/issues/16799))
+- Fixed a bug where date and time inputs without values were showing clear buttons. ([#16804](https://github.com/craftcms/cms/issues/16804))
 - Fixed a bug where lazy eager-loading was invoked even if the source element was queried alone.
 - Fixed a bug where element selection condition rules weren’t remembering their element ID value if they were created before Craft 5.6.
 - Fixed an error that could occur when saving a Commerce variant. ([#16789](https://github.com/craftcms/cms/pull/16789))
