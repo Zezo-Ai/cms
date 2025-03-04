@@ -51,12 +51,8 @@ class SlugConditionRule extends BaseTextConditionRule implements ElementConditio
     /**
      * @inheritdoc
      */
-    protected function matchValue(mixed $value): bool
+    protected function isEmpty(mixed $value): bool
     {
-        return match ($this->operator) {
-            self::OPERATOR_EMPTY => !$value || ElementHelper::isTempSlug($value),
-            self::OPERATOR_NOT_EMPTY => (bool)$value && !ElementHelper::isTempSlug($value),
-            default => parent::matchValue($value),
-        };
+        return parent::isEmpty($value) || (is_string($value) && ElementHelper::isTempSlug($value));
     }
 }
