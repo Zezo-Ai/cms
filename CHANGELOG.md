@@ -2,8 +2,14 @@
 
 ## Unreleased
 
+- Added `craft\htmlpurifier\RelAttrLinkTypeDef`.
+- The default HTML Purifier config now allows `rel` attributes to be set to any value. ([#16798](https://github.com/craftcms/cms/pull/16798))
 - Fixed an error that could occur when generating an image transform URL via a console request. ([#16793](https://github.com/craftcms/cms/issues/16793))
 - Fixed a bug where `_includes/forms/button.twig` was always adding `class="btngroup-btn-first"` to the resulting button HTML.
+- Fixed a bug where Assets fields with `{slug}` in the subpath could create folders named after temporary slugs. ([#16799](https://github.com/craftcms/cms/issues/16799))
+- Fixed a bug where date and time inputs without values were showing clear buttons. ([#16804](https://github.com/craftcms/cms/issues/16804))
+- Fixed an error that could occur when executing “Updating element slugs and URIs” queue jobs. ([#16787](https://github.com/craftcms/cms/issues/16787))
+- Fixed a bug where automatic slug generation wasn’t working after changing entry types. ([#16816](https://github.com/craftcms/cms/pull/16816))
 
 ## 4.14.9 - 2025-02-25
 

@@ -957,7 +957,9 @@ class Assets extends BaseRelationField
             if (
                 $renderedSubpath === '' ||
                 trim($renderedSubpath, '/') != $renderedSubpath ||
-                str_contains($renderedSubpath, '//')
+                str_contains($renderedSubpath, '//') ||
+                Collection::make(explode('/', $renderedSubpath))
+                    ->contains(fn(string $segment) => ElementHelper::isTempSlug($segment))
             ) {
                 throw new InvalidSubpathException($subpath);
             }
