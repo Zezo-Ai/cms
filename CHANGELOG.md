@@ -1,6 +1,6 @@
 # Release Notes for Craft CMS 5
 
-## Unreleased
+## 5.6.11 - 2025-03-04
 
 - Added `craft\base\conditions\BaseTextConditionRule::isEmpty()`.
 - Added `craft\htmlpurifier\RelAttrLinkTypeDef`.
