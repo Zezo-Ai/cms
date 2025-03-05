@@ -380,7 +380,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
       readOnly: false,
     },
 
-    async createSlideout(data, js) {
+    async createSlideout(data, js, settings = {}) {
       const $body = $('<div/>', {class: 'fld-element-settings-body'});
       $('<div/>', {class: 'fields', html: data.settingsHtml}).appendTo($body);
       const $footer = $('<div/>', {class: 'fld-element-settings-footer'});
@@ -400,15 +400,21 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
         .appendTo($footer);
       const $contents = $body.add($footer);
 
-      const slideout = new Craft.Slideout($contents, {
-        containerElement: 'form',
-        containerAttributes: {
-          action: '',
-          method: 'post',
-          novalidate: '',
-          class: 'fld-element-settings',
-        },
-      });
+      const slideout = new Craft.Slideout(
+        $contents,
+        Object.assign(
+          {
+            containerElement: 'form',
+            containerAttributes: {
+              action: '',
+              method: 'post',
+              novalidate: '',
+              class: 'fld-element-settings',
+            },
+          },
+          settings
+        )
+      );
       slideout.on('open', () => {
         // Hold off a sec until it's positioned...
         Garnish.requestAnimationFrame(() => {
@@ -604,7 +610,9 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
     }
 
     this.settingsNamespace = data.namespace;
-    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data);
+    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data, null, {
+      triggerElement: this.$actionBtn,
+    });
 
     this.slideout.$container.on('submit', (ev) => {
       ev.preventDefault();
@@ -795,6 +803,7 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
 Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
   tab: null,
   $container: null,
+  $actionBtn: null,
 
   uid: null,
   isMandatory: false,
@@ -891,7 +900,7 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
 
     // create the action menu
     const menuId = `actionmenu${Math.floor(Math.random() * 1000000)}`;
-    const $actionBtn = $('<button/>', {
+    this.$actionBtn = $('<button/>', {
       type: 'button',
       class: 'btn action-btn',
       'data-disclosure-trigger': 'true',
@@ -906,7 +915,9 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
       class: 'menu menu--disclosure',
       'data-disclosure-menu': 'true',
     }).appendTo(this.$container);
-    const disclosureMenu = $actionBtn.disclosureMenu().data('disclosureMenu');
+    const disclosureMenu = this.$actionBtn
+      .disclosureMenu()
+      .data('disclosureMenu');
 
     let makeRequiredBtn, dropRequiredBtn, makeThumbnailBtn, dropThumbnailBtn;
 
@@ -1063,7 +1074,9 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
     }
 
     this.settingsNamespace = data.namespace;
-    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data);
+    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data, null, {
+      triggerElement: this.$actionBtn,
+    });
 
     this.slideout.$container.on('submit', (ev) => {
       ev.preventDefault();
