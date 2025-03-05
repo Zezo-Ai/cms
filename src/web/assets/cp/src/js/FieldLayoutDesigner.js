@@ -380,7 +380,7 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
       readOnly: false,
     },
 
-    async createSlideout(data, js, $trigger = null) {
+    async createSlideout(data, js, settings = {}) {
       const $body = $('<div/>', {class: 'fld-element-settings-body'});
       $('<div/>', {class: 'fields', html: data.settingsHtml}).appendTo($body);
       const $footer = $('<div/>', {class: 'fld-element-settings-footer'});
@@ -400,16 +400,21 @@ Craft.FieldLayoutDesigner = Garnish.Base.extend(
         .appendTo($footer);
       const $contents = $body.add($footer);
 
-      const slideout = new Craft.Slideout($contents, {
-        containerElement: 'form',
-        containerAttributes: {
-          action: '',
-          method: 'post',
-          novalidate: '',
-          class: 'fld-element-settings',
-        },
-        triggerElement: $trigger,
-      });
+      const slideout = new Craft.Slideout(
+        $contents,
+        Object.assign(
+          {
+            containerElement: 'form',
+            containerAttributes: {
+              action: '',
+              method: 'post',
+              novalidate: '',
+              class: 'fld-element-settings',
+            },
+          },
+          settings
+        )
+      );
       slideout.on('open', () => {
         // Hold off a sec until it's positioned...
         Garnish.requestAnimationFrame(() => {
@@ -605,11 +610,9 @@ Craft.FieldLayoutDesigner.Tab = Garnish.Base.extend({
     }
 
     this.settingsNamespace = data.namespace;
-    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(
-      data,
-      null,
-      this.$actionBtn
-    );
+    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data, null, {
+      triggerElement: this.$actionBtn,
+    });
 
     this.slideout.$container.on('submit', (ev) => {
       ev.preventDefault();
@@ -1071,11 +1074,9 @@ Craft.FieldLayoutDesigner.Element = Garnish.Base.extend({
     }
 
     this.settingsNamespace = data.namespace;
-    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(
-      data,
-      null,
-      this.$actionBtn
-    );
+    this.slideout = await Craft.FieldLayoutDesigner.createSlideout(data, null, {
+      triggerElement: this.$actionBtn,
+    });
 
     this.slideout.$container.on('submit', (ev) => {
       ev.preventDefault();
